@@ -1,0 +1,22 @@
+:: StoryTitle
+The Whispering Idol
+
+
+:: StoryData
+{
+  "ifid": "F9EA7606-77FF-4721-B46A-1CEFD4633DB4",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "START",
+  "zoom": 1
+}
+
+
+:: END {"position":"1475,625","size":"100,100"}
+This is just to test importing
+
+
+:: START {"position":"1225,625","size":"100,100"}
+Just a test to test commiting
+Character A: (link:"Continue")[What shall we do now?]
+(link-reveal:"Character A: ")[I think I don't belong here]
