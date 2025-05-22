@@ -12,11 +12,161 @@ The Whispering Idol
 }
 
 
-:: END {"position":"1475,625","size":"100,100"}
+:: ACTOneStart {"position":"975,625","size":"100,100"}
+Testing only so far, your name is $Name currently.
+
+[[IntDream]]
+[[StrDream]]
+[[AgiDream]]
+
+
+:: AgiDream {"position":"675,750","size":"100,100"}
+This is the initial Agility Dream
+(set: $Intelligence to it + 0)
+(set: $Strength to it + 1)
+(set: $Agility to it + 2)
+
+[[AgiDreamStr]]
+[[AgiDreamInt]]
+[[AgiDreamAgi]]
+
+
+:: AgiDreamAgi {"position":"750,875","size":"100,100"}
+This is the second Agi dream Dream
+(set: $Intelligence to it + 0)
+(set: $Strength to it + 1)
+(set: $Agility to it + 2)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: AgiDreamInt {"position":"550,875","size":"100,100"}
+This is the second Agi dream Dream
+(set: $Intelligence to it + 2)
+(set: $Strength to it + 0)
+(set: $Agility to it + 1)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: AgiDreamStr {"position":"650,875","size":"100,100"}
+This is the second Agi dream Dream
+(set: $Intelligence to it + 0)
+(set: $Strength to it + 2)
+(set: $Agility to it + 1)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: DreamEnd {"position":"1000,1175","size":"100,100"}
+You have finished dream flashback (link:"Click to reveal stats:")[
+Intelligence:  $Intelligence
+Strength: $Strength
+Agility: $Agility]
+
+[[END]]
+
+
+:: END {"position":"1000,1950","size":"100,100"}
 This is just to test importing
 
 
-:: START {"position":"1225,625","size":"100,100"}
-Just a test to test commiting
-Character A: (link:"Continue")[What shall we do now?]
-(link-reveal:"Character A: ")[I think I don't belong here]
+:: IntDream {"position":"975,750","size":"100,100"}
+This is the initial Intelligence Dream
+(set: $Intelligence to it + 2)
+(set: $Strength to it + 0)
+(set: $Agility to it + 1)
+
+[[IntDreamStr]]
+[[IntDreamInt]]
+[[IntDreamAgi]]
+
+
+:: IntDreamAgi {"position":"1075,875","size":"100,100"}
+This is the second Int dream Dream
+(set: $Intelligence to it + 1)
+(set: $Strength to it + 0)
+(set: $Agility to it + 2)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: IntDreamInt {"position":"975,875","size":"100,100"}
+This is the second Int dream Dream
+(set: $Intelligence to it + 2)
+(set: $Strength to it + 0)
+(set: $Agility to it + 1)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: IntDreamStr {"position":"875,875","size":"100,100"}
+This is the second Int dream Dream
+(set: $Intelligence to it + 1)
+(set: $Strength to it + 2)
+(set: $Agility to it + 0)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: START {"position":"975,475","size":"100,100"}
+<!--This part is used to set default variables and initialize game-->
+(set: $Intelligence to 0 )
+(set: $Strength to 0 )
+(set: $Agility to 0 )
+(set: $Name to "")
+(set: $DeathCounter to 0)
+(set: $Insanity to 0)
+(set: $Class to "")
+
+
+
+Please choose a name to start your story: (input: bind $Name , "Calder Faust")
+[[Startr Game|ACTOneStart]]
+
+
+:: StrDream {"position":"1275,750","size":"100,100"}
+This is the initial Strength Dream
+(set: $Intelligence to it + 0)
+(set: $Strength to it + 2)
+(set: $Agility to it + 1)
+
+[[StrDreamStr]]
+[[StrDreamInt]]
+[[StrDreamAgi]]
+
+
+:: StrDreamAgi {"position":"1200,875","size":"100,100"}
+This is the second Strength dream Dream
+(set: $Intelligence to it + 0)
+(set: $Strength to it + 1)
+(set: $Agility to it + 2)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: StrDreamInt {"position":"1400,875","size":"100,100"}
+This is the second Int dream Dream
+(set: $Intelligence to it + 2)
+(set: $Strength to it + 1)
+(set: $Agility to it + 0)
+(set: $Class to "")
+
+[[DreamEnd]]
+
+
+:: StrDreamStr {"position":"1300,875","size":"100,100"}
+This is the second Int dream Dream
+(set: $Intelligence to it + 0)
+(set: $Strength to it + 2)
+(set: $Agility to it + 1)
+(set: $Class to "")
+
+[[DreamEnd]]
