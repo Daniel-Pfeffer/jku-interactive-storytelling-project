@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Whispering Idol.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Whispering Idol" startnode="2" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="F9EA7606-77FF-4721-B46A-1CEFD4633DB4" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="END" tags="" position="1000,1950" size="100,100">This is just to test importing</tw-passagedata><tw-passagedata pid="2" name="START" tags="" position="975,475" size="100,100">&lt;!--This part is used to set default variables and initialize game--&gt;
+<tw-storydata name="The Whispering Idol" startnode="2" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="F9EA7606-77FF-4721-B46A-1CEFD4633DB4" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="END" tags="" position="975,3200" size="100,100">This is just to test importing</tw-passagedata><tw-passagedata pid="2" name="START" tags="" position="975,475" size="100,100">&lt;!--This part is used to set default variables and initialize game--&gt;
 (set: $Intelligence to 0 )
 (set: $Strength to 0 )
 (set: $Agility to 0 )
@@ -104,6 +104,53 @@ Please choose a name to start your story: (input: bind $Name , &quot;Calder Faus
 Intelligence:  $Intelligence
 Strength: $Strength
 Agility: $Agility]
+
+[[Arrival at port|Arrival at port]]</tw-passagedata><tw-passagedata pid="17" name="Arrival at port" tags="" position="1000,1300" size="100,100">Look arrouund and introduce the overall feeling of the town, add describe the port itself and describe guarsd on location. Thank the captain and leave the ship. introduce a few NPC-s to talk to to get started
+
+[[Talk to the soldier leading the nearby partrol|IntroEdward]]
+[[Talk to the merchant setting up shop|IntroGuss]]
+[[Talk to the Official walking around the port|IntroSelene]]</tw-passagedata><tw-passagedata pid="18" name="IntroEdward" tags="" position="1000,1425" size="100,100">Surprised to see you, tired and fed up. short introduction. (if martial focus chosen could be friend from acedemy. seperate convo then, volunteers to guide you to the temple later), tells you to look for selene for guide as he is on patrol
+
+
+[[Look around the port some more|Arrival at port]]
+(if:(history: where its name contains &quot;StrDreamStr&quot;)&#39;s length is 1)[[Recieve Edward&#39;s Token|Token]]
+[[IntroSelene]]</tw-passagedata><tw-passagedata pid="19" name="IntroGuss" tags="" position="1125,1425" size="100,100">Mercvhent, you can buy stuff for the exploration. probably done using a link system(mitht not be iplemented, needs balancing and maybe economy)
+Can give directions to town center, but recommends looking for official for help
+
+[[Try to fin the town center on your own|Back alley event]]</tw-passagedata><tw-passagedata pid="20" name="IntroSelene" tags="" position="875,1425" size="100,100">greeting, mayor is already waiting for you, happy to see you have arrived
+(set: $Intro to true)
+
+[[Follow her to the town center|TownCenter]]
+[[Look around the port some more|Arrival at port]]</tw-passagedata><tw-passagedata pid="21" name="TownCenter" tags="" position="975,1800" size="100,100">Mostly built, large govrnment building ahead, with a few gurds around.
+
+[[Head into Town hall|Town Hall]]</tw-passagedata><tw-passagedata pid="22" name="Token" tags="" position="1000,1550" size="100,100">description of toen, can have edward help during trip
+(set:$Token to true)
+[[Thank you, this will come in handy|IntroEdward]]</tw-passagedata><tw-passagedata pid="23" name="Back alley event" tags="" position="1125,1550" size="100,100">Some kind of sidestory to introduce player more to the local atmosphere and people
+
+(set: $Intro to false)
+[[Head towards Town Center|TownCenter]]</tw-passagedata><tw-passagedata pid="24" name="Town Hall" tags="" position="975,1950" size="100,100">Gurds, if with selene then bypass, otherwise give reason and introduction. Could be used as a sidequestor plothook
+
+(if:$Intro is false)[[Head on into the building|Mayor Meeting]]
+(if:$Intro is true:)[[Introduction]]
+</tw-passagedata><tw-passagedata pid="25" name="Mayor Meeting" tags="" position="975,2075" size="100,100">greeting, overall problem, fee, any help you can get(use edwards token), what you should do if idol is found maybe, general directions if no token, includes encounter with new lizard familiar, specced to complement player, otherwise edward companion
+
+(if:$Token is true)[[Follow Edward to temple|Temple entrance]]
+(if:$Token is false)[[Start heading towards the temple|Lost in Jungle]]</tw-passagedata><tw-passagedata pid="26" name="Introduction" tags="" position="1100,2075" size="100,100">[[Mayor Meeting]]</tw-passagedata><tw-passagedata pid="27" name="Temple entrance" tags="" position="1000,2350" size="100,100">Describe temple, describe carving and statues, feeling around the entrance. Edward returns if he was with us
+
+[[Enter the Temple|Entry hall]]</tw-passagedata><tw-passagedata pid="28" name="Lost in Jungle" tags="" position="1100,2200" size="100,100">Sidequest for familiar
+
+[[Temple entrance]]</tw-passagedata><tw-passagedata pid="29" name="Entry hall" tags="" position="1000,2475" size="100,100">Strength bhuild: see cracked wall, puzzle room enrtrance
+
+(if:$Strength is  4)[[Try to punch the cracked wal|Enemy Corridor]]
+[[Check to see small room with PUZZLE motifs|Puzzle room 1]]
+[[You feel an ocean breeze from this room|Pond room]]</tw-passagedata><tw-passagedata pid="30" name="Enemy Corridor" tags="" position="1125,2600" size="100,100">Some kind of combat mechanic, probably just description though
+
+[[Head forward|Pit]]
+[[Return to main chamber|Entry hall]]</tw-passagedata><tw-passagedata pid="31" name="Puzzle room 1" tags="" position="1000,2600" size="100,100"></tw-passagedata><tw-passagedata pid="32" name="Pond room" tags="" position="875,2600" size="100,100"></tw-passagedata><tw-passagedata pid="33" name="Pit" tags="" position="1125,2725" size="100,100">check if pit is notced and try to jump it
+
+[[Try to jump over the pit|Puzzle for door]]</tw-passagedata><tw-passagedata pid="34" name="Puzzle for door" tags="" position="1125,2850" size="100,100">Need to figure óut an entire puzzle for this, might take entire sidequest branch, this is just a placeholder
+
+[[You hear a slight fizzle and see the door open ahead|Idol room]]</tw-passagedata><tw-passagedata pid="35" name="Idol room" tags="" position="975,2975" size="100,100">description, action what to do with idol, maybe safe exit right after taking idol(could depend on what action was chosen with idol)
 
 [[END]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
