@@ -22,9 +22,9 @@ Testing only so far, your name is $Name currently.
 
 :: AgiDream {"position":"675,750","size":"100,100"}
 This is the initial Agility Dream
-(set: $Intelligence to it + 0)
-(set: $Strength to it + 1)
-(set: $Agility to it + 2)
+(set: $INT to it + 0)
+(set: $STR to it + 1)
+(set: $AGI to it + 2)
 
 [[AgiDreamStr]]
 [[AgiDreamInt]]
@@ -33,9 +33,9 @@ This is the initial Agility Dream
 
 :: AgiDreamAgi {"position":"750,875","size":"100,100"}
 This is the second Agi dream Dream
-(set: $Intelligence to it + 0)
-(set: $Strength to it + 1)
-(set: $Agility to it + 2)
+(set: $INT to it + 0)
+(set: $STR to it + 1)
+(set: $AGI to it + 2)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -43,9 +43,9 @@ This is the second Agi dream Dream
 
 :: AgiDreamInt {"position":"550,875","size":"100,100"}
 This is the second Agi dream Dream
-(set: $Intelligence to it + 2)
-(set: $Strength to it + 0)
-(set: $Agility to it + 1)
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -53,9 +53,9 @@ This is the second Agi dream Dream
 
 :: AgiDreamStr {"position":"650,875","size":"100,100"}
 This is the second Agi dream Dream
-(set: $Intelligence to it + 0)
-(set: $Strength to it + 2)
-(set: $Agility to it + 1)
+(set: $INT to it + 0)
+(set: $STR to it + 2)
+(set: $AGI to it + 1)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -78,9 +78,9 @@ Some kind of sidestory to introduce player more to the local atmosphere and peop
 
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
 You have finished dream flashback (link:"Click to reveal stats:")[
-Intelligence:  $Intelligence
-Strength: $Strength
-Agility: $Agility]
+Intelligence:  $INT
+Strength: $STR
+Agility: $AGI]
 
 [[Arrival at port|Arrival at port]]
 
@@ -99,7 +99,16 @@ Some kind of combat mechanic, probably just description though
 :: Entry hall {"position":"1000,2475","size":"100,100"}
 Strength bhuild: see cracked wall, puzzle room enrtrance
 
-(if:$Strength is  4)[[Try to punch the cracked wal|Enemy Corridor]]
+
+<!--STR paths-->
+(if:$STR is  4)[[Try to punch the cracked wal|Enemy Corridor]]
+
+<!--Int paths-->
+(if:$INT >= 3)[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1]]
+(if:$INT < 3)[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1 opt]]
+
+
+<!-- General paths -->
 [[Check to see small room with PUZZLE motifs|Puzzle room 1]]
 [[You feel an ocean breeze from this room|Pond room]]
 
@@ -112,9 +121,9 @@ description, action what to do with idol, maybe safe exit right after taking ido
 
 :: IntDream {"position":"975,750","size":"100,100"}
 This is the initial Intelligence Dream
-(set: $Intelligence to it + 2)
-(set: $Strength to it + 0)
-(set: $Agility to it + 1)
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
 
 [[IntDreamStr]]
 [[IntDreamInt]]
@@ -123,9 +132,9 @@ This is the initial Intelligence Dream
 
 :: IntDreamAgi {"position":"1075,875","size":"100,100"}
 This is the second Int dream Dream
-(set: $Intelligence to it + 1)
-(set: $Strength to it + 0)
-(set: $Agility to it + 2)
+(set: $INT to it + 1)
+(set: $STR to it + 0)
+(set: $AGI to it + 2)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -133,9 +142,9 @@ This is the second Int dream Dream
 
 :: IntDreamInt {"position":"975,875","size":"100,100"}
 This is the second Int dream Dream
-(set: $Intelligence to it + 2)
-(set: $Strength to it + 0)
-(set: $Agility to it + 1)
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -143,9 +152,9 @@ This is the second Int dream Dream
 
 :: IntDreamStr {"position":"875,875","size":"100,100"}
 This is the second Int dream Dream
-(set: $Intelligence to it + 1)
-(set: $Strength to it + 2)
-(set: $Agility to it + 0)
+(set: $INT to it + 1)
+(set: $STR to it + 2)
+(set: $AGI to it + 0)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -214,9 +223,9 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 
 :: START {"position":"975,475","size":"100,100"}
 <!--This part is used to set default variables and initialize game-->
-(set: $Intelligence to 0 )
-(set: $Strength to 0 )
-(set: $Agility to 0 )
+(set: $INT to 0 )
+(set: $STR to 0 )
+(set: $AGI to 0 )
 (set: $Name to "")
 (set: $DeathCounter to 0)
 (set: $Insanity to 0)
@@ -230,9 +239,9 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 
 :: StrDream {"position":"1275,750","size":"100,100"}
 This is the initial Strength Dream
-(set: $Intelligence to it + 0)
-(set: $Strength to it + 2)
-(set: $Agility to it + 1)
+(set: $INT to it + 0)
+(set: $STR to it + 2)
+(set: $AGI to it + 1)
 
 [[StrDreamStr]]
 [[StrDreamInt]]
@@ -241,9 +250,9 @@ This is the initial Strength Dream
 
 :: StrDreamAgi {"position":"1200,875","size":"100,100"}
 This is the second Strength dream Dream
-(set: $Intelligence to it + 0)
-(set: $Strength to it + 1)
-(set: $Agility to it + 2)
+(set: $INT to it + 0)
+(set: $STR to it + 1)
+(set: $AGI to it + 2)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -251,9 +260,9 @@ This is the second Strength dream Dream
 
 :: StrDreamInt {"position":"1400,875","size":"100,100"}
 This is the second Int dream Dream
-(set: $Intelligence to it + 2)
-(set: $Strength to it + 1)
-(set: $Agility to it + 0)
+(set: $INT to it + 2)
+(set: $STR to it + 1)
+(set: $AGI to it + 0)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -261,9 +270,9 @@ This is the second Int dream Dream
 
 :: StrDreamStr {"position":"1300,875","size":"100,100"}
 This is the second Int dream Dream
-(set: $Intelligence to it + 0)
-(set: $Strength to it + 2)
-(set: $Agility to it + 1)
+(set: $INT to it + 0)
+(set: $STR to it + 2)
+(set: $AGI to it + 1)
 (set: $Class to "")
 
 [[DreamEnd]]
@@ -285,11 +294,24 @@ description of toen, can have edward help during trip
 Gurds, if with selene then bypass, otherwise give reason and introduction. Could be used as a sidequestor plothook
 
 (if:$Intro is false)[[Head on into the building|Mayor Meeting]]
-(if:$Intro is true:)[[Introduction]]
-
+(if:$Intro is true)[[Introduction]]
 
 
 :: TownCenter {"position":"975,1800","size":"100,100"}
 Mostly built, large govrnment building ahead, with a few gurds around.
 
 [[Head into Town hall|Town Hall]]
+
+
+:: int path 1 {"position":"700,2600","size":"100,100"}
+You notice the slight shimmer of the door, and remember your professors often talked about illusioniary wall.
+(link:"Continue")[(show:?cont_1)]
+|cont_1)[Your Text Here
+(link:"Continue")[(show:?cont_2)]]
+|cont_2)[My second text is here
+(link:"Continue")[(show:?cont_3)]]
+|cont_3)[Third text]
+
+
+:: int path 1 opt {"position":"500,2600","size":"100,100"}
+
