@@ -13,11 +13,7 @@ The Whispering Idol
 
 
 :: ACTOneStart {"position":"975,625","size":"100,100"}
-Testing only so far, your name is $Name currently.
-
-[[IntDream]]
-[[StrDream]]
-[[AgiDream]]
+Waking with a start, you quickly take in your surroundings, looking around the dimly lit cabin. Feeling your wet bedding, you can sense beads of sweat rolling down your forehead, as you try to remember what exactly you were dreaming about. The only thing you remember is the picturesque view of academy city, but you aren't sure what you were doing. As you dig deeper in your memories you remember arriving at the central square on your way to the academy. To your right there were the spiraling towers of the [[Imperial Academy of Magic|IntDream]]. To your left you can see the towering walls surrounding the [[Knight Academy|StrDream]]. You can still hear the clashing of swords from within the massive barricade. Finally straight ahead was the somewhat hidden entrance to the [[Rogue's Abode|AgiDream]]. While obvious to the trained eye, it was positioned so that the everyday peasant won't even look twice.
 
 
 :: AgiDream {"position":"675,750","size":"100,100"}
@@ -62,11 +58,13 @@ This is the second Agi dream Dream
 
 
 :: Arrival at port {"position":"1000,1300","size":"100,100"}
-Look arrouund and introduce the overall feeling of the town, add describe the port itself and describe guarsd on location. Thank the captain and leave the ship. introduce a few NPC-s to talk to to get started
+As you look around you frown straight away. What should have been a sleepy town dock just starting to awaken, was already full of people. Townfolk are going about loading the few vessels currently anchored, or simple shopping at the small seafood market starting to grow from the fishing piers. While that might be promising, the overall feel was off. Instead of a lively and fresh atmosphere you see some people just dozing off all over the place, and others appearing to have bags under their eyes. 
 
-[[Talk to the soldier leading the nearby partrol|IntroEdward]]
-[[Talk to the merchant setting up shop|IntroGuss]]
-[[Talk to the Official walking around the port|IntroSelene]]
+Everyone seems slowed, as if they were tired instead of just waking from a refreshing night's rest. Farther down the street connecting to the town, you can see a small patrol consisting of a [[single knight|IntroEdward]] complemented by a what looks like a town militia. Though more put tohgether than the rest of the townfolk, probably thanks to the stern looking knight at their lead, you can still see some of them leaning onto something nearby, not really paying attenttion to their surroundings.
+
+In the marketplace you can see a large construction happening, and a small [[dwarvern merchant|IntroGuss]] hawking their goods right in front of it. While dwarves are not rare in the larger cities of the empire, seeing one so far from their natural habitat is certainly surprising.
+
+Finally at the entrance to what looks to be the main street you see a [[well dressed elf|IntroSelene]] looking around and taling notes. She's probably related to the local government, as their kind hardly visit docks out of interest. Most elves are usually found deep in their forest up north, or in the different magicvian organizations around the empire. While some do explore the frontier settlements you have never heard of any that would take joy in fishing.
 
 
 :: Back alley event {"position":"1125,1550","size":"100,100"}
@@ -77,12 +75,21 @@ Some kind of sidestory to introduce player more to the local atmosphere and peop
 
 
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
-You have finished dream flashback (link:"Click to reveal stats:")[
+As you come to your senses you start moving around to  (link-reveal:"wake your body as well:")[
 Intelligence:  $INT
 Strength: $STR
 Agility: $AGI]
 
-[[Arrival at port|Arrival at port]]
+As the morning slugishness slowly vanishes, you start thinking. While detailed dreams are not overly unusual, they have been mecoming quite frequent as you got closer to the island. Combined with the information you recieved when accepted this job, you feel evermore sure that there is something behind them. Now you just needed to get to the bootom of it.
+
+A loud knock startles you from your thoughts. "(link-reveal:"Oy! You up yet?")[ Arr, we be making landfall in a few minutes. Now haul yer scurvy hide off me ship!”, grumbles the captain
+you’ve hired to bring you to the island, Lord Xy hired you to investigate.
+
+As you get ready you look outside the small windows seeing the sailers moving around and the docks close by. They look rather new, with only a few ships docking, but have plenty of space for future expansions. 
+
+A few minutes later you hear the ship docking with sailers scrambing around the deck making sure everything is adequetly secured. You say goodbye to the captain and step onto the[[wooden piers.|Arrival at port]]
+]
+
 
 
 :: END {"position":"900,3625","size":"100,100"}
@@ -179,11 +186,22 @@ Can give directions to town center, but recommends looking for official for help
 
 
 :: IntroSelene {"position":"875,1425","size":"100,100"}
-greeting, mayor is already waiting for you, happy to see you have arrived
 (set: $Intro to true)
 
-[[Follow her to the town center|TownCenter]]
-[[Look around the port some more|Arrival at port]]
+You decide to head towards the elf, seeing as you should probably introduce yourself to the local leadership, if only to gather fresh information about your task.They should also be able to provide any details that the official briefing could have missed.
+
+As you get closer you can clearly identify the emblen of the duke on her shoulders, signifying her the government. She seems to be talking rather animatedly to the captain that just brought you here. AS you get closer you starting making out the (link-reveal:"topic.")[
+(link-reveal:"'What do you mean he already left? you just finished docking!'")[
+(link-reveal:"'I jus said he walkd off right away! you didn say anythin abou meetin on arrival!'")[
+(link-reveal:"'I thought it was obvious with me standing here! What else do you trhink the mayor's secretary would be doing here at dawn?'")[
+You decide it is about time to introduce yourself before tempers flair anymore. 
+'Good morning my lady! I believe you must be looking for me, though the brief did not contain anything about the local contact other than the mayor.'
+'Oh thank god, you must be $Name ! Sadly since the assignment was already issued we could not correct it in time. I was given the task of escorting you to the meeting with the mayor. While other times we might need to wait for a more reasonable hour, sadly with the current predicament he should be already up and working'
+'Thank you then, may I have a name as well?'
+'Oh of course, my name is Selene Ashbark, at your service!'
+'Then while i would love to look around the [[port|Arrival at port]] some more, we should probably [[get going|TownCenter]] to solve this issue as soon as possible'
+
+]]]]
 
 
 :: Introduction {"position":"1100,2075","size":"100,100"}
@@ -197,10 +215,27 @@ Sidequest for familiar
 
 
 :: Mayor Meeting {"position":"975,2075","size":"100,100"}
-greeting, overall problem, fee, any help you can get(use edwards token), what you should do if idol is found maybe, general directions if no token, includes encounter with new lizard familiar, specced to complement player, otherwise edward companion
+You walk down the halls admiring the lowkey luxury already present, though it seems this mayor isn't the type to overspend on personal extravagance before the town is set up properly. This holds promise for you, as such individuals are usual on top of their game, so you can hope for a well put together briefiong after arriving. 
 
-(if:$Token is true)[[Follow Edward to temple|Temple entrance]]
-(if:$Token is false)[[Start heading towards the temple|Lost in Jungle]]
+Your thought are broken as yuo (link-reveal:"enter the main office.")[
+You can see a sturdy man sitting on the comfortable looking chair at the other side of the room. His beard is well trimmed and his hair well maintained, but you can see the familiar bags under his eyes that seem to be everpresent around town.
+'Welcome $Name ! I am glad you arrived so soon and without an complications, we have much to discuss. I am Mayor Eddis Bok, and I welcome you to our small settlement!'
+'Greetings Mr. Bok. You seem to be doing a good job of growing this small town, and hopefully I can ease the difficulties by solving the mystery that has been plaguing you.'
+'That would be quite helpful, working on only a few hours of sleep is starting to drive me mad, and sadly it seems that might not be just an exageration. In the past few weaks the settlers building this small town have been bothered by increasingly disturbing nightmares. At the start it was just a few people, and they had no problems going back to sleep, however as more time passed the situation became far more severe. Currently Most townsfolk are affected, and even magical artifacts can only dull the effects as you can see on me. The dreams seem to create personal nightmares for everyone affected, with the only commonality being a golded idol appearing at the very end, promising wealth and power to anyone capable of finding it.'
+'That seems more ominous than the initial assignment hinted. Are there any clues to where the idol may be, or what might have started the dreams?'
+'The only incident that comes to mind is the exporation troops uncovering a small temple entrance near the east side of the island. While surveying the island my people came across a small stone arch under some collapsed rocks. WHen they removed them they found a labyrinth behind them. They reported back, and it was decided that we will wait untill the town is more established to explore deeper. You should probably start by exploring this monument before heading elsewhere for more clues.'
+'Thank you for your help, in that case I should probably start the exploration as soon as possible, since we are burning valuable daylight. I'll be back with good news as soon as possible.'
+(if:$Token is false)[
+With your goodbyes said you turn to leave and heaad towards the [[temple|Temple entrance]].
+
+]
+(if:$Token is true)[With your goodbyes said you turn to leave and heaad towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]] ]
+
+
+
+]
+
+
 
 
 :: Pit {"position":"1125,2725","size":"100,100"}
@@ -232,52 +267,63 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 (set: $DeathCounter to 0)
 (set: $Insanity to 0)
 (set: $Class to "")
+(set:$Token to false)
 
 Please choose a name to start your story: (input: bind $Name , "Calder Faust")
-[[Startr Game|ACTOneStart]]
+[[Start Game|ACTOneStart]]
 
 
 
 
 :: StrDream {"position":"1275,750","size":"100,100"}
-This is the initial Strength Dream
 (set: $INT to it + 0)
 (set: $STR to it + 2)
 (set: $AGI to it + 1)
 
-[[StrDreamStr]]
-[[StrDreamInt]]
-[[StrDreamAgi]]
+Ah, you finally remeber, this was your first day reporting to the academy to further your education as a knight. You can still recall the stern face of your instructor Edward, a decorated knight who decided to pass on what he learned to the younger generation before starting his next adventure. He was always your favorite, strict but caring as he guided the battalion of idiots he was tasked with training. 
+
+Reminiscing about the past, you remember as you left home. Your parents were so proud of you after you won the [[sparing contest|StrDreamStr]] at the nearby town, though you decided not to tell them how you got the qualification to even participate. Finding a reputable [[forger|StrDreamAgi]] was a difficult task, as you were from a small family in the countryside and did not have any connections in town. It took quite the effort to [[research|StrDreamInt]] what papers you would even need for the contest, as it was not really advertiseed outside of town.
+
 
 
 :: StrDreamAgi {"position":"1200,875","size":"100,100"}
-This is the second Strength dream Dream
 (set: $INT to it + 0)
 (set: $STR to it + 1)
 (set: $AGI to it + 2)
-(set: $Class to "")
+(set: $Class to "Knight")
 
-[[DreamEnd]]
+You can still feel how sore your feet felt after finally finding Wraith down in the sewers beneath the town hall. To this day you still only know him by his codename, and it was only by luck that you asked the right begger during your search. Ralph took pity on you seeing how badly your search was going, and pointed you towards the first real clue, finally setting you on the correct path.
+
+Since you had no money to pay for the documents, you still owe Wraith a favor for setting you up with everything you needed. It doesn't even bother you much after ater finding out that even the Rogues' Abode is an accepted part of the royal families assets. 
+
+The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+
 
 
 :: StrDreamInt {"position":"1400,875","size":"100,100"}
-This is the second Int dream Dream
 (set: $INT to it + 2)
 (set: $STR to it + 1)
 (set: $AGI to it + 0)
-(set: $Class to "")
+(set: $Class to "Knight")
 
-[[DreamEnd]]
+Looking for information was hard, and sokewhat alien to you, as the village elders only taught you the basics of reading before decing you were better off just helping your parents around the farm. You spent all your free time in the library looking for records of previous tournaments, which while helpful with advancing your research skills didn't lead to success. 
+
+Just when you were ready to give up the kind elderly librarian finally had enough of you running around his quiet sanctum, and asked what you were looking for. To this day you still blush whenever you remember the patronizing look on her face as the small fae points out that the rules are already posted all around the venue, and should include all prerequisites needed to participate
+
+The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
 
 
 :: StrDreamStr {"position":"1300,875","size":"100,100"}
-This is the second Int dream Dream
 (set: $INT to it + 0)
 (set: $STR to it + 2)
 (set: $AGI to it + 1)
-(set: $Class to "")
+(set: $Class to "Knight")
 
-[[DreamEnd]]
+You can still remember the sheer joy when the knight at the scene accepted your documents without any hassle. Looking back it was probably either part of the test for the less fortunate, or they simple didn't care that one more competitor was added to the tournament. It seems impossible that he failed to recognise the forgery.
+
+Each round was difficult and exhausting, but with the body forged by working on the farm and the agility given from roaming the mountains you successfully advanced all the way to the finals. You can admit that some luck was definitely involved, as some of your greatest foes tiredd eachother out before reaching you, but that was just part of the contest. While winning wasn't needed to be accepted into the academy, first place secured you a scholarship that helped you afford the 5 year training.
+
+The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
 
 
 :: Temple entrance {"position":"1000,2350","size":"100,100"}
@@ -306,16 +352,20 @@ description of toen, can have edward help during trip
 
 
 :: Town Hall {"position":"975,1950","size":"100,100"}
-Gurds, if with selene then bypass, otherwise give reason and introduction. Could be used as a sidequestor plothook
 
-(if:$Intro is false)[[Head on into the building|Mayor Meeting]]
-(if:$Intro is true)[[Introduction]]
+
+(if:$Intro is true)[You can hear Selene giving a small explanation of who you are and asking about the mayor. It seems there are no problems and the mayor is in his office. [[The Guards wave you through before you can even join the conversation|Mayor Meeting]]]
+(if:$Intro is false)[[Introduction]]
 
 
 :: TownCenter {"position":"975,1800","size":"100,100"}
-Mostly built, large govrnment building ahead, with a few gurds around.
+As you follow Selene, you look around the town. The dock area seems to be mostly finished, with a main road lead towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alon until larger industry is present to leave room for them to expand around the port.
 
-[[Head into Town hall|Town Hall]]
+The closer you get to what you can only presume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to lerge quarries or traderoutes. 
+
+The only exception seems to be the large stone building you are approaching, which while not the size of what mayor offices look in well developed settlements, is still magnificent. The more you look at it you can see the characteristics of it being a defensive fort as well. Most new settlements lack the walls needed to keep out bandits or larger wildlife, so while thos are built the Mayor's office serves as a bastion to protect the early settlers in any conflicts or raids that might happen.
+
+Your musing is broken as Selene addresses the guards at the [[entrance|Town Hall]].
 
 
 :: Trap corridor {"position":"1400,2850","size":"100,100"}
