@@ -85,7 +85,7 @@ Agility: $AGI]
 [[Arrival at port|Arrival at port]]
 
 
-:: END {"position":"975,3200","size":"100,100"}
+:: END {"position":"900,3625","size":"100,100"}
 This is just to test importing
 
 
@@ -109,11 +109,12 @@ Strength bhuild: see cracked wall, puzzle room enrtrance
 
 
 <!-- General paths -->
+[[Check the upper left path|shared path int trap]]
 [[Check to see small room with PUZZLE motifs|Puzzle room 1]]
 [[You feel an ocean breeze from this room|Pond room]]
 
 
-:: Idol room {"position":"975,2975","size":"100,100"}
+:: Idol room {"position":"900,3400","size":"100,100"}
 description, action what to do with idol, maybe safe exit right after taking idol(could depend on what action was chosen with idol)
 
 [[END]]
@@ -211,7 +212,7 @@ check if pit is notced and try to jump it
 
 
 
-:: Puzzle for door {"position":"1125,2850","size":"100,100"}
+:: Puzzle for door {"position":"1000,3100","size":"100,100"}
 Need to figure óut an entire puzzle for this, might take entire sidequest branch, this is just a placeholder
 
 [[You hear a slight fizzle and see the door open ahead|Idol room]]
@@ -231,10 +232,10 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 (set: $Insanity to 0)
 (set: $Class to "")
 
-
-
 Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 [[Startr Game|ACTOneStart]]
+
+
 
 
 :: StrDream {"position":"1275,750","size":"100,100"}
@@ -303,15 +304,70 @@ Mostly built, large govrnment building ahead, with a few gurds around.
 [[Head into Town hall|Town Hall]]
 
 
+:: after illusion wall {"position":"500,3225","size":"100,100"}
+[[puzzle int]]
+
+
+:: front illusion wall {"position":"500,3100","size":"100,100"}
+[[after illusion wall]]
+
+
+:: info path 2 {"position":"700,2725","size":"100,100"}
+Puzzle room here, some INT check
+
+[[Go along path|int path drop down]]
+
+
 :: int path 1 {"position":"700,2600","size":"100,100"}
 You notice the slight shimmer of the door, and remember your professors often talked about illusioniary wall.
-(link:"Continue")[(show:?cont_1)]
-|cont_1)[Your Text Here
-(link:"Continue")[(show:?cont_2)]]
-|cont_2)[My second text is here
+(link:"Try to remember the details")[(show:?cont_1)]
+|cont_1)[(after:1s)[...](after:2s)[...](after:3s)[...](after:4s)[...](after:5s)[
+''Prof.  Very Intelligent:'' Now remember, our ancestors used quite a lot of Illusion magic to hide pathways. Master Illusionists could even create walls that were lifelike, without dispelling them first.
+(link:"Continue")[(show:?cont_2)]]]
+|cont_2)[''You:'' But how can we then even detect them, when they are lifelike?
 (link:"Continue")[(show:?cont_3)]]
-|cont_3)[Third text]
+|cont_3)[''Prof. Very Intelligent:'' Ahh good question, $Name, first of all they produce a slight shimmer, and if you're still unsure you can try dispelling it. If it's an illusionary wall, it will turn invisible for a few seconds.
+(link:"Continue")[(show:?cont_4)]]
+|cont_4)[As you remember how to detect and dispel an illusionary wall, all you have to do now, is to well dispell it.
+(link:"//Dispell//")[(show:?after_dispell)]]
+|after_dispell)[The moment you cast //Dispell//, the wall infront of you becomes see-through and you see a path that seems to turn right after a few meters.
+[[Go along this path->info path 2]]]
+[[Go back to the middle of the room|Entry hall]]
 
 
 :: int path 1 opt {"position":"500,2600","size":"100,100"}
+You notice a slight shimmer on this wall.
+(if:$INT < 2)[You remember how your teachers talked about shimmering moos, often found in damp caves.]
+(if:$INT is 2)[You remember how your teachers talked about magical doors, and that they often would shimmer quite similarily to this. But you cannot remember how exactly to dispell the magic.]
 
+There doesn't seem to be anything else interesting here.
+<!-- Brute force to skip illusion wall? -->
+[[Go back to the middle of the room|Entry hall]]
+
+
+:: int path drop down {"position":"700,2850","size":"100,100"}
+
+
+[[Go along|shared path from int path]]
+
+
+:: puzzle int {"position":"500,3350","size":"100,100"}
+[[Puzzle for door]]
+
+
+:: shared path from int path {"position":"700,2975","size":"100,100"}
+[[front illusion wall]]
+
+
+:: shared path int trap {"position":"300,2600","size":"100,100"}
+[[Go along the path|shared path trap]]
+
+[[Go back|Entry hall]]
+
+
+:: shared path path {"position":"350,2900","size":"100,100"}
+[[in front of illusion|front illusion wall]]
+
+
+:: shared path trap {"position":"300,2750","size":"100,100"}
+[[After trap go along path|shared path path]]
