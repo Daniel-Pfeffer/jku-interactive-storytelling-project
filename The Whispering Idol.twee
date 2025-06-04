@@ -112,6 +112,7 @@ Strength bhuild: see cracked wall, puzzle room enrtrance
 [[Check the upper left path|shared path int trap]]
 [[Check to see small room with PUZZLE motifs|Puzzle room 1]]
 [[You feel an ocean breeze from this room|Pond room]]
+[[You hear grumbling snores from another corridor|agi path]]
 
 
 :: Idol room {"position":"900,3400","size":"100,100"}
@@ -285,6 +286,19 @@ Describe temple, describe carving and statues, feeling around the entrance. Edwa
 [[Enter the Temple|Entry hall]]
 
 
+:: Tip room {"position":"1400,2975","size":"100,100"}
+<!--General idea: In this room sits some kind of humanlike creature, which seems like an enemy at first. With enough STR, you can overcome it easily, but with enough INT or AGI, you can actually "befriend" the creature and get information about the puzzles in the dungeon (pond, puzzle room, idol puzzle or well) from it. Could function as some help if the player does not know how to proceed.-->
+
+Insert encounter with creature
+
+Choose between different paths for STR and INT/AGI.
+Make boolean variable to keep track if the creature is alive in the first place.
+
+<!--Make it possible such that you can also enter the room from behind, i.e. coming from the idol puzzle.-->
+
+[[Idol room]]
+
+
 :: Token {"position":"1000,1550","size":"100,100"}
 description of toen, can have edward help during trip
 (set:$Token to true)
@@ -302,6 +316,50 @@ Gurds, if with selene then bypass, otherwise give reason and introduction. Could
 Mostly built, large govrnment building ahead, with a few gurds around.
 
 [[Head into Town hall|Town Hall]]
+
+
+:: Trap corridor {"position":"1400,2850","size":"100,100"}
+<!--Room with holes in the walls. On the floor there are trip ropes that, if triggered, let arrows shoot out of the holes. Again an agi hazard.-->
+
+As you continue your expedition, you find yourself going through a barely lit corridor. You make one step after another, only seeing blurry images of the floor.
+
+(set:$AGI to 4)
+
+(if:$AGI >= 4)[You cannot put it into words, but something feels off for you about this room. You start inspecting the walls and notice some strange holes on both sides. Further following your gut, you start looking at the floor.
+It seems like you had the right feeling. What you find are trip ropes. Luckily, you think, as they are probably connected to some mechanism. Surely, you do not want to find out, what those ropes activate, which is why you make big steps over them and reach another door.]
+
+<!--Add here if clause where the player can proceed with the dungeon if he has enoug agi, else he dies (?) and restarts at the entry hall-->
+[[This time you cannot hear anything suspicious from the other side, which is why you take the risk and enter the room|Tip room]]
+
+
+:: agi enemy room {"position":"1400,2725","size":"100,100"}
+<!--Enemy encounter designed for agi character. Monster is sleeping (?), but with enough agi skill it can be passed without waking it up.-->
+<!--Maybe add methods for other classes as well.-->
+
+<!--insert interaction with monster.-->
+<!--first option is to sneak around it, requires certain agi stat-->
+<!--if player tries to sneak and does not have the required stat -> death-->
+<!--maybe give options for players with some other really high skill, maybe it could be possibel to kill the monster-->
+
+DEBUGGING
+(set:$AGI to 2)
+
+(if:$AGI >= 3)[[Sneak around the monster succesfully|Trap corridor]]
+(if:$AGI < 3)[(set:$DeathCounter to $DeathCounter + 1)]
+(if:$AGI < 3)[(set:$Insanity to $Insanity + 1)]
+(if:$AGI < 3)[[Sneak around the monster and get caught|Entry hall]]
+
+
+
+:: agi path {"position":"1400,2600","size":"100,100"}
+<!--short notice that player chose path to the agi enemy encounter-->
+<!--Next entering the room with the sleeping monster in it.-->
+
+The snoring gets even louder as you wander through a steadily darker getting corridor. You reach a small door made of half-rot wood. What do you want to do?
+
+[[You are not really sure if you want to find out, what hides behind those snores and return to the main hall.|Entry hall]]
+[[You enter the room and cannot believe your eyes.|agi enemy room]]
+
 
 
 :: after illusion wall {"position":"500,3225","size":"100,100"}
