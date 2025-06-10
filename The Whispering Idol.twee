@@ -91,9 +91,8 @@ A few minutes later you hear the ship docking with sailers scrambing around the 
 ]
 
 
-
 :: END {"position":"900,3625","size":"100,100"}
-This is just to test importing
+testing new branch
 
 
 :: Enemy Corridor {"position":"1125,2600","size":"100,100"}
@@ -236,8 +235,6 @@ With your goodbyes said you turn to leave and heaad towards the [[temple|Temple 
 ]
 
 
-
-
 :: Pit {"position":"1125,2725","size":"100,100"}
 check if pit is notced and try to jump it
 
@@ -273,8 +270,6 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 [[Start Game|ACTOneStart]]
 
 
-
-
 :: StrDream {"position":"1275,750","size":"100,100"}
 (set: $INT to it + 0)
 (set: $STR to it + 2)
@@ -283,7 +278,6 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 Ah, you finally remeber, this was your first day reporting to the academy to further your education as a knight. You can still recall the stern face of your instructor Edward, a decorated knight who decided to pass on what he learned to the younger generation before starting his next adventure. He was always your favorite, strict but caring as he guided the battalion of idiots he was tasked with training. 
 
 Reminiscing about the past, you remember as you left home. Your parents were so proud of you after you won the [[sparing contest|StrDreamStr]] at the nearby town, though you decided not to tell them how you got the qualification to even participate. Finding a reputable [[forger|StrDreamAgi]] was a difficult task, as you were from a small family in the countryside and did not have any connections in town. It took quite the effort to [[research|StrDreamInt]] what papers you would even need for the contest, as it was not really advertiseed outside of town.
-
 
 
 :: StrDreamAgi {"position":"1200,875","size":"100,100"}
@@ -297,7 +291,6 @@ You can still feel how sore your feet felt after finally finding Wraith down in 
 Since you had no money to pay for the documents, you still owe Wraith a favor for setting you up with everything you needed. It doesn't even bother you much after ater finding out that even the Rogues' Abode is an accepted part of the royal families assets. 
 
 The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
-
 
 
 :: StrDreamInt {"position":"1400,875","size":"100,100"}
@@ -352,8 +345,6 @@ description of toen, can have edward help during trip
 
 
 :: Town Hall {"position":"975,1950","size":"100,100"}
-
-
 (if:$Intro is true)[You can hear Selene giving a small explanation of who you are and asking about the mayor. It seems there are no problems and the mayor is in his office. [[The Guards wave you through before you can even join the conversation|Mayor Meeting]]]
 (if:$Intro is false)[[Introduction]]
 
@@ -382,6 +373,10 @@ It seems like you had the right feeling. What you find are trip ropes. Luckily, 
 [[This time you cannot hear anything suspicious from the other side, which is why you take the risk and enter the room|Tip room]]
 
 
+:: after illusion wall {"position":"500,3225","size":"100,100"}
+[[puzzle int]]
+
+
 :: agi enemy room {"position":"1400,2725","size":"100,100"}
 <!--Enemy encounter designed for agi character. Monster is sleeping (?), but with enough agi skill it can be passed without waking it up.-->
 <!--Maybe add methods for other classes as well.-->
@@ -400,7 +395,6 @@ DEBUGGING
 (if:$AGI < 3)[[Sneak around the monster and get caught|Entry hall]]
 
 
-
 :: agi path {"position":"1400,2600","size":"100,100"}
 <!--short notice that player chose path to the agi enemy encounter-->
 <!--Next entering the room with the sleeping monster in it.-->
@@ -409,11 +403,6 @@ The snoring gets even louder as you wander through a steadily darker getting cor
 
 [[You are not really sure if you want to find out, what hides behind those snores and return to the main hall.|Entry hall]]
 [[You enter the room and cannot believe your eyes.|agi enemy room]]
-
-
-
-:: after illusion wall {"position":"500,3225","size":"100,100"}
-[[puzzle int]]
 
 
 :: front illusion wall {"position":"500,3100","size":"100,100"}
@@ -454,8 +443,6 @@ There doesn't seem to be anything else interesting here.
 
 
 :: int path drop down {"position":"700,2850","size":"100,100"}
-
-
 [[Go along|shared path from int path]]
 
 
