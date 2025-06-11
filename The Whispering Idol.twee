@@ -56,7 +56,7 @@ The chirping of seagulls startles you from the recollections, hinting that you s
 Deciding to brave the alley to save a few minutes, you start heading towards the crates blocking your sight and deeper into the alley.
 
 (if:(history: where its name contains "AgiDream")'s length >= 1)[(if:$dagger is true)[You clutch your recently bought dagger as you pass the crates, and to no one's surprise a shadows suddenly leaps at you. Just before he can reach you, you swing your dagger in a small arc and feel it cut something. You can hear a gurgling sound as the shadows flies past you and falls to the ground. You can see a haggard gigure clutching at his throat as crimson blood flows in betweeen his fingers. As he collapses, you quickly seearch him to see if there are any clues, but you can only find (link-reveal:"10 gold")[(set: $Gold to it + 10)] on him. After quickly collecting it you [[head on your way.|Town Hall]]]
-(if:$dagger is false)[You ready yourself as you pass the crates, and to no one's surprise a shadows suddenly leaps at you. You manage to dodge and the shadow flies past you. Once it lands you can clearly see a middle aged man looking at you in surprise, you begin to shout for help and he turns and bolts away.
+(if:$items contains $item_dagger)[You ready yourself as you pass the crates, and to no one's surprise a shadows suddenly leaps at you. You manage to dodge and the shadow flies past you. Once it lands you can clearly see a middle aged man looking at you in surprise, you begin to shout for help and he turns and bolts away.
 After wainting some time you realise no one seems to have come and [[head on your way.|Town Hall]]]](else:)[As you pass by the crates a shadow suddenly lunges at you, and you feel a sharp pain in your chest. Looking down, you can see a small hilt sticking out. As you fal down you slowly begin to loose consciousness, wondering why you thought this path would be a good idea.(click-goto:?page,"Rebirth awakening")]
 
 
@@ -70,7 +70,7 @@ In the marketplace you can see a large construction happening, and a small [[dwa
 Finally at the entrance to what looks to be the main street you see a [[well dressed elf|IntroSelene]] looking around and taling notes. She's probably related to the local government, as their kind hardly visit docks out of interest. Most elves are usually found deep in their forest up north, or in the different magicvian organizations around the empire. While some do explore the frontier settlements you have never heard of any that would take joy in fishing.
 
 
-:: Back alley event {"position":"1125,1550","size":"100,100"}
+:: Back alley event {"position":"1150,1575","size":"100,100"}
 (set: $Intro to false)
 
 As you head on ahead by yourself you look around the town. The dock area seems to be mostly finished, with a main road lead towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alon until larger industry is present to leave room for them to expand around the port.
@@ -350,14 +350,16 @@ As you leave you can see that the dock is getting more crowded as more ships sta
 
 
 :: IntroGuss {"position":"1125,1425","size":"100,100"}
-With your curiosity driving you, you decide to check the merchant. With his kind being o rare in the area, he might have some unique insight into the situation, or simple some useful gadgets he could offer.
+{
+(if: $items is 0)[(set:$items to (ds:))]
+}With your curiosity driving you, you decide to check the merchant. With his kind being o rare in the area, he might have some unique insight into the situation, or simple some useful gadgets he could offer.
 
 Getting closer you note that he seems more energetic than the rest of the townsfolk, hawking his wares to anyone who would (link-reveal:"listen.")[
 (link-reveal:"'Come and check out the newest goods straight from the heart of the empire, just in from the fresh shipment this morning! Come, come, come!'")[
 You could look over his wares to see if you need anything he is  (link-reveal:"selling,")[
-(if: $items contains $dagger)[(link:"A small dagger fro 3 gold")[(set: $items to it +(ds:$dagger))(set:$Gold to it - 3)]]
-(if: $items contains $sword)[(link:"A one handed sword for 10 gold")[(set: $items to it + (ds:$sword))(set:$Gold to it - 10)]]
-(if: $items contains $crystal)[(link:"A crystal ball for 25 gold")[(set: $items to it+(ds:$crystal))(set:$Gold to it - 25)]]]
+(if: $items does not contain $item_dagger)[(link:"A small dagger fro 3 gold")[(set: $items to it +(ds:$item_dagger))(set:$Gold to it - 3)]]
+(if: $items does not contain $item_sword)[(link:"A one handed sword for 10 gold")[(set: $items to it + (ds:$item_sword))(set:$Gold to it - 10)]]
+(if: $items does not contain $item_crystal)[(link:"A crystal ball for 25 gold")[(set: $items to it+(ds:$item_crystal))(set:$Gold to it - 25)]]]
 and since you are in a hurry, you try (link-reveal:"striking a conversation with the lively dwarf.")[
 (link-reveal:"'Good morning sir, you seem rather lively compared to the rest of the people around. Could you tell me your secret?'")[
 (link-reveal:"'Morning to you as well young man! I am sad to say I just arrived this morning, and have yet to encounter the mysterious nightmares everyone seems to be having. I heard there might be large mines on the island, and decided to try my luck opening a smithy before any of my kin could arrive. These wares are just to collect the money needed to start the small business.'")[
@@ -394,7 +396,7 @@ You decide it is about time to introduce yourself before tempers flair anymore.
 (link-reveal:"'Do you have any proof of what you say? We can't just let anyone through with that excuse.'")[
 You think it over. Though you have your official ID that won't really solve the issue here. Instead you dig around in your bag and hand over your (link-reveal:"'Guild assignment sheet.'")[
 (link-reveal:"'Ah, yes this should do fine, go on ahead, the mayor is already waiting for you.'")[
-You thank them for their time, and [[Head on inside|Mayor Meeting]]]]]]
+You thank them for their time, and [[Head on inside|Mayor Meeting]]]]]]]
 
 
 :: JumpDown {"position":"750,3000","size":"100,100"}
@@ -423,11 +425,12 @@ Sidequest for familiar
 
 
 :: LowerTunnelExplore {"position":"450,3250","size":"100,100"}
+{
 (if: $startup is true or $illusionWallDispelled is 0)[(set: $illusionWallDispelled to false)]
 (if: $startup is true or $items is 0)[(set: $items to (a:))]
 (if: $startup is true or $spells is 0)[(set: $spells to (a:$spell_dispel))]
 
-You venture deeper into the lower tunnel. The air grows colder, and the silence is broken only by the crunch of your footsteps on the gritty floor. After a short walk, the passage appears to end in a solid wall of rock. It looks like a dead end.
+}You venture deeper into the lower tunnel. The air grows colder, and the silence is broken only by the crunch of your footsteps on the gritty floor. After a short walk, the passage appears to end in a solid wall of rock. It looks like a dead end.
 
 
 However, something feels... off. A faint shimmer, almost imperceptible, dances across the surface of the rock if you stare at it long enough, and the air here hums with a subtle, unnatural energy.
@@ -543,9 +546,8 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 :: ScanAntechamber {"position":"575,3925","size":"100,100"}
 You take a moment to survey the antechamber more thoroughly.
 *   The **skull pillars** are unnervingly detailed, each skull facing slightly differently, as if watching. There's no obvious mechanism on them.
-*   The **upper walkway** is supported by heavy stone arches. You see a few unlit braziers up there. There doesn't appear to be an easy way up from here.
-*   The **waterfall** to your left flows into a small, dark pool before disappearing into a crack in the floor. The water looks clear but uninviting.
-*   The **stone walls** are mostly solid, hewn brickwork mixed with natural rock. No obvious secret doors catch your eye at first glance.
+*   The statues of soldiers long forgotten, stand ominously over you. 
+*   The **stone walls** are mostly solid, hewn brickwork mixed with natural rock.
 
 
 The green smoke remains the most prominent feature, clearly guarding the way to the idol.
@@ -812,12 +814,13 @@ There doesn't seem to be anything else interesting here.
 
 
 :: int path 2 {"position":"700,2725","size":"100,100"}
+{
 (set: $scaleUses to it + 0)
 (set: $left to (a:))
 (set: $right to (a:))
 (set: $balls to (a: 1,2,3,4,5,6,7))
 (set:$correctBall to 5)
-After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
+}After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
 The air is heavy with the scent of dust and something vaguely metallic. \
 A single, heavy door blocks your path. \
 Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale sits upon a stone pedestal.
@@ -956,14 +959,15 @@ The opening before you narrows into a tunnel, its walls roughly hewn from the li
 
 
 :: shared path from int path {"position":"500,3100","size":"100,100"}
+{
 (if: $startup is true or $majorInjury is 0)[(set: $majorInjury to "none")]
 (if: $startup is true or $minorInjury is 0)[(set: $minorInjury to "none")]
 
 (set:$fromAbove to 0)
-(if:(history: where its name contains "JumpDown")'s length is 1)(set:$fromAbove to 1)
-(if:(history: where its name contains "ClimbDown")'s length is 1)(set:$fromAbove to 1)
+(if:(history: where its name contains "JumpDown")'s length is 1)[(set:$fromAbove to 1)]
+(if:(history: where its name contains "ClimbDown")'s length is 1)[(set:$fromAbove to 1)]
 
-You find yourself standing on the dusty floor of the lower tunnel. The air here is colder still, heavy with an ancient stillness. Light from your source barely penetrates the oppressive darkness that stretches ahead, and also back towards the (if:$fromAbove is 1)[base of the drop](else:)[pathway] you just navigated.
+}You find yourself standing on the dusty floor of the lower tunnel. The air here is colder still, heavy with an ancient stillness. Light from your source barely penetrates the oppressive darkness that stretches ahead, and also back towards the (if:$fromAbove is 1)[base of the drop](else:)[pathway] you just navigated.
 
 
 (if: $majorInjury is not "none")[
