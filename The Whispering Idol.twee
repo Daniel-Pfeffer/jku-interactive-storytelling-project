@@ -29,19 +29,19 @@ As you dig deeper in your memories you remember arriving at the central square o
 
 (if: $pillar1Symbol is _correctPillar1 and $pillar2Symbol is _correctPillar2 and $pillar3Symbol is _correctPillar3)[
     For a moment, nothing happens. Then, a low rumble echoes through the chamber. The water in the central pool begins to churn and then rapidly drain away through hidden conduits in the floor! As the water level drops, the stone plinth supporting the Tide Stone slowly rises, bringing the glowing artifact within easy reach.
-    
-    
+
+
     The way to the Tide Stone is clear!
-    
-    
+
+
     [[Take the Tide Stone|RetriveTideStone]]
 ](else:)[
     A disconcerting clunking sound comes from within the walls, and a puff of dust erupts from around the base of one of the pillars. Nothing else happens. The Tide Stone remains partially submerged and out of reach.
-    
-    
+
+
     The sequence must be incorrect.
-    
-    
+
+
     [[Try again|TideStonePuzzleChamber]]
 ]
 
@@ -215,6 +215,10 @@ A final, ironic thought might have flickered in the last spark of your conscious
 Ah, yes. The all-powerful, omnipresent (and, it would seem, occasionally forgetful or perhaps just plain lazy) Developer, in their infinite wisdom, hadn't quite accounted for this particular dead end, or hadn't bothered to code a 'way back' from utter desolation. So, you had to suffer. A truly tragic oversight. [[Or was it?|Entry hall after death]]
 
 
+:: Death by pit {"position":"1150,2775","size":"100,100"}
+As you blindly head forward, suddenly you find empty space under your foot. You are unable to blance yourself in time, and plummet to the hidden depths. Near instantly you can feel multiple jagged protrusions stabbing through you. Quickly losing consciousness, you blame yourself for not being more careful.(click-goto:?page,"Entry hall after death")
+
+
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
 As you come to your senses you start moving around to  (link-reveal:"wake your body as well:")[
 Intelligence:  $INT
@@ -233,21 +237,41 @@ A few minutes later you hear the ship docking with sailers scrambing around the 
 
 
 :: Enemy Corridor {"position":"1125,2600","size":"100,100"}
-Some kind of combat mechanic, probably just description though
+Deciding to take the easy way, you take a running start towards the cracked wall. As you near it you brace for impact, and us your shoulders to smash straight through.
 
-[[Head forward|Pit]]
-[[Return to main chamber|Entry hall]]
+The wall crumbles and you can hear a high pitched shriek right away. While waiting for the dust to settle you remain vigilant, (if:$sword is true)[ready your brand new sword,] and look around.
+
+You find yourself in a narrow corridor that looks to lead up to a T intersection farther up ahead. Seeing as you whatever enemy you might have had is probably injured, you can either decide to head on ahead to [[get more distance|Death by pit]], or wait for the dust to clear up and (link-reveal:"chance an encounter with whatever you can hear digging through the rubble.")[(if:$sword is false)[
+Deciding to stay and fight, you ready your fist as a small green creature becomes visible through the setting dust. Now seeing that it is a simple goblin, and even looks very injured you rush towards it before it can come to it's senses. A quick hit to the skull and you can hear your armoured fists smashing through bone. The creature soundlessly crumples to the ground.
+
+There is nothing else around so you look ahead, and start sweating as you thank whatever god may be listening that you didn't choose to rush forward. You slowlyexamine the massive pit that has appeared at the end of the tunnel, and see that it is at least 3 meters deep, with sharp dagger-like stones at the bottom.
+
+See as this is the only way, you head back, and get ready for a running jump. With plenty of room to accelerate you manage to easily clear the pit, and find yourself on another corridor.
+
+To the right it just continues straight, whil on the left you can see a small indent, producing a blue glow. Realizing it to be magic you feel the need to [[explore|Puzzle for door]]  that way
+
+](else:)[
+Deciding to stay and fight, you steaedy your grip on your sword as a small green creature becomes visible through the setting dust. Now seeing that it is a simple goblin, and even looks very injured you rush towards it before it can come to it's senses. A quick swing through the nek and it's head falls to the ground, the creature soundlessly crumpling.
+
+There is nothing else around so you look ahead, and start sweating as you thank whatever god may be listening that you didn't choose to rush forward. You slowlyexamine the massive pit that has appeared at the end of the tunnel, and see that it is at least 3 meters deep, with sharp dagger-like stones at the bottom.
+
+See as this is the only way, you head back, and get ready for a running jump. With plenty of room to accelerate you manage to easily clear the pit, and find yourself on another corridor.
+
+To the right it just continues straight, whil on the left you can see a small indent, producing a blue glow. Realizing it to be magic you feel the need to [[explore|Puzzle for door]]  that way
+]]
+
+
+
 
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
-Strength bhuild: see cracked wall, puzzle room enrtrance{
-<!--Create backup of important vars to reset after dying-->
+As you look around the room the first thing that you notice a [[small well|small well]] right at the center. Looking left you can see a [[small path|shared path int trap]] leading to a corner before turning right and continuing on(if:$Class is "Mage")[, as well as a [[shimmering wall ||int path 1 opt]]pulsing with magic. It seems to be a projected illusion over a hidden entrance, something to look into definitely].
 
+Straight ahead you can see a worn down wall with a multitude of cracks crisscrossing all over it. (if:$Class is "Knight" )[ With your training you could perhap [[shatter it|Enemy Corridor]]. You might find something interesting behind it]
 
-}<!--STR paths-->
-(if:$STR is  4)[[Try to punch the cracked wal|Enemy Corridor]]
-{
-<!--Int paths-->
+As you continue checking the room you feel a small breeze coming from the right side, and you seem to smell the ocean slightly. It might be another entrance, but could be worth [[exploring|Pond room]].
+
+In the upper right conner ahead you can see a small winding path that looks difficult to traverse(if:$Classs is "Rogue")[, though your training should make it possible to [[continue that way|agi path]]]. The final exit from the room leads straight into a [[small room with puzzle motifs|Puzzle room 1]],
 
 (if:$INT >= 3)[[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1]]](else:)[[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1 opt]]]
 
@@ -280,9 +304,11 @@ Strength bhuild: see cracked wall, puzzle room enrtrance{
 (set:$pillar3Symbol to 0)
 (set:$tideStoneRetrieved to 0)
 (set:$foundActivationLever to 0)
+(set:$Insanity to it + 1)
 
 <!--Short notice of player death and informing him, he is in the Entry hall again-->
 }You wake up very exhausted, just as if you had a very bad nightmare. Looking around you find yourself in the Entry Hall of the dungeon. Wondering why you took a nap right here, [[you continue your journey|Entry hall]].
+
 
 
 :: EvilEnding {"position":"1075,4150","size":"100,100"}
@@ -600,13 +626,13 @@ You carefully scan the walls and floor near the trapped section, looking for any
 }(if: _northernTrap_disarmFound is 1)[
     Tucked behind a loose block of stone near the floor, you find a small, corroded metal plate. Pressing it causes a faint //clink// from beneath the floor. It seems you've deactivated something.
     (set: $northernTrap_disarmed to true)
-    
-    
+
+
     [[Proceed with confidence|NothernPathPastTrapArea]]
 ](else:)[
     Despite your search, no obvious disarming mechanism presents itself. The trap remains a silent threat.
-    
-    
+
+
     [[Attempt to carefully step over/around the treacherous section|NorthernPathAttemptTrapAvoidance]]
     [[Decide to quickly move through the area|NorthernPathQuickPassage]]
 ]
@@ -628,7 +654,7 @@ You carefully scan the walls and floor near the trapped section, looking for any
         As your foot lands on a deceptively loose flagstone, it tilts, and you hear a sharp [[//CLICK!//|NorthernPathTrapTypeFallingDebris]] from beneath.
     ](else:)[
         You make it through the treacherous section. You hear a faint scraping sound as you pass the last of the holes, as if a mechanism reset, but nothing springs upon you.
-        
+
         [[Continue onwards, relieved|NothernPathPastTrapArea]]
     ]
 ]
@@ -642,18 +668,18 @@ You carefully scan the walls and floor near the trapped section, looking for any
 (if: _dodgeSuccess is 1)[
     You react instinctively, throwing yourself forward or to the side. Most of the debris crashes down where you were moments before. However, a glancing blow from a fist-sized rock catches your shoulder, sending a shock of pain through you.
     (set: $minorInjury to "bruised shoulder from falling debris")
-    
+
     Dusting yourself off, you assess the damage – painful, but not incapacitating.
-    
-    
+
+
     [[Press on, wincing|NothernPathPastTrapArea]]
 ](else:)[
     You don't react quickly enough! Several heavy stones strike you, one catching you a nasty blow on the head, another slamming into your back. You're knocked to your knees, stars exploding in your vision.
     (set: $majorInjury to "concussion and severe bruising from debris")
-    
+
     The world spins. Getting up is a monumental effort.
-    
-    
+
+
     [[Struggle to your feet and continue|NothernPathPastTrapArea]]
 ]
 
@@ -664,8 +690,8 @@ The corridor continues its descent, twisting slightly. After a short walk, the f
 
 (link-reveal: "Examine the floor and holes more closely")[
     You cautiously approach the narrowed section, peering at the floor. The holes are undeniably man-made, arranged in a deliberate pattern. The ground around them looks slightly disturbed, as if concealing a mechanism. This definitely has the hallmarks of a trap.
-    
-    
+
+
     [[Attempt to carefully step over/around the treacherous section|NorthernPathAttemptTrapAvoidance]]
     [[Search the immediate vicinity for a way to disable the trap|NorthernPathSearchForDisarm]]
     [[Decide to quickly move through the area, hoping to avoid triggering anything|NorthernPathQuickPassage]]
@@ -710,6 +736,11 @@ check if pit is notced and try to jump it
 
 
 :: Pond room {"position":"875,2600","size":"100,100"}
+Examining the room you find it bereft of manmade structures, other than a small canal carved into the ground leading back the way you came. (if:$well is false)[Finding where it connects to the pond you raise an eyebrow in surprise.
+
+There looks to be a small mechanical dam, currently closed, that connects the small pond to the canal. What is surprising is you can see what seems to be recent human activity around the controls. The dirt and plants covering the lever are brushed aside and damaged. Once you finish with your adventure you will need to inform the mayor to look for the one responsible.
+
+Seeing as there is nothing else in the room you could try to [[open the dam|opened dam transition]], or just return to the [[main hall|Entry hall]] ](else:)[Seeing the water backed up all the way to the pond you see nothing else to do, so you [[return to where you came from|Entry hall]].]
 
 
 
@@ -786,7 +817,7 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 :: ScanAntechamber {"position":"575,3925","size":"100,100"}
 You take a moment to survey the antechamber more thoroughly.
 *   The **skull pillars** are unnervingly detailed, each skull facing slightly differently, as if watching. There's no obvious mechanism on them.
-*   The statues of soldiers long forgotten, stand ominously over you. 
+*   The statues of soldiers long forgotten, stand ominously over you.
 *   The **stone walls** are mostly solid, hewn brickwork mixed with natural rock.
 
 
@@ -864,8 +895,9 @@ Your study doesn't reveal a physical way through, but it reinforces your convict
 (set: $B_items to $items)
 (set: $B_Gold to $Gold)
 }Describe temple, describe carving and statues, feeling around the entrance. Edward returns if he was with us
-
+(set: $well to false)
 [[Enter the Temple|Entry hall]]
+
 
 
 :: TideStonePuzzleChamber {"position":"1500,2375","size":"100,100"}
@@ -873,7 +905,7 @@ Your study doesn't reveal a physical way through, but it reinforces your convict
 (if: $startup is true or $pillar1Symbol is 0)[(set: $pillar1Symbol to 0)]
 (if: $startup is true or $pillar2Symbol is 0)[(set: $pillar2Symbol to 0)]
 (if: $startup is true or $pillar3Symbol is 0)[(set: $pillar3Symbol to 0)]
-(set: $pillarSymbols to (a: "Wave", "Moon", "Kraken", "Trident")) 
+(set: $pillarSymbols to (a: "Wave", "Moon", "Kraken", "Trident"))
 
 (if: $startup is true or $tideStoneRetrieved is 0)[(set: $tideStoneRetrieved to false)]
 
@@ -1123,6 +1155,11 @@ There doesn't seem to be anything else interesting here.
 [[Go back to the middle of the room|Entry hall]]
 
 
+:: opened dam transition {"position":"850,2925","size":"100,100"}
+As you look around the lever you can't find anything else, so you decide to just pull it. Water starts rushing down the canal as the mechanism opens up the blockage. You rush after the flow to see [[where it is headed|small well]].
+(set:$well to true)
+
+
 :: int path 2 {"position":"700,2725","size":"100,100"}
 {
 (set: $scaleUses to it + 0)
@@ -1309,6 +1346,27 @@ You choose the Northern passage. The tunnel immediately begins a noticeable desc
 
 :: shared path trap {"position":"325,2750","size":"100,100"}
 [[After trap go along path|shared path path]]
+
+
+:: small well {"position":"925,2800","size":"100,100"}
+(if:$well is false)[
+Deciding to examine the well up close you can see a channel engraved into the floor,  leading into a small hole in the side of the well. Looking over the top you can see small kneeling motifs engraved all over it. They seem to be praying around a small lake with multiple people in it.(if:$Class is "Mage")[The small people seem to be slaves drawing water from the pond in small pails. It looks to be a ritual of some kind, though the details escape you.]
+
+The well is dark, but as you drop a pebble into it you can hear a ping of it hitting the bottom soon after. Looking around you cant see water anywhere, so either the channels dried out, or something blocked them. You would need to [[look around|Entry hall]] to see if you could find the blockage in that case.
+
+(if:(history: where its name contains "IntDream")'s length >= 1)[You also have the option of [[using magic to fill it|well death]], though looking at the ritual markings it might better to look for the intended source first.]]
+(if:$well is true)[
+Rushing back and foillowing the flow of water you can see it start entering the well. Getting closer you can hear the gurgling of wwater as it falls into the previously empty hole. Once it is filled suddenly sspoariks start appearing all around the rim. You take a few steps back, but nothing seems to be happening.
+
+The sparks fade after a while, and the rooms becomes quiet once again. After another examination you see that the engravings changed, with the lakes being replaced by what looks like the idol that has been appearing in everyone's nightmares. You finally take a step back and seeintg as nothing else is changing, and continue with your [[exploration|Entry hall]]
+]
+
+
+
+:: well death {"position":"975,2925","size":"100,100"}
+You decide to try and fill the well with a water condensation spell, seeing as there are no other people that could help in a ritual. As the water enters tha well red sparks start appearing all over the engraving, with the lakes starting to glow an ominous crimson.
+
+You could still [[stop|Entry hall]] and return to look around some more, though the well is almost full. Might as well just (link-reveal:"finish the job now.")[As the sparks increase in intensity you find yourself unable to stop the spell. Your magical reserves start dropping drastically, and you start losing you consciousness amid intense pain. (click-goto:?page,"Entry hall after death")]
 
 
 :: StoryStylesheet [stylesheet]
