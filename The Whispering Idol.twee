@@ -8,7 +8,7 @@ The Whispering Idol
   "format": "Harlowe",
   "format-version": "3.3.9",
   "start": "START",
-  "zoom": 0.6
+  "zoom": 1
 }
 
 
@@ -139,7 +139,8 @@ You had intended to destroy it, or perhaps you never learned how. Or maybe, a da
 (if: $startup is true or $greenSmokeDispelled is 0)[(set: $greenSmokeDispelled to false)]
 (if: $startup is true or $items is 0)[(set: $items to (a:$item_sacred_ward)) ]
 
-}You stand at the threshold of a cavernous space, clearly a place of significance. Your gaze is immediately drawn upwards and forwards.
+}
+<img src="https://daniel-pfeffer.github.io/images/dungeon_before_idol.jpg"  class="story-image">You stand at the threshold of a cavernous space, clearly a place of significance. Your gaze is immediately drawn upwards and forwards.
 
 
 Dominating the far end, set into a massive stone edifice, is a tall, gothic archway. It doesn't lead to darkness, but rather billows with an unnatural, churning //emerald green smoke//. The smoke is thick, almost liquid in its movement, and seems to writhe with a life of its own, completely obscuring whatever lies directly beyond. Through momentary, thinner wisps, you catch tantalizing glimpses of flickering //torchlight// and the silhouette of a raised //stone altar// or dais deeper within – presumably where the Idol rests.
@@ -238,8 +239,7 @@ A few minutes later you hear the ship docking with sailors working around the de
 
 :: Enemy Corridor {"position":"1225,2625","size":"100,100"}
 Deciding to take the easy way, you take a running start towards the cracked wall. As you near it you brace for impact, and us your shoulders to smash straight through.
-
-The wall crumbles and you can hear a high pitched shriek right away. While waiting for the dust to settle you remain vigilant, (if:$items contains $item_sword)[ready your brand new sword,] and look around.
+<img src="https://daniel-pfeffer.github.io/images/dungeon_kobold.jpg"  class="story-image">The wall crumbles and you can hear a high pitched shriek right away. While waiting for the dust to settle you remain vigilant, (if:$items contains $item_sword)[ready your brand new sword,] and look around.
 
 You find yourself in a narrow corridor that looks to lead up to a T intersection farther up ahead. Seeing as you whatever enemy you might have had is probably injured, you can either decide to head on ahead to [[get more distance|Death by pit]], or wait for the dust to clear up and (link-reveal:"chance an encounter with whatever you can hear digging through the rubble.")[(if:$items does not contain $item_sword)[
 Deciding to stay and fight, you ready your fist as a small green creature becomes visible through the setting dust. Now seeing that it is a simple goblin, and even looks very injured you rush towards it before it can come to it's senses. A quick hit to the skull and you can hear your armoured fists smashing through bone. The creature soundlessly crumples to the ground.
@@ -262,7 +262,7 @@ To the right it just continues straight, whil on the left you can see a small in
 
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
-As you look around the room the first thing that you notice a [[small well|small well]] right at the center. Looking left you can see a [[small path|shared path int trap]] leading to a corner before turning right and continuing on(if:$Class is "Mage")[, as well as a [[shimmering wall ||int path 1]]].
+<img src="https://daniel-pfeffer.github.io/images/dungeon_main.jpg"  class="story-image">As you look around the room the first thing that you notice a [[small well|small well]] right at the center. Looking left you can see a [[small path|shared path int trap]] leading to a corner before turning right and continuing on(if:$Class is "Mage")[, as well as a [[shimmering wall|int path 1]]].
 
 Straight ahead you can see a worn down wall with a multitude of cracks crisscrossing all over it. (if:$Class is "Knight" )[ With your training you could perhap [[shatter it|Enemy Corridor]]. You might find something interesting behind it]
 
@@ -391,8 +391,7 @@ The passage through the parted smoke leads you into a smaller, more intimate cha
 Directly ahead, upon a tiered //stone dais//, stands a grand, ornate //altar//. Several tall, flickering //candles or braziers// illuminate it, their light glinting off the object of your quest.
 
 
-There, resting on a velvet cushion (or directly on the stone, describe as you see fit), is the **Whispering Idol**. (Describe the Idol in detail here: e.g., "It's a surprisingly small statue, carved from a single piece of obsidian, depicting a many-limbed creature with eyes that seem to follow you. It pulses with a faint, internal light and a barely perceptible thrumming sensation.")
-
+<img src="https://daniel-pfeffer.github.io/images/dungeon_idol.jpg"  class="story-image">There, resting on a velvet cushion, is the **Whispering Idol**.
 
 The idol is within reach. The chamber is silent, save for the flickering of the flames.
 
@@ -553,7 +552,7 @@ Sidequest for familiar
 
 
 However, something feels... off. A faint shimmer, almost imperceptible, dances across the surface of the rock if you stare at it long enough, and the air here hums with a subtle, unnatural energy.
-
+<img src="https://daniel-pfeffer.github.io/images/dungeon_illusion2.jpg"  class="story-image">
 (if: not $illusionWallDispelled)[
     (link-reveal: "Examine the wall more closely")[
 
@@ -677,7 +676,8 @@ You carefully scan the walls and floor near the trapped section, looking for any
 
 
 :: NotherPathCorridorWithTrap {"position":"125,2675","size":"100,100"}
-The corridor continues its descent, twisting slightly. After a short walk, the floor becomes treacherous – uneven, slick with patches of damp moss, and littered with loose stones. Ahead, the passage narrows for a stretch, and you spot a series of small, dark holes dotting the floor across this chokepoint, almost hidden by shadows and debris.
+The corridor continues its descent, twisting slightly. After a short walk, the floor becomes treacherous – uneven, slick with patches of damp moss, and littered with loose stones. 
+<img src="https://daniel-pfeffer.github.io/images/dungeon_trap.jpg"  class="story-image">Ahead, the passage narrows for a stretch, and you spot a series of small, dark holes dotting the floor across this chokepoint, almost hidden by shadows and debris.
 
 
 (link-reveal: "Examine the floor and holes more closely")[
@@ -722,7 +722,7 @@ Around the perimeter of the room, at equidistant points, stand three imposing st
 
 
 :: Pond room {"position":"850,2600","size":"100,100"}
-Examining the room you find it bereft of manmade structures, other than a small canal carved into the ground leading back the way you came. (if:$well is false)[Finding where it connects to the pond you raise an eyebrow in surprise.
+<img src="https://daniel-pfeffer.github.io/images/dungeon_pond.jpg"  class="story-image">Examining the room you find it bereft of manmade structures, other than a small canal carved into the ground leading back the way you came. (if:$well is false)[Finding where it connects to the pond you raise an eyebrow in surprise.
 
 There looks to be a small mechanical dam, currently closed, that connects the small pond to the canal. What is surprising is you can see what seems to be recent human activity around the controls. The dirt and plants covering the lever are brushed aside and damaged. Once you finish with your adventure you will need to inform the mayor to look for the one responsible.
 
@@ -875,7 +875,8 @@ Your study doesn't reveal a physical way through, but it reinforces your convict
 (set: $B_Gold to $Gold)
 (set: $well to false)
 
-}Before you looms the temple entrance, a gaping maw in the dense jungle wall. Centuries of wind and rain have scoured the heavy stone blocks, yet the intricate carvings, though softened and blurred, still speak of a forgotten age and potent, unsettling powers.
+}
+<img src="https://daniel-pfeffer.github.io/images/dungeon_entry.jpg"  class="story-image">Before you looms the temple entrance, a gaping maw in the dense jungle wall. Centuries of wind and rain have scoured the heavy stone blocks, yet the intricate carvings, though softened and blurred, still speak of a forgotten age and potent, unsettling powers.
 
 Flanking the immense, shadow-filled doorway stand two colossal **statues**, perhaps fifteen feet tall. Carved from a dark, veined stone that seems to drink the light, they depict grotesque, vaguely humanoid figures. Their forms are a disturbing fusion of man and sea beast: limbs ending in suckered tentacles, faces with wide, unblinking fish-like eyes, and gaping maws filled with needle-sharp teeth. Moss and creeping vines cling to them like tattered shrouds, and one has lost an arm, the jagged break a stark wound against its ancient form. They are guardians, not welcoming sentinels.
 
@@ -893,7 +894,7 @@ The **archway itself** is a masterpiece of relief carving, though heavily eroded
 
 (if: $startup is true or $tideStoneRetrieved is 0)[(set: $tideStoneRetrieved to false)]
 
-}The chamber is quiet save for the dripping water. The Tide Stone pulses invitingly from the central pool.
+}<img src="https://daniel-pfeffer.github.io/images/dungeon_puzzle-item.jpg"  class="story-image">The chamber is quiet save for the dripping water. The Tide Stone pulses invitingly from the central pool.
 
 
 **The Pillars:**
@@ -948,25 +949,23 @@ Pillar 3 (Right): Currently shows **_p3**.
 :: Tip room {"position":"1375,3200","size":"100,100"}
 {
 <!--General idea: In this room sits some kind of humanlike creature, which seems like an enemy at first. With enough STR, you can overcome it easily, but with enough INT or AGI, you can actually "befriend" the creature and get information about how to reach the Idol from it. Could function as some help if the player does not know how to proceed.-->
-<!--TODO: this has to somehow link to BeforeIdolRoom-->
 <!--DUBUGGING-->
-(set:$STR to 4)
 }Inspecting the room, you cannot make out many interesting things. But as you continue to look around while approaching the middle of the room are two glowing spots in a corner.
 "Who are you to disturb the silence in these ruins?", a croaking voice coming from said spots exclaims. The creature moves into the light and you can make out a humanlike figure with fur all over its body. It looks at you with infuriated eyes.
 {(if:$STR >= 2)[
-You feel intimidated by this creature, and knowing the obstacles that you already have left behind you, you make a leap forward and try to knock it out. You quickly overwhelm the old weak creature and make your way to the door you spot on the other side of the room. For a short moment you overthink your decision, feeling that the creature might not have had bad intentions, before you [[enter the next room behind the door|Puzzle for door]].
+You feel intimidated by this creature, and knowing the obstacles that you already have left behind you, you make a leap forward and try to knock it out. You quickly overwhelm the old weak creature and make your way to the door you spot on the other side of the room. For a short moment you overthink your decision, feeling that the creature might not have had bad intentions, before you [[enter the next room behind the door|BeforeIdolRoom]].
 ](else:)[
 If you were stronger, you would try to attack it, but as you do not know yet its intentions, you try to find out, what the creature wants: "Who wants to know that?"
 The creature utters a rattling laugther. "Well I have been here for longer than you can imagine. My name and where I come from, I cannot remember such things anymore. Tell me, why are you venturing here?"<br>
 "I was sent to retrieve the Idol that is located in the depths of these ruins. You know where I can find them?"<br>
-Another rattling laughter. "There are very few things I do not know about these ruins, my friend. About the Idol itself, you are no longer than a few meters away from it, you would just have to leave through this door. But let me tell you this: You won't be able to reach it, unless you are prepared. There exists a special key in these halls. Without that, all your efforts will be for nothing."<br>
-	(if:$KEY is True)[
-    "You mean this?", you ask as you show it the key you found in the puzzle room.<br>
-    The eyes of the creature start to glow even brighter. "So you are the chosen one to retrieve the Idol. In this case, there is no more I have to or dare to tell you, please proceed, as you are destined to.", it says as it is pointing towards the door. With an acknowledging nod you pass the creature and [[walk through the door|Puzzle for door]].
+Another rattling laughter. "There are very few things I do not know about these ruins, my friend. About the Idol itself, you are no longer than a few meters away from it, you would just have to leave through this door. But let me tell you this: You won't be able to reach it, unless you are prepared. There exists a special key. Without that, all your efforts will be for nothing."<br>
+	(if: $items contains $item_sacred_ward)[
+    "You mean this?", you ask as you show it the ward you found earlier.<br>
+    The eyes of the creature start to glow even brighter. "So you are the chosen one to retrieve the Idol. In this case, there is nothing more I have or dare to tell you, please proceed, as you are destined to.", it says as it is pointing towards the door. With an acknowledging nod you pass the creature and [[walk through the door|BeforeIdolRoom]].
     ](else:)[
-    Rather confused by what he means, you ask: "What do you mean by 'key'?"<br>
-    "Somewhere in these ruins you will find a room with a test. This test shows if you are the chosen worthy person to retrieve the Idol from its chamber. There is no way back now, I will let you pass this door, but be aware that the Idol can only be reached when in the possession of the key."<br>
-    It points at another wooden door at the end of the room. Still thinking about what it said, you pass the creature and [[Continue your way through the ruins|Puzzle for door]]
+    Rather confused by what it means, you ask: "What do you mean by 'key'?"<br>
+    "Near the entrance of the temple, those who hid the Idol eons ago hid the only item that could grant you access to the chamber where the Idol is located. But they didn't just hide it, they locked it behind some mechanism, only the chosen one is meant to solve. I will let you pass this door, but be aware that the Idol can only be reached when in the possession of the item."
+    It points at another wooden door at the end of the room. Still thinking about what it said, you pass the creature and [[continue your way through the ruins|BeforeIdolRoom]].
     ]
 ]}
 
@@ -1028,7 +1027,7 @@ The golden light meets the green smoke. There's a sound like rushing wind, and t
 
 
 :: after illusion wall {"position":"325,3575","size":"100,100"}
-The air beyond the former illusion is stale, heavy with the scent of long-undisturbed dust and a faint, almost metallic tang that prickles at the back of your throat. The passage itself seems subtly different here; the stonework is smoother, more deliberate, than the rough-hewn tunnels before. It continues onward, but your attention is caught by a //slight, ethereal shimmer// that seems to cling to the air a short distance ahead, like heat haze on a cold day, though there's no warmth here. It distorts the view of the passage beyond it, making the far end waver and ripple.
+<img src="https://daniel-pfeffer.github.io/images/dungeon_illusion2_cleared.jpg"  class="story-image">The air beyond the former illusion is stale, heavy with the scent of long-undisturbed dust and a faint, almost metallic tang that prickles at the back of your throat. The passage itself seems subtly different here; the stonework is smoother, more deliberate, than the rough-hewn tunnels before. It continues onward, but your attention is caught by a //slight, ethereal shimmer// that seems to cling to the air a short distance ahead, like heat haze on a cold day, though there's no warmth here. It distorts the view of the passage beyond it, making the far end waver and ripple.
 
 
 A low, almost sub-audible hum seems to emanate from that direction, a vibration you feel more in your bones than hear with your ears.
@@ -1050,7 +1049,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 <!--Else the monster is woken up, but player escapes-->
 
 <!--DEBUGGING-->
-(set:$AGI to 4)
 }You enter a dark hall, only lit by few torches in the corners. As your eyes adapt to the darkness, you can make out a silhoutte at the other end of the room. (if:$AGI < 3)[You try to slowly close the door, but the creeking of the old hinges make the snoring noises stop for a moment.] You now see the source of the now very loud snores: A giant beast lying in the hallway. Luckily for you, it appears to be asleep. Quickly you search for another door in the room to continue, but what you find makes your troubles even heavier: The only door going further is located right behind the beast. (if:$AGI < 3)[Reopening the door now seems too risky, as the hinges could wake up the beast. You see your only chance in [[trying to sneak around the beast|agi enemy room fail]].](else:)[Confident in your sneaking abilities, you do not hesitate in [[trying to sneak around the beast|agi enemy room success]].]
 
 
@@ -1065,7 +1063,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 <!--Path where sneaking around beast does not work out, but the player escapes-->
 
 <!--DUBUGGING-->
-(set:$STR to 1)
 }You cautiously set one step after another. As you pass the monster, you can take a closer look at it, noticing it is covered with thick fur, horns and spikes. "This monster could eat me in one bite", you think, as you slowly approach the wooden door. Then, only 10 more meters away from the exit, you suddenly trip over a large metallic chain. The snoring quickly stops and the beast starts moving and searching for the source of the disturbance of its sleep. Fearing its reaction, you start running towards the door before it can spot you. (if:$STR >= 3)[Taking full charge, you run into the door and slam it, with the rot wood not withstanding your power.](else:)[You reach the door and pull the handle as strongly as you can. With the grumbling getting louder behind you, you finally manage to open the door. As soon as you went through, you shut it again.] Fairly exhausted from your encounter, [[you continue your journey|Trap corridor fail]], now with no way back.
 
 
@@ -1087,8 +1084,8 @@ Puzzle room here, some INT check
 
 
 :: int path 1 {"position":"700,2600","size":"100,100"}
-You notice the slight shimmer of the wall, and remember your professors often talked about illusioniary wall.
-<img src="https://daniel-pfeffer.github.io/images/brown-brick-wall-surface-texture.jpg" height="256px" width="256px">
+<img src="https://daniel-pfeffer.github.io/images/dungeon_illusion1.jpg"  class="story-image">You notice the slight shimmer of the wall, and remember your professors often talked about illusioniary wall.
+
 {
 	(if:$spells is 0)[(set:$spells to (ds:))]
 	(event: when $spells contains $spell_dispel)[(show:?before_dispell)]
@@ -1129,7 +1126,7 @@ You notice the slight shimmer of the wall, and remember your professors often ta
 [[Go back to the middle of the room|Entry hall]]
 
 
-:: int path 1 opt {"position":"500,2600","size":"100,100"}
+:: int path 1 opt {"position":"450,2375","size":"100,100"}
 You notice a slight shimmer on this wall.
 (if:$INT < 2)[You remember how your teachers talked about shimmering moos, often found in damp caves.]
 (if:$INT is 2)[You remember how your teachers talked about magical doors, and that they often would shimmer quite similarily to this. But you cannot remember how exactly to dispell the magic.]
@@ -1146,7 +1143,8 @@ There doesn't seem to be anything else interesting here.
 (set: $right to (a:))
 (set: $balls to (a: 1,2,3,4,5,6,7))
 (set:$correctBall to 5)
-}After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
+}
+<img src="https://daniel-pfeffer.github.io/images/dungeon_puzzle-int.jpg"  class="story-image">After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
 The air is heavy with the scent of dust and something vaguely metallic. \
 A single, heavy door blocks your path. \
 Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale sits upon a stone pedestal.
@@ -1385,4 +1383,13 @@ tw-link, tw-linkvisited {
 tw-link:hover {
   text-decoration: underline;
   color: #50ff50;
+}
+
+.story-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 8px; /* optional rounded corners /
+  box-shadow: 0 0 10px rgba(0,0,0,0.3); / optional styling */
 }
