@@ -13,51 +13,48 @@ The Whispering Idol
 
 
 :: ACTOneStart {"position":"975,625","size":"100,100"}
-Waking with a start, you quickly take in your surroundings, looking around the dimly lit cabin. Feeling your wet bedding, you can sense beads of sweat rolling down your forehead, as you try to remember what exactly you were dreaming about. The only thing you remember is the picturesque view of academy city, but you aren't sure what you were doing. 
-
-As you dig deeper in your memories you remember arriving at the central square on your way to the academy. To your right there were the spiraling towers of the [[Imperial Academy of Magic|IntDream]]. To your left you can see the towering walls surrounding the [[Knight Academy|StrDream]]. You can still hear the clashing of swords from within the massive barricade. Finally straight ahead was the somewhat hidden entrance to the [[Rogue's Abode|AgiDream]]. While obvious to the trained eye, it was positioned so that the everyday peasant won't even look twice.
+Waking with a start, you quickly take in your surroundings, looking around the dimly lit cabin. Feeling your wet bedding, you can sense beads of sweat rolling down your forehead, as you try to remember what exactly you were dreaming about. The only thing you remember is the picturesque view of academy city, but you aren't sure what you were doing. As you dig deeper in your memories you remember arriving at the central square on your way to the academy. To your right there were the spiraling towers of the [[Imperial Academy of Magic|IntDream]]. To your left you can see the towering walls surrounding the [[Knight Academy|StrDream]]. You can still hear the clashing of swords from within the massive barricade. Finally straight ahead was the somewhat hidden entrance to the [[Rogue's Abode|AgiDream]]. While obvious to the trained eye, it was positioned so that the everyday peasant won't even look twice.
 
 
 :: AgiDream {"position":"675,750","size":"100,100"}
-(set: $INT to it + 0)(set: $STR to it + 1)(set: $AGI to it + 2)
-You can still remeber the offputting stink around the entrance that helped dissuad3e anyone from sticking around if they were not there for a purpose. After entering you were met with a dim hall, with all smell disappearing after crossing the door. Your experience points to [[magic|AgiDreamInt]], though you were never formally taught any, every little theif needs to recognize a mage.
+This is the initial Agility Dream
+(set: $INT to it + 0)
+(set: $STR to it + 1)
+(set: $AGI to it + 2)
 
-You were quite shocked to meet [[Wraith|AgiDreamAgi]], who recruited you into this whole mess. He was somewhat of a mentor figure, helpiong you when you first got started looking for some way to feed yourself back in the village. He introduced himself after finding you beaten up after your first large [[fight|AgiDreamStr]]. You remembered not getting caught was part of the profession after that.
+[[AgiDreamStr]]
+[[AgiDreamInt]]
+[[AgiDreamAgi]]
 
 
 :: AgiDreamAgi {"position":"750,875","size":"100,100"}
-(set: $INT to it + 0)(set: $STR to it + 1)(set: $AGI to it + 2)(set: $Class to "Rogue")
-Wraith was something of a local legend in the town. A lot of people knew about him, but very few have met him. You later found out he was there on official business, smething about a longterm counterintelligence mission. When he helped you recover after the beating you got, you asked him to teach you what he can.
+This is the second Agi dream Dream
+(set: $INT to it + 0)
+(set: $STR to it + 1)
+(set: $AGI to it + 2)
+(set: $Class to "")
 
-The next few years were both simpler and harder. You had no need to worry about food anymore, the merchants usually far too distracted to pay attention to you. He balanced this with actual assignments around town he used to train you. It seemed you impressed him, as before leaving he handed you a recommendation letter to the capital branch of the official Rogues' Guild
-
-The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+[[DreamEnd]]
 
 
 :: AgiDreamInt {"position":"550,875","size":"100,100"}
-(set: $INT to it + 2)(set: $STR to it + 0)(set: $AGI to it + 1)(set: $Class to "Rogue")
-You still remeber learning to choose your targets well. Some people were easy marks, simple to distract, or not really aware to begin with. Sadly they rarely appeared, as courtesy of the local theives guild most were already robbed and kew better. 
+This is the second Agi dream Dream
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
+(set: $Class to "")
 
-Some were far more profitable but also usually surrounded by guards, or simply servants. Even the best theives knew not to mess with nobles. Sadly mages were not nearly as obvious. Sure some had obvious signs like staffs or pointy hats, but others had learned to be more covert about their identity. You can still feel your arm burning after you tried to open a booby trapped storage bag you got from a seemingly less attentive one.
-
-The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+[[DreamEnd]]
 
 
 :: AgiDreamStr {"position":"650,875","size":"100,100"}
-(set: $INT to it + 0)(set: $STR to it + 2)(set: $AGI to it + 1)(set: $Class to "Rogue")
-You can feel some fantom bruises as you think about getting caught. Since you were a kid the local guard did not want to lock you up after catching you stealingf some bread, but they were definitely not careful when trying to catch you.
+This is the second Agi dream Dream
+(set: $INT to it + 0)
+(set: $STR to it + 2)
+(set: $AGI to it + 1)
+(set: $Class to "")
 
-They appreciated you trying to get away even less, rewarding you with quite a few bruises for your efforts. Luckily the small amount off food was pretty much destroyed by this point, so they made no effort to return it to the vendor.
-
-The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
-
-
-:: Alley fight {"position":"1175,1725","size":"100,100"}
-Deciding to brave the alley to save a few minutes, you start heading towards the crates blocking your sight and deeper into the alley. 
-
-(if:(history: where its name contains "AgiDream")'s length >= 1)[(if:$dagger is true)[You clutch your recently bought dagger as you pass the crates, and to no one's surprise a shadows suddenly leaps at you. Just before he can reach you, you swing your dagger in a small arc and feel it cut something. You can hear a gurgling sound as the shadows flies past you and falls to the ground. You can see a haggard gigure clutching at his throat as crimson blood flows in betweeen his fingers. As he collapses, you quickly seearch him to see if there are any clues, but you can only find (link-reveal:"10 gold")[(set: $Gold to it + 10)] on him. After quickly collecting it you [[head on your way.|Town Hall]]]
-(if:$dagger is false)[You ready yourself as you pass the crates, and to no one's surprise a shadows suddenly leaps at you. You manage to dodge and the shadow flies past you. Once it lands you can clearly see a middle aged man looking at you in surprise, you begin to shout for help and he turns and bolts away.
-After wainting some time you realise no one seems to have come and [[head on your way.|Town Hall]]]](else:)[As you pass by the crates a shadow suddenly lunges at you, and you feel a sharp pain in your chest. Looking down, you can see a small hilt sticking out. As you fal down you slowly begin to loose consciousness, wondering why you thought this path would be a good idea.(click-goto:?page,"Rebirth awakening")]
+[[DreamEnd]]
 
 
 :: Arrival at port {"position":"1000,1300","size":"100,100"}
@@ -71,16 +68,10 @@ Finally at the entrance to what looks to be the main street you see a [[well dre
 
 
 :: Back alley event {"position":"1125,1550","size":"100,100"}
+Some kind of sidestory to introduce player more to the local atmosphere and people
+
 (set: $Intro to false)
-
-As you head on ahead by yourself you look around the town. The dock area seems to be mostly finished, with a main road lead towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alon until larger industry is present to leave room for them to expand around the port.
-
-The closer you get to what you can only presume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to large quarries or traderoutes. 
-As you come closer to the center you can see a small alley that seems to be a shortcut.
-(if:(history: where its name contains "AgiDream")'s length >= 1)[Your training tells you to avoid it, seeing some crates that seem to be positioned to block vision of anything deeper. Though the town is new, there could be lowlives already settled in.]
-You are already nearing the large stone fortress like building in town, which would probably be the main holout poin incase the budding town was ever besieged. You can either take the [[alley|Alley fight]], or keep to the [[main road.|Town Hall]]
-
-
+[[Head towards Town Center|TownCenter]]
 
 
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
@@ -101,7 +92,7 @@ A few minutes later you hear the ship docking with sailers scrambing around the 
 
 
 :: END {"position":"900,3625","size":"100,100"}
-testing new branch
+This is just to test importing
 
 
 :: Enemy Corridor {"position":"1125,2600","size":"100,100"}
@@ -130,6 +121,14 @@ Strength bhuild: see cracked wall, puzzle room enrtrance
 [[You hear grumbling snores from another corridor|agi path]]
 
 
+:: Entry hall after death {"position":"1200,2400","size":"100,100"}
+{
+<!--Short notice of player death and informing him, he is in the Entry hall again-->
+}
+
+You wake up very exhausted, just as if you had a very bad nightmare. Looking around you find yourself in the Entry Hall of the dungeon. Wondering why you took a nap right here, [[you continue your journey|Entry hall]].
+
+
 :: Idol room {"position":"900,3400","size":"100,100"}
 description, action what to do with idol, maybe safe exit right after taking idol(could depend on what action was chosen with idol)
 
@@ -137,90 +136,60 @@ description, action what to do with idol, maybe safe exit right after taking ido
 
 
 :: IntDream {"position":"975,750","size":"100,100"}
-(set: $INT to it + 2)(set: $STR to it + 0)(set: $AGI to it + 1)
+This is the initial Intelligence Dream
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
 
-You can still remember your joy when you finally set foot in the massive magical tower to register for your first semester. Since you were a small child you have always been fascinated by [[magic|IntDreamInt]].
-
-Your first encounter with it was when you were still a small child, though you still remember it clear as day. Your town was beseged by monsters, and everyone was fighting to make sure they couldn't get over the wall while waiting for reinforcements frorm the nearby settlements. You can still remeber Lord whatshisface come flying in and [[wrecking havoc|IntDreamStr]] among the beasts with a flaming magical blade. Even from your [[hinding spot|IntDreamAgi]] you could see the fierce flames incinerating anything coming close to them.
-
-
+[[IntDreamStr]]
+[[IntDreamInt]]
+[[IntDreamAgi]]
 
 
 :: IntDreamAgi {"position":"1075,875","size":"100,100"}
-(set: $INT to it + 1)(set: $STR to it + 0)(set: $AGI to it + 2)(set: $Class to "Mage")
-You can still feel the terror coursing through your veins hearing the sounds of combat just a few dozen meters away. You remember praying to any deity you could remember for safety. After seeing the decimation a single mage caused on the battlefield you became determined to learn all you could about them.
+This is the second Int dream Dream
+(set: $INT to it + 1)
+(set: $STR to it + 0)
+(set: $AGI to it + 2)
+(set: $Class to "")
 
-Your next few years were spent in the library trying to read up on all information available in your small town, and looking for a mentor to guide you further. While the library wasn't expansive, the empire made sure that all towns had some information on theory available for aspiring mages, so you were able to build a solid foundation. Yoiu were lucky to find a retired mage spending his last few years just relaxing in the town, and after some discussions you became his apprentice while getting ready for the academy entrance exams.
-
-The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+[[DreamEnd]]
 
 
 :: IntDreamInt {"position":"975,875","size":"100,100"}
-(set: $INT to it + 2)(set: $STR to it + 0)(set: $AGI to it + 1)(set: $Class to "Mage")
-After the batlle you spent most of your time in the local town library studying everything related to magic. While there weren't any actual spells, the empire ensured that some theory was available for all aspiring mages such as yourself. Once it was clear that you would need a teacher for anything more advanced, you began looking around for any possibilities. 
+This is the second Int dream Dream
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
+(set: $Class to "")
 
-Since the town was pretty small all things considered, there were only a few apprentice ranked mages around, mostly healers, and they did not wish to teach some kid for free. After annoying them for quite some time they finally referred you to an elderly man who they knew to be a retired mage living out is twilight years in the peaceful countryside. Finally finding someone willing to guide you you started diving ever deeper into the mystic arts.
-
-The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+[[DreamEnd]]
 
 
 :: IntDreamStr {"position":"875,875","size":"100,100"}
-(set: $INT to it + 1)(set: $STR to it + 2)(set: $AGI to it + 0)(set: $Class to "Mage")
-The sheer power you saw was engraved into your memory to this day. The overwhelming strength a mage represented on a battlefield could that could singlehandedly change the course of any engagement.
+This is the second Int dream Dream
+(set: $INT to it + 1)
+(set: $STR to it + 2)
+(set: $AGI to it + 0)
+(set: $Class to "")
 
-You spent the following days studying up on everything magic in the local library. Though there were no concrete spells available, as those would have caused far too much chaos and danger in the hands of an everyday peasant, the empire made sure that plenty of foundational theory was available for any aspiring mages. Your years were thus spent preparing for acadaemy entrance exams. While you wouldn't be anyone exceptional, the academies knew not to expect too much with most information being restricted. You were overjoyed upon getting accepted into the Imperial Mages Academy.
-
-The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+[[DreamEnd]]
 
 
 :: IntroEdward {"position":"1000,1425","size":"100,100"}
-(if:(history: where its name contains "StrDreamStr")'s length is 0)[Guessing that it would be best to introduce yourself to the local enforcement might yield some clues about what is going on you head towarsds the knight. He seems to perk up as you get near, showing that even as tired as he looks, he is still very aware of his surrounding. 
-(link-reveal:"'Greetings Ser! I have just arrived and am looking for the way to the Mayr's office. Could you please point me that way?'")[
-(link-reveal:"'Good morning to you as well, and who might you be? I can't remember the mayor waiting for any new arrivals.'")[
-(link-reveal:"'I am $Name. I was tasked to find the source of the anomaly that seems to be plaguing the islands residents. I would also be grateful for any clues you could privode me about the phenomenon, seeing as it seems to be far more widespread than I was lead to believe.'")[
-(link-reveal:"'In that case you should look for Selene. She should be around the dock if you are expected. I think I saw her around the pier where your ship just landed. She is the only elf in the settlement currently, should be easy to find.'")[
-'Thank you, I might have passed her on the way in that case, I'll go [[look for her|IntroSelene]]. Have a nice day.'
+Surprised to see you, tired and fed up. short introduction. (if martial focus chosen could be friend from acedemy. seperate convo then, volunteers to guide you to the temple later), tells you to look for selene for guide as he is on patrol
 
-As you leave you can see that the dock is getting more crowded as more ships start arriving. You could still [[look around the port some more|Arrival at port]] before finding Selene.
-]]]]]
 
-(if:(history: where its name contains "StrDreamStr")'s length is 1)[Upon seeing a familiar face you grin and head straight towards Edward. It has been ages since you have last seen him, and if nothing else you definitley want to catch up with him a little. As you get closer he turns towards you and frowns. You can see him trying to recall something, before an enlightened look comes across his face. 
-(link-reveal:"'Lord Edward! What a surprise to see you here! You just left without a word during my last year. We all missed your training when preparing for the final exam.'")[
-(link-reveal:"'Good morning to you as well, it has been a while hasn't it. Sorry for the quck departure, it started out as a simple family matter, but later became far more complicated, and I didn't manage to get back to the academy in time.'")[
-(link-reveal:"'Well life always finds a way to complicate our problems, I hope you managed to resolve it well enough. Now I came to meet the mayor, but I would love to hear any details you can offer me about the recent phenomenom.'")[
-(link-reveal:"'In that case you should look for Selene. She should be around the dock if you are expected. I think I saw her around the pier where your ship just landed. She is the only elf in the settlement currently, should be easy to find.
-
-I can't really offer any details myself sadly. Some time ago the populace just started having nightmares and it keeps getting worse. Recently even I have been having trouble sleeping as you can see, and other than the mayor and Selene I would say I am the strongest resident of the town. I really hope you amange to resolve it easily.'")[
-(link-reveal:"'Well in that case I best get going, I will try to solve it as soon as possible.'")[
-(link-reveal:"'Well good luck then, if you need any help just send someone to find me.'")[
-
-As you prepare to leave he hands you a token with the insignia of his house engraved upon it.
-(set:$Token to true)
-
-As you leave you can see that the dock is getting more crowded as more ships start arriving. You could still [[look around the port some more|Arrival at port]] before finding Selene, but with the matter being more urgent than you thought it might be better to head straigt to [[her|IntroSelene]].
-]]]]]]]
-
+[[Look around the port some more|Arrival at port]]
+(if:(history: where its name contains "StrDreamStr")'s length is 1)[[Recieve Edward's Token|Token]]
+[[IntroSelene]]
 
 
 :: IntroGuss {"position":"1125,1425","size":"100,100"}
-With your curiosity driving you, you decide to check the merchant. With his kind being o rare in the area, he might have some unique insight into the situation, or simple some useful gadgets he could offer.
+Mercvhent, you can buy stuff for the exploration. probably done using a link system(mitht not be iplemented, needs balancing and maybe economy)
+Can give directions to town center, but recommends looking for official for help
 
-Getting closer you note that he seems more energetic than the rest of the townsfolk, hawking his wares to anyone who would (link-reveal:"listen.")[
-(link-reveal:"'Come and check out the newest goods straight from the heart of the empire, just in from the fresh shipment this morning! Come, come, come!'")[
-You could look over his wares to see if you need anything he is  (link-reveal:"selling,")[
-(if: $dagger is false)[(link:"A small dagger fro 3 gold")[(set: $dagger to true)(set:$Gold to it - 3)]]
-(if: $sword is false)[(link:"A one handed sword for 10 gold")[(set: $sword to true)(set:$Gold to it - 10)]]
-(if: $crystal is false)[(link:"A crystal ball for 25 gold")[(set: $crystal to true)(set:$Gold to it - 25)]]]
-and since you are in a hurry, you try (link-reveal:"striking a conversation with the lively dwarf.")[
-(link-reveal:"'Good morning sir, you seem rather lively compared to the rest of the people around. Could you tell me your secret?'")[
-(link-reveal:"'Morning to you as well young man! I am sad to say I just arrived this morning, and have yet to encounter the mysterious nightmares everyone seems to be having. I heard there might be large mines on the island, and decided to try my luck opening a smithy before any of my kin could arrive. These wares are just to collect the money needed to start the small business.'")[
-(link-reveal:"'In that case I hope to solve the probelm before you can be affected. Could you perhaps point me towards the town center, I seem to be missing my guide.'")[
-(link-reveal:"'I just arrived, so I don't know how precise I can be, but I have heard it is that way.'")[[[He says as he points towards the main road leading further into the island|Back alley event]]
-(link-reveal:"'But I would recommend trying to find an official, I am pretty sure I saw a pretty elf running around somewhere, or perhaps the guards could offer some help'")[
-(link-reveal:"'Thank you for your help, I best start looking then.'")[
-After saying godbye, you leave the dwarf to [[look around some more|Arrival at port]]. Though since time might be tight you could also just start heading towards the town [[alone.|Back alley event]]
-
-]]]]]]]]]
+[[Try to fin the town center on your own|Back alley event]]
 
 
 :: IntroSelene {"position":"875,1425","size":"100,100"}
@@ -228,7 +197,7 @@ After saying godbye, you leave the dwarf to [[look around some more|Arrival at p
 
 You decide to head towards the elf, seeing as you should probably introduce yourself to the local leadership, if only to gather fresh information about your task.They should also be able to provide any details that the official briefing could have missed.
 
-As you get closer you can clearly identify the emblen of the duke on her shoulders, signifying her the government. She seems to be talking rather animatedly to the captain that just brought you here. As you get closer you starting making out the (link-reveal:"topic.")[
+As you get closer you can clearly identify the emblen of the duke on her shoulders, signifying her the government. She seems to be talking rather animatedly to the captain that just brought you here. AS you get closer you starting making out the (link-reveal:"topic.")[
 (link-reveal:"'What do you mean he already left? you just finished docking!'")[
 (link-reveal:"'I jus said he walkd off right away! you didn say anythin abou meetin on arrival!'")[
 (link-reveal:"'I thought it was obvious with me standing here! What else do you trhink the mayor's secretary would be doing here at dawn?'")[
@@ -238,16 +207,12 @@ You decide it is about time to introduce yourself before tempers flair anymore.
 'Thank you then, may I have a name as well?'
 'Oh of course, my name is Selene Ashbark, at your service!'
 'Then while i would love to look around the [[port|Arrival at port]] some more, we should probably [[get going|TownCenter]] to solve this issue as soon as possible'
+
 ]]]]
 
 
 :: Introduction {"position":"1100,2075","size":"100,100"}
-(link-reveal:"'Halt stranger, what business do you have here?'")[
-(link-reveal:"'I come from afar and was invited by the mayor to help resolve the recent phenomenom happening. I wish to meet him to introduce myself, and to receive any details he might have come across that were not included in the origianl assignment.'")[
-(link-reveal:"'Do you have any proof of what you say? We can't just let anyone through with that excuse.'")[
-You think it over. Though you have your official ID that won't really solve the issue here. Instead you dig around in your bag and hand over your (link-reveal:"'Guild assignment sheet.'")[
-(link-reveal:"'Ah, yes this should do fine, go on ahead, the mayor is already waiting for you.'")[
-You thank them for their time, and [[Head on inside|Mayor Meeting]]]]]]
+[[Mayor Meeting]]
 
 
 :: Lost in Jungle {"position":"1100,2200","size":"100,100"}
@@ -268,9 +233,14 @@ You can see a sturdy man sitting on the comfortable looking chair at the other s
 'The only incident that comes to mind is the exporation troops uncovering a small temple entrance near the east side of the island. While surveying the island my people came across a small stone arch under some collapsed rocks. WHen they removed them they found a labyrinth behind them. They reported back, and it was decided that we will wait untill the town is more established to explore deeper. You should probably start by exploring this monument before heading elsewhere for more clues.'
 'Thank you for your help, in that case I should probably start the exploration as soon as possible, since we are burning valuable daylight. I'll be back with good news as soon as possible.'
 (if:$Token is false)[
-With your goodbyes said you turn to leave and head towards the [[temple|Lost in Jungle]]. After leaving the office you remember that you could also visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]
-(if:$Token is true)[
-With your goodbyes said you turn to leave and heaad towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]]. You could also perhaps visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]]
+With your goodbyes said you turn to leave and heaad towards the [[temple|Temple entrance]].
+
+]
+(if:$Token is true)[With your goodbyes said you turn to leave and heaad towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]] ]
+
+
+
+]
 
 
 :: Pit {"position":"1125,2725","size":"100,100"}
@@ -293,37 +263,37 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 
 
 
-:: Rebirth awakening {"position":"625,1175","size":"100,100"}
-(set: $Insanity to it + 1)
-
-
-You shudder as you suddenly awaken, an ominous feeling comes over you. You are gasping for air as you can feel an overwhelming wrongness that you can't describe. Trying to figure out what is happening, you can suddenly hear the shirping of seagulls, and a familiar rocking of the boat. just as you start gathering yourself you hear a loud knock on the door.
-(link-reveal:"Oy! You up yet?")[ Arr, we be making landfall in a few minutes. Now haul yer scurvy hide off me ship!”, grumbles the captain
-you’ve hired to bring you to the island, Lord Xy hired you to investigate.
-
-As you get ready you look outside the small windows seeing the sailers moving around and the docks close by. They look rather new, with only a few ships docking, but have plenty of space for future expansions. 
-
-A few minutes later you hear the ship docking with sailers scrambing around the deck making sure everything is adequetly secured. You say goodbye to the captain and step onto the[[wooden piers.|Arrival at port]]
-]
-
-
 :: START {"position":"975,475","size":"100,100"}
 <!--This part is used to set default variables and initialize game-->
-(set: $INT to 0 )(set: $STR to 0 )(set: $AGI to 0 )(set: $Name to "")(set: $DeathCounter to 0)(set: $Insanity to 0)(set: $Class to "")(set: $Token to false)(set: $Gold to 0)(set: $dagger to false)(set: $crystal to false)(set: $sword to false)
+(set: $INT to 0 )
+(set: $STR to 0 )
+(set: $AGI to 0 )
+(set: $Name to "")
+(set: $DeathCounter to 0)
+(set: $Insanity to 0)
+(set: $Class to "")
+(set:$Token to false)
 
 Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 [[Start Game|ACTOneStart]]
 
 
 :: StrDream {"position":"1275,750","size":"100,100"}
-(set: $INT to it + 0)(set: $STR to it + 2)(set: $AGI to it + 1)
+(set: $INT to it + 0)
+(set: $STR to it + 2)
+(set: $AGI to it + 1)
+
 Ah, you finally remeber, this was your first day reporting to the academy to further your education as a knight. You can still recall the stern face of your instructor Edward, a decorated knight who decided to pass on what he learned to the younger generation before starting his next adventure. He was always your favorite, strict but caring as he guided the battalion of idiots he was tasked with training. 
 
 Reminiscing about the past, you remember as you left home. Your parents were so proud of you after you won the [[sparing contest|StrDreamStr]] at the nearby town, though you decided not to tell them how you got the qualification to even participate. Finding a reputable [[forger|StrDreamAgi]] was a difficult task, as you were from a small family in the countryside and did not have any connections in town. It took quite the effort to [[research|StrDreamInt]] what papers you would even need for the contest, as it was not really advertiseed outside of town.
 
 
 :: StrDreamAgi {"position":"1200,875","size":"100,100"}
-(set: $INT to it + 0)(set: $STR to it + 1)(set: $AGI to it + 2)(set: $Class to "Knight")
+(set: $INT to it + 0)
+(set: $STR to it + 1)
+(set: $AGI to it + 2)
+(set: $Class to "Knight")
+
 You can still feel how sore your feet felt after finally finding Wraith down in the sewers beneath the town hall. To this day you still only know him by his codename, and it was only by luck that you asked the right begger during your search. Ralph took pity on you seeing how badly your search was going, and pointed you towards the first real clue, finally setting you on the correct path.
 
 Since you had no money to pay for the documents, you still owe Wraith a favor for setting you up with everything you needed. It doesn't even bother you much after ater finding out that even the Rogues' Abode is an accepted part of the royal families assets. 
@@ -332,7 +302,11 @@ The chirping of seagulls startles you from the recollections, hinting that you s
 
 
 :: StrDreamInt {"position":"1400,875","size":"100,100"}
-(set: $INT to it + 2)(set: $STR to it + 1)(set: $AGI to it + 0)(set: $Class to "Knight")
+(set: $INT to it + 2)
+(set: $STR to it + 1)
+(set: $AGI to it + 0)
+(set: $Class to "Knight")
+
 Looking for information was hard, and sokewhat alien to you, as the village elders only taught you the basics of reading before decing you were better off just helping your parents around the farm. You spent all your free time in the library looking for records of previous tournaments, which while helpful with advancing your research skills didn't lead to success. 
 
 Just when you were ready to give up the kind elderly librarian finally had enough of you running around his quiet sanctum, and asked what you were looking for. To this day you still blush whenever you remember the patronizing look on her face as the small fae points out that the rules are already posted all around the venue, and should include all prerequisites needed to participate
@@ -341,7 +315,11 @@ The chirping of seagulls startles you from the recollections, hinting that you s
 
 
 :: StrDreamStr {"position":"1300,875","size":"100,100"}
-(set: $INT to it + 0)(set: $STR to it + 2)(set: $AGI to it + 1)(set: $Class to "Knight")
+(set: $INT to it + 0)
+(set: $STR to it + 2)
+(set: $AGI to it + 1)
+(set: $Class to "Knight")
+
 You can still remember the sheer joy when the knight at the scene accepted your documents without any hassle. Looking back it was probably either part of the test for the less fortunate, or they simple didn't care that one more competitor was added to the tournament. It seems impossible that he failed to recognise the forgery.
 
 Each round was difficult and exhausting, but with the body forged by working on the farm and the agility given from roaming the mountains you successfully advanced all the way to the finals. You can admit that some luck was definitely involved, as some of your greatest foes tiredd eachother out before reaching you, but that was just part of the contest. While winning wasn't needed to be accepted into the academy, first place secured you a scholarship that helped you afford the 5 year training.
@@ -355,46 +333,77 @@ Describe temple, describe carving and statues, feeling around the entrance. Edwa
 [[Enter the Temple|Entry hall]]
 
 
-:: Tip room {"position":"1400,2975","size":"100,100"}
-<!--General idea: In this room sits some kind of humanlike creature, which seems like an enemy at first. With enough STR, you can overcome it easily, but with enough INT or AGI, you can actually "befriend" the creature and get information about the puzzles in the dungeon (pond, puzzle room, idol puzzle or well) from it. Could function as some help if the player does not know how to proceed.-->
+:: Tip room alive {"position":"1400,3100","size":"100,100"}
+{
+<!--General idea: In this room sits some kind of humanlike creature, which seems like an enemy at first. With enough STR, you can overcome it easily, but with enough INT or AGI, you can actually "befriend" the creature and get information about how to reach the Idol from it. Could function as some help if the player does not know how to proceed.-->
 
-Insert encounter with creature
+<!--DUBUGGING-->
+(set:$STR to 4)
+}
+Inspecting the room, you cannot make out many interesting things. But as you continue to look around while approaching the middle of the room are two glowing spots in a corner.
+"Who are you to disturb the silence in these ruins?", a croaking voice coming from said spots exclaims. The creature moves into the light and you can make out a humanlike figure with fur all over its body. It looks at you with infuriated eyes.
+{(if:$STR >= 2)[
+You feel intimidated by this creature, and knowing the obstacles that you already have left behind you, you make a leap forward and try to knock it out. You quickly overwhelm the old weak creature and make your way to the door you spot on the other side of the room. For a short moment you overthink your decision, feeling that the creature might not have had bad intentions, before you [[enter the next room behind the door|Puzzle for door]].
+](else:)[
+If you were stronger, you would try to attack it, but as you do not know yet its intentions, you try to find out, what the creature wants: "Who wants to know that?"
+The creature utters a rattling laugther. "Well I have been here for longer than you can imagine. My name and where I come from, I cannot remember such things anymore. Tell me, why are you venturing here?"<br>
+"I was sent to retrieve the Idol that is located in the depths of these ruins. You know where I can find them?"<br>
+Another rattling laughter. "There are very few things I do not know about these ruins, my friend. About the Idol itself, you are no longer than a few meters away from it, you would just have to leave through this door. But let me tell you this: You won't be able to reach it, unless you are prepared. There exists a special key in these halls. Without that, all your efforts will be for nothing."<br>
+	(if:$KEY is True)[
+    "You mean this?", you ask as you show it the key you found in the puzzle room.<br>
+    The eyes of the creature start to glow even brighter. "So you are the chosen one to retrieve the Idol. In this case, there is no more I have to or dare to tell you, please proceed, as you are destined to.", it says as it is pointing towards the door. With an acknowledging nod you pass the creature and [[walk through the door|Puzzle for door]].
+    ](else:)[
+    Rather confused by what he means, you ask: "What do you mean by 'key'?"<br>
+    "Somewhere in these ruins you will find a room with a test. This test shows if you are the chosen worthy person to retrieve the Idol from its chamber. There is no way back now, I will let you pass this door, but be aware that the Idol can only be reached when in the possession of the key."<br>
+    It points at another wooden door at the end of the room. Still thinking about what it said, you pass the creature and [[Continue your way through the ruins|Puzzle for door]]
+    ]
+]}
 
-Choose between different paths for STR and INT/AGI.
-Make boolean variable to keep track if the creature is alive in the first place.
 
-<!--Make it possible such that you can also enter the room from behind, i.e. coming from the idol puzzle.-->
-
-[[Idol room]]
+:: Token {"position":"1000,1550","size":"100,100"}
+description of toen, can have edward help during trip
+(set:$Token to true)
+[[Thank you, this will come in handy|IntroEdward]]
 
 
 :: Town Hall {"position":"975,1950","size":"100,100"}
 (if:$Intro is true)[You can hear Selene giving a small explanation of who you are and asking about the mayor. It seems there are no problems and the mayor is in his office. [[The Guards wave you through before you can even join the conversation|Mayor Meeting]]]
-(if:$Intro is false)[Seeing you approaching alone, the guards stop you and ask for an [[introduction|Introduction]]]
+(if:$Intro is false)[[Introduction]]
 
 
-:: TownCenter {"position":"925,1650","size":"100,100"}
+:: TownCenter {"position":"975,1800","size":"100,100"}
 As you follow Selene, you look around the town. The dock area seems to be mostly finished, with a main road lead towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alon until larger industry is present to leave room for them to expand around the port.
 
-The closer you get to what you can only presume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to large quarries or traderoutes. 
+The closer you get to what you can only presume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to lerge quarries or traderoutes. 
 
 The only exception seems to be the large stone building you are approaching, which while not the size of what mayor offices look in well developed settlements, is still magnificent. The more you look at it you can see the characteristics of it being a defensive fort as well. Most new settlements lack the walls needed to keep out bandits or larger wildlife, so while thos are built the Mayor's office serves as a bastion to protect the early settlers in any conflicts or raids that might happen.
 
 Your musing is broken as Selene addresses the guards at the [[entrance|Town Hall]].
 
 
-:: Trap corridor {"position":"1400,2850","size":"100,100"}
+:: Trap corridor fail {"position":"1475,2975","size":"100,100"}
+{
+<!--Player reaches corridor, but doesn't notice the arrow trap. The player dies and resets in the Entry Hall-->
+}
+
+Still in shock and completely out of breath, you now find yourself in a almost entirely dark corridor. You still hear the rumbling of the now quite enraged beast behind you, urging you to continue your way.
+As you set your next step, you hear a rope snapping and some mechanism activating. Faster than you can react, you feel a peeling pain in your left arm. Quickly looking for the cause, you see an arrow piercing your forearm. But luckily the pain vanishes quite fast, but with the consequence of your entire arm now being numb.
+Not only that: The numbness seems to spread over your entire body. You try to sit down, but end up tripping and falling down on the floor, with your legs now completely senseless. It does not take long for your sight to fade as well, before you fall in a deep slumber...
+
+
+[[Continue|Entry hall after death]]
+
+
+:: Trap corridor success {"position":"1325,2975","size":"100,100"}
+{
 <!--Room with holes in the walls. On the floor there are trip ropes that, if triggered, let arrows shoot out of the holes. Again an agi hazard.-->
+}
 
 As you continue your expedition, you find yourself going through a barely lit corridor. You make one step after another, only seeing blurry images of the floor.
-
-(set:$AGI to 4)
-
-(if:$AGI >= 4)[You cannot put it into words, but something feels off for you about this room. You start inspecting the walls and notice some strange holes on both sides. Further following your gut, you start looking at the floor.
-It seems like you had the right feeling. What you find are trip ropes. Luckily, you think, as they are probably connected to some mechanism. Surely, you do not want to find out, what those ropes activate, which is why you make big steps over them and reach another door.]
-
-<!--Add here if clause where the player can proceed with the dungeon if he has enoug agi, else he dies (?) and restarts at the entry hall-->
-[[This time you cannot hear anything suspicious from the other side, which is why you take the risk and enter the room|Tip room]]
+You cannot put it into words, but something feels off for you about this room. You start inspecting the walls and notice some strange holes on both sides. Further following your gut, you start looking at the floor.
+It seems like you had the right feeling. What you find are trip ropes. Luckily, you think, as they are probably connected to some mechanism. Surely, you do not want to find out, what those ropes activate, which is why you make big steps over them.
+After passing several traps, you finally seem to have passed all of them. You are now at the end of the dark corridor, standing in front of another wooden door.
+This time you cannot hear anything suspicious from the other side, which is why you [[take the risk and enter the room|Tip room alive]].
 
 
 :: after illusion wall {"position":"500,3225","size":"100,100"}
@@ -402,31 +411,43 @@ It seems like you had the right feeling. What you find are trip ropes. Luckily, 
 
 
 :: agi enemy room {"position":"1400,2725","size":"100,100"}
-<!--Enemy encounter designed for agi character. Monster is sleeping (?), but with enough agi skill it can be passed without waking it up.-->
-<!--Maybe add methods for other classes as well.-->
+{
+<!--Enemy encounter designed for agi character. Monster is sleeping, but with enough agi skill it can be passed without waking it up.-->
+<!--Else the monster is woken up, but player escapes-->
 
-<!--insert interaction with monster.-->
-<!--first option is to sneak around it, requires certain agi stat-->
-<!--if player tries to sneak and does not have the required stat -> death-->
-<!--maybe give options for players with some other really high skill, maybe it could be possibel to kill the monster-->
+<!--DEBUGGING-->
+(set:$AGI to 4)
+}
 
-DEBUGGING
-(set:$AGI to 2)
+You enter a dark hall, only lit by few torches in the corners. As your eyes adapt to the darkness, you can make out a silhoutte at the other end of the room. (if:$AGI < 3)[You try to slowly close the door, but the creeking of the old hinges make the snoring noises stop for a moment.] You now see the source of the now very loud snores: A giant beast lying in the hallway. Luckily for you, it appears to be asleep. Quickly you search for another door in the room to continue, but what you find makes your troubles even heavier: The only door going further is located right behind the beast. (if:$AGI < 3)[Reopening the door now seems too risky, as the hinges could wake up the beast. You see your only chance in [[trying to sneak around the beast|agi enemy room fail]].](else:)[Confident in your sneaking abilities, you do not hesitate in [[trying to sneak around the beast|agi enemy room success]].]
 
-(if:$AGI >= 3)[[Sneak around the monster succesfully|Trap corridor]]
-(if:$AGI < 3)[(set:$DeathCounter to $DeathCounter + 1)]
-(if:$AGI < 3)[(set:$Insanity to $Insanity + 1)]
-(if:$AGI < 3)[[Sneak around the monster and get caught|Entry hall]]
+
+:: agi enemy room fail {"position":"1475,2850","size":"100,100"}
+{
+<!--Path where sneaking around beast does not work out, but the player escapes-->
+
+<!--DUBUGGING-->
+(set:$STR to 1)
+}
+
+You cautiously set one step after another. As you pass the monster, you can take a closer look at it, noticing it is covered with thick fur, horns and spikes. "This monster could eat me in one bite", you think, as you slowly approach the wooden door. Then, only 10 more meters away from the exit, you suddenly trip over a large metallic chain. The snoring quickly stops and the beast starts moving and searching for the source of the disturbance of its sleep. Fearing its reaction, you start running towards the door before it can spot you. (if:$STR >= 3)[Taking full charge, you run into the door and slam it, with the rot wood not withstanding your power.](else:)[You reach the door and pull the handle as strongly as you can. With the grumbling getting louder behind you, you finally manage to open the door. As soon as you went through, you shut it again.] Fairly exhausted from your encounter, [[you continue your journey|Trap corridor fail]], now with no way back.
+
+
+:: agi enemy room success {"position":"1325,2850","size":"100,100"}
+{
+<!--Player does not get caught by beast and escapes easily-->
+}
+
+You slowly make your way to the door, taking every step with great caution. As you pass the beast you notice big chains lying on the floor. Apparently this monster is being held captive here in order to scare off adventurers. You make an especially careful step over the chains and finally you reach an again rotten wooden door. Entering the room behind it without making the slightest noise, you can [[continue to explore this dungeon|Trap corridor success]].
 
 
 :: agi path {"position":"1400,2600","size":"100,100"}
-<!--short notice that player chose path to the agi enemy encounter-->
-<!--Next entering the room with the sleeping monster in it.-->
+{
+<!--Player now in corridor towards agi enemy encounter-->
+<!--Player has possibility of going back-->
+}
 
-The snoring gets even louder as you wander through a steadily darker getting corridor. You reach a small door made of half-rot wood. What do you want to do?
-
-[[You are not really sure if you want to find out, what hides behind those snores and return to the main hall.|Entry hall]]
-[[You enter the room and cannot believe your eyes.|agi enemy room]]
+The snoring gets even louder as you wander through a steadily darker getting corridor. You reach a small door made of half-rotten wood. On one hand, you think about your [[possibility to just go back to the main hall|Entry hall]], as the grumbling noises from behind the door seem very scary. But then you retake faith into your skills, and [[reach for the rusty handle|agi enemy room]], of which you are quite surprised it still functions properly.
 
 
 :: front illusion wall {"position":"500,3100","size":"100,100"}
@@ -490,39 +511,3 @@ There doesn't seem to be anything else interesting here.
 
 :: shared path trap {"position":"300,2750","size":"100,100"}
 [[After trap go along path|shared path path]]
-
-
-:: StoryStylesheet [stylesheet]
-/* General passage styling */
-tw-passage {
-  width: 1000px;
-  margin: 2em auto;
-  padding: 1em 2em;
-  background-color: #1e1e1e;
-  color: #e0e0d0;
-  font-family: Georgia, serif;
-  line-height: 1.6;
-  border: 1px solid #5a5a5a;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-
-/* Paragraph styling */
-tw-passage p {
-  text-indent: 2em;           /* Indent first line */
-  margin-top: 1em;            /* Space before paragraph */
-  margin-bottom: 1em;         /* Space after paragraph */
-}
-
-/* Make passage links green */
-tw-link, tw-linkvisited {
-  color: #3fbf3f;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-tw-link:hover {
-  text-decoration: underline;
-  color: #50ff50;
-}
