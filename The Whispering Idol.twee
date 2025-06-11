@@ -8,7 +8,7 @@ The Whispering Idol
   "format": "Harlowe",
   "format-version": "3.3.9",
   "start": "START",
-  "zoom": 0.3
+  "zoom": 0.6
 }
 
 
@@ -262,7 +262,7 @@ To the right it just continues straight, whil on the left you can see a small in
 
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
-<img src="https://daniel-pfeffer.github.io/images/dungeon_main.jpg"  class="story-image">As you look around the room the first thing that you notice a [[small well|small well]] right at the center. Looking left you can see a [[small path|shared path int trap]] leading to a corner before turning right and continuing on(if:$Class is "Mage")[, as well as a [[shimmering wall ||int path 1]]].
+<img src="https://daniel-pfeffer.github.io/images/dungeon_main.jpg"  class="story-image">As you look around the room the first thing that you notice a [[small well|small well]] right at the center. Looking left you can see a [[small path|shared path int trap]] leading to a corner before turning right and continuing on(if:$Class is "Mage")[, as well as a [[shimmering wall|int path 1]]].
 
 Straight ahead you can see a worn down wall with a multitude of cracks crisscrossing all over it. (if:$Class is "Knight" )[ With your training you could perhap [[shatter it|Enemy Corridor]]. You might find something interesting behind it]
 
@@ -949,25 +949,23 @@ Pillar 3 (Right): Currently shows **_p3**.
 :: Tip room {"position":"1375,3200","size":"100,100"}
 {
 <!--General idea: In this room sits some kind of humanlike creature, which seems like an enemy at first. With enough STR, you can overcome it easily, but with enough INT or AGI, you can actually "befriend" the creature and get information about how to reach the Idol from it. Could function as some help if the player does not know how to proceed.-->
-<!--TODO: this has to somehow link to BeforeIdolRoom-->
 <!--DUBUGGING-->
-(set:$STR to 4)
 }Inspecting the room, you cannot make out many interesting things. But as you continue to look around while approaching the middle of the room are two glowing spots in a corner.
 "Who are you to disturb the silence in these ruins?", a croaking voice coming from said spots exclaims. The creature moves into the light and you can make out a humanlike figure with fur all over its body. It looks at you with infuriated eyes.
 {(if:$STR >= 2)[
-You feel intimidated by this creature, and knowing the obstacles that you already have left behind you, you make a leap forward and try to knock it out. You quickly overwhelm the old weak creature and make your way to the door you spot on the other side of the room. For a short moment you overthink your decision, feeling that the creature might not have had bad intentions, before you [[enter the next room behind the door|Puzzle for door]].
+You feel intimidated by this creature, and knowing the obstacles that you already have left behind you, you make a leap forward and try to knock it out. You quickly overwhelm the old weak creature and make your way to the door you spot on the other side of the room. For a short moment you overthink your decision, feeling that the creature might not have had bad intentions, before you [[enter the next room behind the door|BeforeIdolRoom]].
 ](else:)[
 If you were stronger, you would try to attack it, but as you do not know yet its intentions, you try to find out, what the creature wants: "Who wants to know that?"
 The creature utters a rattling laugther. "Well I have been here for longer than you can imagine. My name and where I come from, I cannot remember such things anymore. Tell me, why are you venturing here?"<br>
 "I was sent to retrieve the Idol that is located in the depths of these ruins. You know where I can find them?"<br>
-Another rattling laughter. "There are very few things I do not know about these ruins, my friend. About the Idol itself, you are no longer than a few meters away from it, you would just have to leave through this door. But let me tell you this: You won't be able to reach it, unless you are prepared. There exists a special key in these halls. Without that, all your efforts will be for nothing."<br>
-	(if:$KEY is True)[
-    "You mean this?", you ask as you show it the key you found in the puzzle room.<br>
-    The eyes of the creature start to glow even brighter. "So you are the chosen one to retrieve the Idol. In this case, there is no more I have to or dare to tell you, please proceed, as you are destined to.", it says as it is pointing towards the door. With an acknowledging nod you pass the creature and [[walk through the door|Puzzle for door]].
+Another rattling laughter. "There are very few things I do not know about these ruins, my friend. About the Idol itself, you are no longer than a few meters away from it, you would just have to leave through this door. But let me tell you this: You won't be able to reach it, unless you are prepared. There exists a special key. Without that, all your efforts will be for nothing."<br>
+	(if: $items contains $item_sacred_ward)[
+    "You mean this?", you ask as you show it the ward you found earlier.<br>
+    The eyes of the creature start to glow even brighter. "So you are the chosen one to retrieve the Idol. In this case, there is nothing more I have or dare to tell you, please proceed, as you are destined to.", it says as it is pointing towards the door. With an acknowledging nod you pass the creature and [[walk through the door|BeforeIdolRoom]].
     ](else:)[
-    Rather confused by what he means, you ask: "What do you mean by 'key'?"<br>
-    "Somewhere in these ruins you will find a room with a test. This test shows if you are the chosen worthy person to retrieve the Idol from its chamber. There is no way back now, I will let you pass this door, but be aware that the Idol can only be reached when in the possession of the key."<br>
-    It points at another wooden door at the end of the room. Still thinking about what it said, you pass the creature and [[Continue your way through the ruins|Puzzle for door]]
+    Rather confused by what it means, you ask: "What do you mean by 'key'?"<br>
+    "Near the entrance of the temple, those who hid the Idol eons ago hid the only item that could grant you access to the chamber where the Idol is located. But they didn't just hide it, they locked it behind some mechanism, only the chosen one is meant to solve. I will let you pass this door, but be aware that the Idol can only be reached when in the possession of the item."
+    It points at another wooden door at the end of the room. Still thinking about what it said, you pass the creature and [[continue your way through the ruins|BeforeIdolRoom]].
     ]
 ]}
 
@@ -1051,7 +1049,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 <!--Else the monster is woken up, but player escapes-->
 
 <!--DEBUGGING-->
-(set:$AGI to 4)
 }You enter a dark hall, only lit by few torches in the corners. As your eyes adapt to the darkness, you can make out a silhoutte at the other end of the room. (if:$AGI < 3)[You try to slowly close the door, but the creeking of the old hinges make the snoring noises stop for a moment.] You now see the source of the now very loud snores: A giant beast lying in the hallway. Luckily for you, it appears to be asleep. Quickly you search for another door in the room to continue, but what you find makes your troubles even heavier: The only door going further is located right behind the beast. (if:$AGI < 3)[Reopening the door now seems too risky, as the hinges could wake up the beast. You see your only chance in [[trying to sneak around the beast|agi enemy room fail]].](else:)[Confident in your sneaking abilities, you do not hesitate in [[trying to sneak around the beast|agi enemy room success]].]
 
 
@@ -1066,7 +1063,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 <!--Path where sneaking around beast does not work out, but the player escapes-->
 
 <!--DUBUGGING-->
-(set:$STR to 1)
 }You cautiously set one step after another. As you pass the monster, you can take a closer look at it, noticing it is covered with thick fur, horns and spikes. "This monster could eat me in one bite", you think, as you slowly approach the wooden door. Then, only 10 more meters away from the exit, you suddenly trip over a large metallic chain. The snoring quickly stops and the beast starts moving and searching for the source of the disturbance of its sleep. Fearing its reaction, you start running towards the door before it can spot you. (if:$STR >= 3)[Taking full charge, you run into the door and slam it, with the rot wood not withstanding your power.](else:)[You reach the door and pull the handle as strongly as you can. With the grumbling getting louder behind you, you finally manage to open the door. As soon as you went through, you shut it again.] Fairly exhausted from your encounter, [[you continue your journey|Trap corridor fail]], now with no way back.
 
 
