@@ -91,7 +91,6 @@ A few minutes later you hear the ship docking with sailers scrambing around the 
 ]
 
 
-
 :: END {"position":"900,3625","size":"100,100"}
 This is just to test importing
 
@@ -104,18 +103,18 @@ Some kind of combat mechanic, probably just description though
 
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
-Strength bhuild: see cracked wall, puzzle room enrtrance
+Strength bhuild: see cracked wall, puzzle room enrtrance{
 
 
-<!--STR paths-->
+}<!--STR paths-->
 (if:$STR is  4)[[Try to punch the cracked wal|Enemy Corridor]]
-
+{
 <!--Int paths-->
-(if:$INT >= 3)[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1]]
-(if:$INT < 3)[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1 opt]]
+
+(if:$INT >= 3)[[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1]]](else:)[[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1 opt]]]
 
 
-<!-- General paths -->
+}<!-- General paths -->
 [[Check the upper left path|shared path int trap]]
 [[Check to see small room with PUZZLE motifs|Puzzle room 1]]
 [[You feel an ocean breeze from this room|Pond room]]
@@ -236,8 +235,6 @@ With your goodbyes said you turn to leave and heaad towards the [[temple|Temple 
 ]
 
 
-
-
 :: Pit {"position":"1125,2725","size":"100,100"}
 check if pit is notced and try to jump it
 
@@ -268,11 +265,10 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 (set: $Insanity to 0)
 (set: $Class to "")
 (set:$Token to false)
+(set:$spells to (ds:))
 
 Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 [[Start Game|ACTOneStart]]
-
-
 
 
 :: StrDream {"position":"1275,750","size":"100,100"}
@@ -283,7 +279,6 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 Ah, you finally remeber, this was your first day reporting to the academy to further your education as a knight. You can still recall the stern face of your instructor Edward, a decorated knight who decided to pass on what he learned to the younger generation before starting his next adventure. He was always your favorite, strict but caring as he guided the battalion of idiots he was tasked with training. 
 
 Reminiscing about the past, you remember as you left home. Your parents were so proud of you after you won the [[sparing contest|StrDreamStr]] at the nearby town, though you decided not to tell them how you got the qualification to even participate. Finding a reputable [[forger|StrDreamAgi]] was a difficult task, as you were from a small family in the countryside and did not have any connections in town. It took quite the effort to [[research|StrDreamInt]] what papers you would even need for the contest, as it was not really advertiseed outside of town.
-
 
 
 :: StrDreamAgi {"position":"1200,875","size":"100,100"}
@@ -297,7 +292,6 @@ You can still feel how sore your feet felt after finally finding Wraith down in 
 Since you had no money to pay for the documents, you still owe Wraith a favor for setting you up with everything you needed. It doesn't even bother you much after ater finding out that even the Rogues' Abode is an accepted part of the royal families assets. 
 
 The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
-
 
 
 :: StrDreamInt {"position":"1400,875","size":"100,100"}
@@ -352,8 +346,6 @@ description of toen, can have edward help during trip
 
 
 :: Town Hall {"position":"975,1950","size":"100,100"}
-
-
 (if:$Intro is true)[You can hear Selene giving a small explanation of who you are and asking about the mayor. It seems there are no problems and the mayor is in his office. [[The Guards wave you through before you can even join the conversation|Mayor Meeting]]]
 (if:$Intro is false)[[Introduction]]
 
@@ -382,6 +374,10 @@ It seems like you had the right feeling. What you find are trip ropes. Luckily, 
 [[This time you cannot hear anything suspicious from the other side, which is why you take the risk and enter the room|Tip room]]
 
 
+:: after illusion wall {"position":"500,3225","size":"100,100"}
+[[puzzle int]]
+
+
 :: agi enemy room {"position":"1400,2725","size":"100,100"}
 <!--Enemy encounter designed for agi character. Monster is sleeping (?), but with enough agi skill it can be passed without waking it up.-->
 <!--Maybe add methods for other classes as well.-->
@@ -400,7 +396,6 @@ DEBUGGING
 (if:$AGI < 3)[[Sneak around the monster and get caught|Entry hall]]
 
 
-
 :: agi path {"position":"1400,2600","size":"100,100"}
 <!--short notice that player chose path to the agi enemy encounter-->
 <!--Next entering the room with the sleeping monster in it.-->
@@ -411,34 +406,73 @@ The snoring gets even louder as you wander through a steadily darker getting cor
 [[You enter the room and cannot believe your eyes.|agi enemy room]]
 
 
-
-:: after illusion wall {"position":"500,3225","size":"100,100"}
-[[puzzle int]]
-
-
 :: front illusion wall {"position":"500,3100","size":"100,100"}
 [[after illusion wall]]
 
 
 :: info path 2 {"position":"700,2725","size":"100,100"}
-Puzzle room here, some INT check
+After going along the path for a quick while, you arrive in front of a locked door.
+
+(link:"Look around")[(show:?detect_scale)]
+|detect_scale)[In front of the locked door, you notice an old ruggedy scale and next to it 7 stone balls.
+(link:"Inspect the room")[(show:?main)]]
+|inspect_door)[You look at the door and theres a indentation similarily the size of one of the stone balls.
+There's also text on the door]
+|main)[{
+[(hide:?inspect_door)(hide:?inspect_scale)(hide:?detect_scale)]
+
+}(link:"Look at the scale")[(show:?inspect_scale)]]
+(link:"Inspect the door")[(show:?inspect_door)]
+
+|cont_2)[''You:'' But how can we then even detect them, when they are lifelike?
+(link:"Continue")[(show:?cont_3)]]
+|cont_3)[''Prof. Orlen Voss:'' Ahh good question, $Name, first of all they produce a slight shimmer, and if you're still unsure you can try dispelling it. If it's an illusionary wall, it will turn invisible for a few seconds.
+(link:"Continue")[(show:?cont_4)]]
+
 
 [[Go along path|int path drop down]]
+[[Return to the shimmering wall|int path 1]]
 
 
 :: int path 1 {"position":"700,2600","size":"100,100"}
-You notice the slight shimmer of the door, and remember your professors often talked about illusioniary wall.
-(link:"Try to remember the details")[(show:?cont_1)]
-|cont_1)[(after:1s)[...](after:2s)[...](after:3s)[...](after:4s)[...](after:5s)[
-''Prof.  Very Intelligent:'' Now remember, our ancestors used quite a lot of Illusion magic to hide pathways. Master Illusionists could even create walls that were lifelike, without dispelling them first.
-(link:"Continue")[(show:?cont_2)]]]
+You notice the slight shimmer of the wall, and remember your professors often talked about illusioniary wall.
+<img src="https://daniel-pfeffer.github.io/images/brown-brick-wall-surface-texture.jpg" height="256px" width="256px">
+{
+	(if:$spells is 0)[(set:$spells to (ds:))]
+	(event: when $spells contains "dispell")[(show:?before_dispell)]
+	(if:$spells does not contain "dispell")[
+    	(link:"Try to remember the details")[(show:?cont_1)]
+    ]
+}
+|cont_1)[{
+...
+(after:time+1s)[...]
+(after:time+2s)[...]
+(after:time+3s)[...]
+(after:time+4s)[...]
+}(after:time+5s)[
+''Prof. Orlen Voss:'' Now remember, our ancestors used quite a lot of Illusion magic to hide pathways. Master Illusionists could even create walls that were lifelike, without dispelling them first.
+{
+(link:"Continue")[(show:?cont_2)]
+}]]
 |cont_2)[''You:'' But how can we then even detect them, when they are lifelike?
 (link:"Continue")[(show:?cont_3)]]
-|cont_3)[''Prof. Very Intelligent:'' Ahh good question, $Name, first of all they produce a slight shimmer, and if you're still unsure you can try dispelling it. If it's an illusionary wall, it will turn invisible for a few seconds.
-(link:"Continue")[(show:?cont_4)]]
-|cont_4)[As you remember how to detect and dispel an illusionary wall, all you have to do now, is to well dispell it.
+|cont_3)[''Prof. Orlen Voss:'' Ahh good question, $Name, first of all they produce a slight shimmer, and if you're still unsure you can try dispelling it. If it's an illusionary wall, it will turn invisible for a few seconds.
+(link:"Continue")[(show:?cont_4)]]{
+|cont_4)[
+...
+(after:time+1s)[...]
+(after:time+2s)[...]
+(after:time+3s)[...]
+(after:time+4s)[...]
+(after:time+5s)[(show:?before_dispell)]]
+}
+
+|before_dispell)[As you remember how to detect and dispel an illusionary wall, all you have to do now, is to well dispell it.
 (link:"//Dispell//")[(show:?after_dispell)]]
-|after_dispell)[The moment you cast //Dispell//, the wall infront of you becomes see-through and you see a path that seems to turn right after a few meters.
+|after_dispell)[{
+(set:$spells to it + (ds:"dispell"))
+}The moment you cast //Dispell//, the wall infront of you becomes see-through and you see a path that seems to turn right after a few meters.
 [[Go along this path->info path 2]]]
 [[Go back to the middle of the room|Entry hall]]
 
@@ -450,12 +484,11 @@ You notice a slight shimmer on this wall.
 
 There doesn't seem to be anything else interesting here.
 <!-- Brute force to skip illusion wall? -->
+(link:"Run against the wall")[]
 [[Go back to the middle of the room|Entry hall]]
 
 
 :: int path drop down {"position":"700,2850","size":"100,100"}
-
-
 [[Go along|shared path from int path]]
 
 
