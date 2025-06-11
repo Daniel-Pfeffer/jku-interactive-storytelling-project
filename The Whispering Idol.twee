@@ -214,7 +214,8 @@ Strength bhuild: see cracked wall, puzzle room enrtrance{
 [[You feel an ocean breeze from this room|Pond room]]
 [[You hear grumbling snores from another corridor|agi path]]
 
-:: Entry hall after death {"position":"1200,2400","size":"100,100"}
+
+:: Entry hall after death {"position":"925,2825","size":"100,100"}
 {
 <!--Short notice of player death and informing him, he is in the Entry hall again-->
 }You wake up very exhausted, just as if you had a very bad nightmare. Looking around you find yourself in the Entry Hall of the dungeon. Wondering why you took a nap right here, [[you continue your journey|Entry hall]].
@@ -354,9 +355,9 @@ With your curiosity driving you, you decide to check the merchant. With his kind
 Getting closer you note that he seems more energetic than the rest of the townsfolk, hawking his wares to anyone who would (link-reveal:"listen.")[
 (link-reveal:"'Come and check out the newest goods straight from the heart of the empire, just in from the fresh shipment this morning! Come, come, come!'")[
 You could look over his wares to see if you need anything he is  (link-reveal:"selling,")[
-(if: $dagger is false)[(link:"A small dagger fro 3 gold")[(set: $dagger to true)(set:$Gold to it - 3)]]
-(if: $sword is false)[(link:"A one handed sword for 10 gold")[(set: $sword to true)(set:$Gold to it - 10)]]
-(if: $crystal is false)[(link:"A crystal ball for 25 gold")[(set: $crystal to true)(set:$Gold to it - 25)]]]
+(if: $items contains $dagger)[(link:"A small dagger fro 3 gold")[(set: $items to it +(ds:$dagger))(set:$Gold to it - 3)]]
+(if: $items contains $sword)[(link:"A one handed sword for 10 gold")[(set: $items to it + (ds:$sword))(set:$Gold to it - 10)]]
+(if: $items contains $crystal)[(link:"A crystal ball for 25 gold")[(set: $items to it+(ds:$crystal))(set:$Gold to it - 25)]]]
 and since you are in a hurry, you try (link-reveal:"striking a conversation with the lively dwarf.")[
 (link-reveal:"'Good morning sir, you seem rather lively compared to the rest of the people around. Could you tell me your secret?'")[
 (link-reveal:"'Morning to you as well young man! I am sad to say I just arrived this morning, and have yet to encounter the mysterious nightmares everyone seems to be having. I heard there might be large mines on the island, and decided to try my luck opening a smithy before any of my kin could arrive. These wares are just to collect the money needed to start the small business.'")[
@@ -396,7 +397,7 @@ You think it over. Though you have your official ID that won't really solve the 
 You thank them for their time, and [[Head on inside|Mayor Meeting]]]]]]
 
 
-:: JumpDown {"position":"725,3000","size":"100,100"}
+:: JumpDown {"position":"750,3000","size":"100,100"}
 Deciding that caution might take too long, or perhaps feeling a surge of reckless abandon, you take a few steps back from the edge. With a running start, you launch yourself into the dim space below.
 
 
@@ -510,6 +511,7 @@ A few minutes later you hear the ship docking with sailers scrambing around the 
 
 :: START {"position":"975,475","size":"100,100"}
 <!--This part is used to set default variables and initialize game-->
+{
 (set: $INT to 0 )
 (set: $STR to 0 )
 (set: $AGI to 0 )
@@ -526,13 +528,14 @@ A few minutes later you hear the ship docking with sailers scrambing around the 
 <!-- items -->
 (set: $item_tide_stone to "tide stone")
 (set: $item_sacred_ward to "sacred_ward")
-(set: $dagger to false)
-(set: $crystal to false)
-(set: $sword to false)
+(set:$item_dagger to "dagger")
+(set:$item_crystal to "crystal")
+(set:$item_sword to "sword")
 
 <!-- spells -->
 (set: $spell_dispel to "dispel")
 
+}
 Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 [[Start Game|ACTOneStart]]
 
@@ -548,7 +551,6 @@ You take a moment to survey the antechamber more thoroughly.
 The green smoke remains the most prominent feature, clearly guarding the way to the idol.
 
 [[Focus again on the smoke|BeforeIdolRoom]]
-
 
 
 :: SearchForCushion {"position":"600,2950","size":"100,100"}
@@ -607,10 +609,6 @@ Your study doesn't reveal a physical way through, but it reinforces your convict
 
 [[Reconsider your approach|LowerTunnelExplore]]
 ]
-
-
-
-
 
 
 :: Temple entrance {"position":"1000,2350","size":"100,100"}
@@ -701,7 +699,6 @@ The golden light meets the green smoke. There's a sound like rushing wind, and t
 [[Proceed into the Idol's sanctum|Idol room]]
 
 
-
 :: after illusion wall {"position":"325,3575","size":"100,100"}
 The air beyond the former illusion is stale, heavy with the scent of long-undisturbed dust and a faint, almost metallic tang that prickles at the back of your throat. The passage itself seems subtly different here; the stonework is smoother, more deliberate, than the rough-hewn tunnels before. It continues onward, but your attention is caught by a //slight, ethereal shimmer// that seems to cling to the air a short distance ahead, like heat haze on a cold day, though there's no warmth here. It distorts the view of the passage beyond it, making the far end waver and ripple.
 
@@ -717,7 +714,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 
     [[Step fully into the antechamber and take in the view|BeforeIdolRoom]]
 ]
-
 
 
 :: agi enemy room {"position":"1400,2725","size":"100,100"}
@@ -863,7 +859,7 @@ Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale
      (set: $scaleUses to 0)
       (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
   ''Crushed by falling debris, you have met your end in the temple's depths.'']
-      (replace: ?actions)[[[Restart->Room]]]
+      (replace: ?actions)[[[Restart->Entry hall after death]]]
     ]
     }(else:)[{
         (set: $left to (a:))
@@ -892,7 +888,7 @@ Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale
           <!-- Death action -->
             (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
   ''Crushed by falling debris, you have met your end in the temple's depths.'']
-            (replace: ?actions)[[[Restart->Room]]]
+            (replace: ?actions)[[[Restart->Entry hall after death]]]
           ]
          } (else:)[{
             (set: $leftWeight to (folded: _n making _sum via _sum + 2, 0, ...$left))
