@@ -18,6 +18,34 @@ Waking with a start, you quickly take in your surroundings, looking around the d
 As you dig deeper in your memories you remember arriving at the central square on your way to the academy. To your right there were the spiraling towers of the [[Imperial Academy of Magic|IntDream]]. To your left you can see the towering walls surrounding the [[Knight Academy|StrDream]]. You can still hear the clashing of swords from within the massive barricade. Finally straight ahead was the somewhat hidden entrance to the [[Rogue's Abode|AgiDream]]. While obvious to the trained eye, it was positioned so that the everyday peasant won't even look twice.
 
 
+:: ActivateTidePuzzle {"position":"1700,2525","size":"100,100"}
+{
+(set: _correctPillar1 to 2)
+(set: _correctPillar2 to 3)
+(set: _correctPillar3 to 0)
+
+}You grip the cold iron lever and pull it downwards with a grunt. It moves with a scraping groan of rusted metal.
+
+
+(if: $pillar1Symbol is _correctPillar1 and $pillar2Symbol is _correctPillar2 and $pillar3Symbol is _correctPillar3)[
+    For a moment, nothing happens. Then, a low rumble echoes through the chamber. The water in the central pool begins to churn and then rapidly drain away through hidden conduits in the floor! As the water level drops, the stone plinth supporting the Tide Stone slowly rises, bringing the glowing artifact within easy reach.
+    
+    
+    The way to the Tide Stone is clear!
+    
+    
+    [[Take the Tide Stone|RetriveTideStone]]
+](else:)[
+    A disconcerting clunking sound comes from within the walls, and a puff of dust erupts from around the base of one of the pillars. Nothing else happens. The Tide Stone remains partially submerged and out of reach.
+    
+    
+    The sequence must be incorrect.
+    
+    
+    [[Try again|TideStonePuzzleChamber]]
+]
+
+
 :: AgiDream {"position":"675,750","size":"100,100"}
 (set: $INT to it + 0)(set: $STR to it + 1)(set: $AGI to it + 2)
 You can still remeber the offputting stink around the entrance that helped dissuad3e anyone from sticking around if they were not there for a purpose. After entering you were met with a dim hall, with all smell disappearing after crossing the door. Your experience points to [[magic|AgiDreamInt]], though you were never formally taught any, every little theif needs to recognize a mage.
@@ -210,7 +238,7 @@ Strength bhuild: see cracked wall, puzzle room enrtrance{
 
 }<!-- General paths -->
 [[Check the upper left path|shared path int trap]]
-[[Check to see small room with PUZZLE motifs|Puzzle room 1]]
+(if:$items does not contain $item_tide_stone)[[[Check to see the passage with big eye motifs|PassageBeforeTideStone]]]
 [[You feel an ocean breeze from this room|Pond room]]
 [[You hear grumbling snores from another corridor|agi path]]
 
@@ -246,6 +274,43 @@ Why destroy such a potent artifact? Why free these weak-minded islanders from th
         ''You have achieved the Evil Ending: Master of Nightmares.''
     ]
 ]
+
+
+:: ExamineTideMurals {"position":"1500,2200","size":"100,100"}
+You study the ancient murals painted on the chamber walls. They are faded and water-damaged in places, but depict various scenes:
+
+Mural 1 (Behind Pillar 1): "A colossal **Kraken** rises from stormy seas, its tentacles ensnaring a ship. High above, a sliver of a **Crescent Moon** peeks through the dark clouds."
+
+Mural 2 (Behind Pillar 2): "A serene underwater kingdom. Merfolk swim amongst vibrant coral reefs. One prominent figure, clearly a ruler, holds a gleaming **Trident** aloft, light glinting from its prongs."
+
+Mural 3 (Behind Pillar 3): "A powerful sorcerer stands on a cliff, arms outstretched towards a tumultuous ocean. Great **Waves** crash against the rocks at his command, their crests white with foam."
+
+You ponder the significance of these depictions.
+
+
+[[Return to the puzzle|TideStonePuzzleChamber]]
+
+
+:: ExamineTidePool {"position":"1675,2225","size":"100,100"}
+The water in the central pool is cool and surprisingly clear. The Tide Stone rests on its plinth, its blue light refracting through the water, casting dancing patterns on the ceiling. The plinth itself looks solid, and the stone seems to be connected to some mechanism beneath the water – perhaps a way for it to rise or for the water to drain.
+
+
+[[Return to the puzzle|TideStonePuzzleChamber]]
+
+
+:: ExitTideChamber {"position":"1550,2550","size":"100,100"}
+Clutching the Tide Stone, you leave the puzzle chamber behind...
+
+[[Continue your journey|Entry hall]]
+
+
+:: FindActivationLevelTide {"position":"1700,2350","size":"100,100"}
+(if: $startup is true or $foundActivationLever is 0)[(set: $foundActivationLever to false)]
+
+You scan the chamber for anything that looks like it could activate a mechanism. Tucked away in a shadowed alcove, partially hidden by a hanging drape of seaweed (real or carved), you find a rusted **iron lever** set into the wall. It looks like it hasn't been moved in centuries.
+(set: $foundActivationLever to true)
+
+[[Return to the puzzle|TideStonePuzzleChamber]]
 
 
 :: GoodEnding {"position":"925,4150","size":"100,100"}
@@ -471,6 +536,19 @@ With your goodbyes said you turn to leave and head towards the [[temple|Lost in 
 With your goodbyes said you turn to leave and heaad towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]]. You could also perhaps visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]]
 
 
+:: PassageBeforeTideStone {"position":"1300,2350","size":"100,100"}
+The passage opens into a circular chamber, cooler than the rest of the temple. The air is damp, carrying the distinct briny scent of the sea, even though you are deep underground. Water drips rhythmically from unseen cracks in the domed ceiling, collecting in a shallow, shimmering pool that occupies the center of the room.
+
+
+Partially submerged in this central pool, resting on a stone plinth that just breaks the water's surface, is an object that glows with a soft, ethereal blue light: the **Tide Stone**. It's just out of reach.
+
+
+Around the perimeter of the room, at equidistant points, stand three imposing stone **pillars**. Each appears to be rotatable. Carved into the walls behind them are faded, ancient **murals** depicting scenes of the ocean.
+
+
+[[Examine the Chamber and the Pillars|TideStonePuzzleChamber]]
+
+
 :: Pit {"position":"1125,2725","size":"100,100"}
 check if pit is notced and try to jump it
 
@@ -494,10 +572,6 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 [[You hear a slight fizzle and see the door open ahead|Idol room]]
 
 
-:: Puzzle room 1 {"position":"1000,2600","size":"100,100"}
-
-
-
 :: Rebirth awakening {"position":"625,1175","size":"100,100"}
 (set: $Insanity to it + 1)
 
@@ -510,6 +584,18 @@ As you get ready you look outside the small windows seeing the sailers moving ar
 
 A few minutes later you hear the ship docking with sailers scrambing around the deck making sure everything is adequetly secured. You say goodbye to the captain and step onto the[[wooden piers.|Arrival at port]]
 ]
+
+
+:: RetriveTideStone {"position":"1850,2525","size":"100,100"}
+You step onto the now-dry basin floor and approach the raised plinth. The Tide Stone pulses with a gentle, cool blue light. As your fingers close around it, you feel a faint thrumming, like the distant rhythm of the ocean's heart. It's surprisingly heavy, cool to the touch, and seems to absorb the ambient light.
+(set: $tideStoneRetrieved to true)
+(set: $items to it + (ds:$item_tide_stone))
+
+
+You have acquired the Tide Stone!
+
+
+[[Admire your prize, then leave|TideStonePuzzleChamber]]
 
 
 :: START {"position":"975,475","size":"100,100"}
@@ -617,6 +703,67 @@ Your study doesn't reveal a physical way through, but it reinforces your convict
 Describe temple, describe carving and statues, feeling around the entrance. Edward returns if he was with us
 
 [[Enter the Temple|Entry hall]]
+
+
+:: TideStonePuzzleChamber {"position":"1500,2375","size":"100,100"}
+{
+(if: $startup is true or $pillar1Symbol is 0)[(set: $pillar1Symbol to 0)]
+(if: $startup is true or $pillar2Symbol is 0)[(set: $pillar2Symbol to 0)]
+(if: $startup is true or $pillar3Symbol is 0)[(set: $pillar3Symbol to 0)]
+(set: $pillarSymbols to (a: "Wave", "Moon", "Kraken", "Trident")) 
+
+(if: $startup is true or $tideStoneRetrieved is 0)[(set: $tideStoneRetrieved to false)]
+
+}The chamber is quiet save for the dripping water. The Tide Stone pulses invitingly from the central pool.
+
+
+**The Pillars:**
+
+|pillarDisplays>[{
+(set:_p1 to $pillarSymbols's ($pillar1Symbol+1))
+(set:_p2 to $pillarSymbols's ($pillar2Symbol+1))
+(set:_p3 to $pillarSymbols's ($pillar3Symbol+1))
+}
+Pillar 1 (Left): Currently shows **_p1**.
+Pillar 2 (Center): Currently shows **_p2**.
+Pillar 3 (Right): Currently shows **_p3**.
+]
+
+(link-repeat: "Rotate Pillar 1")[{
+ (set: _nextIndex to ($pillar1Symbol + 1) % $pillarSymbols's length)
+ (set: $pillar1Symbol to _nextIndex)
+ (rerun: ?pillarDisplays)
+} ]
+
+
+(link-repeat: "Rotate Pillar 2")[{
+ (set: _nextIndex to ($pillar2Symbol + 1) % $pillarSymbols's length)
+ (set: $pillar2Symbol to _nextIndex)
+ (rerun: ?pillarDisplays)
+} ]
+
+
+(link-repeat: "Rotate Pillar 3")[{
+ (set: _nextIndex to ($pillar3Symbol + 1) % $pillarSymbols's length)
+ (set: $pillar3Symbol to _nextIndex)
+ (rerun: ?pillarDisplays)
+} ]
+
+
+
+**Other Actions:**
+
+[[Examine the Murals for clues|ExamineTideMurals]]
+[[Examine the Central Pool and Tide Stone|ExamineTidePool]]
+[[Look for an activation mechanism|FindActivationLevelTide]]
+(if: $tideStoneRetrieved is false and $foundActivationLever is true)[
+    [[Pull the Lever|ActivateTidePuzzle]]
+]
+(if: $tideStoneRetrieved is true)[
+    You possess the Tide Stone.
+    [[Leave the chamber|ExitTideChamber]]
+]
+[[Return to previous area|PassageBeforeTideStone]]
 
 
 :: Tip room {"position":"1400,3100","size":"100,100"}
