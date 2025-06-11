@@ -1049,7 +1049,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 <!--Else the monster is woken up, but player escapes-->
 
 <!--DEBUGGING-->
-(set:$AGI to 4)
 }You enter a dark hall, only lit by few torches in the corners. As your eyes adapt to the darkness, you can make out a silhoutte at the other end of the room. (if:$AGI < 3)[You try to slowly close the door, but the creeking of the old hinges make the snoring noises stop for a moment.] You now see the source of the now very loud snores: A giant beast lying in the hallway. Luckily for you, it appears to be asleep. Quickly you search for another door in the room to continue, but what you find makes your troubles even heavier: The only door going further is located right behind the beast. (if:$AGI < 3)[Reopening the door now seems too risky, as the hinges could wake up the beast. You see your only chance in [[trying to sneak around the beast|agi enemy room fail]].](else:)[Confident in your sneaking abilities, you do not hesitate in [[trying to sneak around the beast|agi enemy room success]].]
 
 
@@ -1064,7 +1063,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 <!--Path where sneaking around beast does not work out, but the player escapes-->
 
 <!--DUBUGGING-->
-(set:$STR to 1)
 }You cautiously set one step after another. As you pass the monster, you can take a closer look at it, noticing it is covered with thick fur, horns and spikes. "This monster could eat me in one bite", you think, as you slowly approach the wooden door. Then, only 10 more meters away from the exit, you suddenly trip over a large metallic chain. The snoring quickly stops and the beast starts moving and searching for the source of the disturbance of its sleep. Fearing its reaction, you start running towards the door before it can spot you. (if:$STR >= 3)[Taking full charge, you run into the door and slam it, with the rot wood not withstanding your power.](else:)[You reach the door and pull the handle as strongly as you can. With the grumbling getting louder behind you, you finally manage to open the door. As soon as you went through, you shut it again.] Fairly exhausted from your encounter, [[you continue your journey|Trap corridor fail]], now with no way back.
 
 
