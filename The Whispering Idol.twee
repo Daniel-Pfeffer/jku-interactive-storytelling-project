@@ -74,6 +74,97 @@ Some kind of sidestory to introduce player more to the local atmosphere and peop
 [[Head towards Town Center|TownCenter]]
 
 
+:: BadEnding {"position":"800,4150","size":"100,100"}
+You stumble out of the temple, the Idol feeling like a lead weight in your pack, its dark energy seeming to leech the warmth from your body. The moonlight outside offers little comfort; the shadows seem longer, the air colder than before.
+
+
+You had intended to destroy it, or perhaps you never learned how. Or maybe, a darker thought, you considered keeping it, but its influence was too insidious, too draining. You simply want to be rid of it, to escape its presence.
+
+
+(link-reveal: "Discard the Idol carelessly and leave the island")[
+    
+    Finding a deep, dark fissure in the rocks near the coast (or a murky swamp), you hurl the Idol of Nightmares into the depths, a sigh of relief escaping you as it disappears from sight. You don't look back. You find a boat, or signal for passage, and leave the cursed island behind as quickly as possible.
+   
+   
+    (link-reveal: "Weeks later...")[
+        
+        News eventually reaches you, even across the sea. Tales from the island have grown darker. The nightmares, once a pervasive dread, have intensified, becoming waking terrors. People speak of shadows that walk in daylight, of screams in the night that are never investigated. The island is slowly succumbing to madness and despair, its inhabitants lost to an unending terror.
+        
+        
+        Your careless disposal of the Idol didn't end its influence; it merely allowed its dark power to fester and spread unchecked, perhaps even amplified by its new, shadowed resting place. The curse you sought to end has become a blight, and the island's fate is a heavy weight on your conscience, a nightmare you can't escape.
+        
+        
+        ''You have achieved the Bad Ending: The Unending Terror.''
+    ]
+]
+
+
+:: BeforeIdolRoom {"position":"750,3800","size":"100,100"}
+{
+
+(if: $startup is true or $greenSmokeDispelled is 0)[(set: $greenSmokeDispelled to false)]
+(if: $startup is true or $items is 0)[(set: $items to (a:$item_sacred_ward)) ]
+
+}You stand at the threshold of a cavernous space, clearly a place of significance. Your gaze is immediately drawn upwards and forwards.
+
+
+Dominating the far end, set into a massive stone edifice, is a tall, gothic archway. It doesn't lead to darkness, but rather billows with an unnatural, churning //emerald green smoke//. The smoke is thick, almost liquid in its movement, and seems to writhe with a life of its own, completely obscuring whatever lies directly beyond. Through momentary, thinner wisps, you catch tantalizing glimpses of flickering //torchlight// and the silhouette of a raised //stone altar// or dais deeper within – presumably where the Idol rests.
+
+
+The architecture is imposing. Heavy stone buttresses support an upper walkway or gallery that rings part of the chamber. Flanking the main path towards the archway, and supporting this upper stonework, are grotesque //pillars constructed entirely of bleached skulls and bones//, stacked high in macabre columns. They lend a grim and sacral atmosphere.
+
+
+Torches flicker in sconces on the lower brick walls and on the upper gallery, casting long, dancing shadows that make the bone pillars seem to almost sway. To your left, a small cascade of water trickles down a moss-covered natural rock face that forms one wall of the antechamber, its gentle sound a stark contrast to the oppressive silence and the visual intensity of the green smoke.
+
+(if: not $greenSmokeDispelled)[
+    (link-reveal: "Examine the green smoke more closely")[
+        You cautiously approach the edge of the billowing emerald miasma. It radiates a faint, unnatural chill and the acrid smell intensifies, making your nostrils sting. The smoke is too dense to see through properly. Touching it seems unwise; there's a palpable energy to it, like static electricity, but with a more sinister undertone. It feels like a magical barrier.
+        
+        
+        (if: $items contains $item_sacred_ward)[
+        	[[Use your Sacred Ward on the smoke|UseWardOnSmoke]]
+        ]
+        [[Look around the antechamber for clues or other paths|ScanAntechamber]]
+    ]
+](else:)[
+    The emerald smoke has parted, revealing a clear passage through the grand archway into the inner sanctum. The air still hums faintly with residual magic.
+    
+    [[Proceed into the Idol's sanctum|Idol room]]
+]
+
+(link: "Return to the previous passage")[(go-to: (history:)'s last)] 
+
+
+:: CastDispel {"position":"275,3225","size":"100,100"}
+You focus your will, uttering the arcane syllables of the Dispel Illusion spell. As the final word leaves your lips, a ripple of energy emanates from your hands towards the wall.
+
+
+The shimmering intensifies for a moment, then, like mist dissolving in the sun, the image of the solid rock wall wavers and fades. In its place, a dark, arched opening is revealed, leading into another passage. The faint hum in the air ceases.
+(set: $illusionWallDispelled to true)
+
+
+[["Step through the revealed archway|after illusion wall]]
+
+
+:: ClimbDown {"position":"475,2875","size":"100,100"}
+You take a deep breath and scrutinize the rock face of the drop. It's mostly smooth, worn by time or water, offering precious few purchase points. Still, you decide to try. Bracing yourself against one wall, you begin to lower yourself, feet searching blindly for any crack, any protruding nub of stone. Your fingers strain, gripping tiny ledges.
+
+(set: _climbSuccess to (random: 1, 3))
+(if: _climbSuccess is 1)[
+    Just as you think you're making progress, your boot slips on a damp, almost invisible patch of slime. With a startled yelp, you lurch downwards, scraping your hands and one knee painfully against the rough stone before tumbling the last few feet. You land with a jarring thud on the floor below, a sharp pain shooting up your ankle.
+    
+    You're down, but your palms are raw, and your ankle throbs ominously. It's likely sprained.
+    (set: $minorInjury to "sprained ankle and scraped hands")
+    
+    [[Assess yourself in the lower tunnel|shared path from int path]]
+](else:)[
+    It's a slow, agonizingly tense process. Every muscle screams in protest as you distribute your weight carefully, testing each potential handhold before committing. Millimeter by millimeter, you make your way down. Finally, with a grunt of relief, your feet touch solid ground. You made it, shaken and arms aching, but otherwise unharmed.
+    (set: $minorInjury to "none") 
+    
+    [[Step into the lower tunnel|shared path from int path]]
+]
+
+
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
 As you come to your senses you start moving around to  (link-reveal:"wake your body as well:")[
 Intelligence:  $INT
@@ -89,10 +180,6 @@ As you get ready you look outside the small windows seeing the sailers moving ar
 
 A few minutes later you hear the ship docking with sailers scrambing around the deck making sure everything is adequetly secured. You say goodbye to the captain and step onto the[[wooden piers.|Arrival at port]]
 ]
-
-
-:: END {"position":"900,3625","size":"100,100"}
-This is just to test importing
 
 
 :: Enemy Corridor {"position":"1125,2600","size":"100,100"}
@@ -121,10 +208,69 @@ Strength bhuild: see cracked wall, puzzle room enrtrance{
 [[You hear grumbling snores from another corridor|agi path]]
 
 
-:: Idol room {"position":"900,3400","size":"100,100"}
-description, action what to do with idol, maybe safe exit right after taking idol(could depend on what action was chosen with idol)
+:: EvilEnding {"position":"1075,4150","size":"100,100"}
+Exiting the temple, the Idol feels not like a burden, but an extension of your own will. The moonlight seems to dim in its presence, or perhaps it is your perception that is changing, attuning to the shadows. The island air, once filled with the vague terror of others, now sings with a symphony of potential only you can hear.
 
-[[END]]
+
+Why destroy such a potent artifact? Why free these weak-minded islanders from their fears when those fears could be... useful? Harnessed?
+
+
+(link-reveal: "Find a place of power to attune with the Idol")[
+    
+    You seek out the deepest, most forgotten catacomb beneath the temple. There, in absolute, echoing darkness, you begin to explore the Idol's capabilities, not to end them, but to understand and control them.
+    
+    
+    The Idol resists at first, its chaotic nightmare energy lashing out. But your will is strong, your ambition stronger. Slowly, painstakingly, you wrestle its power into submission, bending it to your own designs. The thrumming in your hand changes from a wild pulse to a steady, rhythmic beat, a dark heart you now command.
+    
+    
+    (link-reveal: "Unleash your new dominion")[
+        From your seat of power, you extend your influence. The nightmares of the islanders do not cease. Instead, they become... directed. Specific. You learn to weave their fears, to pluck the strings of their anxieties. Those who oppose you are plagued by horrors tailored to their deepest dreads until they break or flee. Those who serve you find their nights surprisingly peaceful, a stark contrast that ensures loyalty.
+        
+        
+        The island transforms into your personal fiefdom of fear. You are not a hero, nor a failure. You are something far more terrifying: the Master of Nightmares, a dark sovereign ruling through the carefully orchestrated terrors of the mind. The Idol is your scepter, and the island your first conquest. The world beyond awaits.
+        
+        
+        ''You have achieved the Evil Ending: Master of Nightmares.''
+    ]
+]
+
+
+:: GoodEnding {"position":"925,4150","size":"100,100"}
+Retracing your steps through the labyrinthine temple feels different now. The shadows seem less menacing, the oppressive silence less absolute. Or perhaps it's the hope kindled by the Idol in your possession. You navigate the passages, bypass the traps you encountered, and finally emerge from the temple's dark maw into the moonlight.
+
+
+The air outside, though still tinged with the island's unique atmosphere, feels cleaner, lighter. You find a secluded, moonlit cliff overlooking the ocean – a place that feels pure and untainted.
+
+
+    (link-reveal: "Await the dawn/Observe the island")[
+        
+        Over the next few days, a subtle but undeniable change comes over the island. The haunted, weary look begins to fade from the eyes of the inhabitants. Children's laughter, once a rarity, is heard more often. People speak of sleeping soundly for the first time in memory, their dreams no longer plagued by shadowy terrors.
+        
+        
+        
+        The island slowly awakens from its long, collective nightmare. You are hailed as a hero, the one who broke the ancient curse. Though your journey was perilous, you brought peace and restful slumber back to these lands. Your legend will be told for generations.
+        
+        
+        
+        ''You have achieved the Good Ending: The Restored Slumber.''
+    ]
+
+
+:: Idol room {"position":"925,4025","size":"100,100"}
+The passage through the parted smoke leads you into a smaller, more intimate chamber, a true sanctum. The air here is still and heavy, charged with ancient power.
+
+
+Directly ahead, upon a tiered //stone dais//, stands a grand, ornate //altar//. Several tall, flickering //candles or braziers// illuminate it, their light glinting off the object of your quest.
+
+
+There, resting on a velvet cushion (or directly on the stone, describe as you see fit), is the **Whispering Idol**. (Describe the Idol in detail here: e.g., "It's a surprisingly small statue, carved from a single piece of obsidian, depicting a many-limbed creature with eyes that seem to follow you. It pulses with a faint, internal light and a barely perceptible thrumming sensation.")
+
+
+The idol is within reach. The chamber is silent, save for the flickering of the flames.
+
+[[Take the idol and destroy it|GoodEnding]]
+[[Take the idol and toss it away|BadEnding]]
+[[Take the idol and keep it|EvilEnding]]
 
 
 :: IntDream {"position":"975,750","size":"100,100"}
@@ -207,10 +353,58 @@ You decide it is about time to introduce yourself before tempers flair anymore.
 [[Mayor Meeting]]
 
 
+:: JumpDown {"position":"725,3000","size":"100,100"}
+Deciding that caution might take too long, or perhaps feeling a surge of reckless abandon, you take a few steps back from the edge. With a running start, you launch yourself into the dim space below.
+
+
+There's a brief, heart-stopping moment of freefall.
+(set: _jumpSuccess to (random: 1, 2))
+(if: _jumpSuccess is 1)[
+    You hit the ground much harder than anticipated. A sickening crack echoes from your left leg as pain explodes through you, forcing a cry from your lips. You collapse onto the stone, vision swimming. Your leg is almost certainly broken, or at the very least severely sprained. Moving will be an exercise in agony.
+    (set: $majorInjury to "badly injured leg")
+    
+    [[Grin and bear it, moving into the lower tunnel|shared path from int path]]
+](else:)[
+    You manage to tuck your body somewhat as you land, rolling with the impact. It’s still a jarring collision, knocking the wind from your lungs and sending a shockwave up your spine. You lie there for a moment, gasping, but a quick check reveals no broken bones – just a collection of new bruises and a racing heart.
+    (set: $minorInjury to "bruised and winded")
+    
+    [[Stagger to your feet and enter the lower tunnel|shared path from int path]]
+]
+
+
 :: Lost in Jungle {"position":"1100,2200","size":"100,100"}
 Sidequest for familiar
 
 [[Temple entrance]]
+
+
+:: LowerTunnelExplore {"position":"450,3250","size":"100,100"}
+(if: $startup is true or $illusionWallDispelled is 0)[(set: $illusionWallDispelled to false)]
+(if: $startup is true or $items is 0)[(set: $items to (a:))]
+(if: $startup is true or $spells is 0)[(set: $spells to (a:$spell_dispel))]
+
+You venture deeper into the lower tunnel. The air grows colder, and the silence is broken only by the crunch of your footsteps on the gritty floor. After a short walk, the passage appears to end in a solid wall of rock. It looks like a dead end.
+
+
+However, something feels... off. A faint shimmer, almost imperceptible, dances across the surface of the rock if you stare at it long enough, and the air here hums with a subtle, unnatural energy.
+
+(if: not $illusionWallDispelled)[
+    (link-reveal: "Examine the wall more closely")[
+    
+        You run your hand over the stone. It feels real enough, cold and unyielding. Yet, the faint visual distortion persists, and that strange hum is undeniable. You suspect this might be more than simple rock.
+        
+        This could be an illusion.
+        
+        [[Try to push through it|PushIllusion]]
+        (if: $spells contains $spell_dispel)[[[Cast 'Dispel Illusion'|CastDispel]]]
+        (if: $items contains $item_tide_stone)[[[Use 'Tide Stone'|UseDispelItem]]]
+        [[Study the wall for weaknesses or triggers|StudyIllusion]]
+    ]
+](else:)[
+    The archway, once hidden by illusion, stands open before you, revealing a passage beyond.
+
+    [[Step through the revealed archway|after illusion wall]] 
+]
 
 
 :: Mayor Meeting {"position":"975,2075","size":"100,100"}
@@ -235,6 +429,10 @@ With your goodbyes said you turn to leave and heaad towards the [[temple|Temple 
 ]
 
 
+:: Next Room {"position":"925,2925","size":"100,100"}
+
+
+
 :: Pit {"position":"1125,2725","size":"100,100"}
 check if pit is notced and try to jump it
 
@@ -245,7 +443,14 @@ check if pit is notced and try to jump it
 
 
 
-:: Puzzle for door {"position":"1000,3100","size":"100,100"}
+:: PushIllusion {"position":"650,3325","size":"100,100"}
+You brace yourself and push against the shimmering wall. Your hands meet solid, unyielding rock. It doesn't budge an inch, and the impact sends a slight jolt up your arms. It seems the illusion, if it is one, is more than just a visual trick; it has substance, or at least the convincing feeling of it.
+
+
+[[Reconsider your approach|LowerTunnelExplore]]
+
+
+:: Puzzle for door {"position":"875,3575","size":"100,100"}
 Need to figure óut an entire puzzle for this, might take entire sidequest branch, this is just a placeholder
 
 [[You hear a slight fizzle and see the door open ahead|Idol room]]
@@ -253,6 +458,119 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 
 :: Puzzle room 1 {"position":"1000,2600","size":"100,100"}
 
+
+
+:: Room {"position":"925,2775","size":"100,100"}
+(set: $scaleUses to it + 0)
+(set: $left to (a:))
+(set: $right to (a:))
+(set: $balls to (a: 1,2,3,4,5,6,7))
+(set:$correctBall to 5)
+After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
+The air is heavy with the scent of dust and something vaguely metallic. \
+A single, heavy door blocks your path. \
+Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale sits upon a stone pedestal.
+
+
+|info)[]
+
+|actions>[
+  (link-repeat: "Inspect the door")[(show:?insert){
+    (replace: ?info)[
+      The heavy oaken door, bound with tarnished iron, looms before you. \
+      It's cold to the touch and stubbornly resists any attempt to push it open. \
+      There's no visible keyhole or handle. \
+      Upon closer inspection, you spot a small, weathered stone tablet set into the wood, bearing a single, deeply carved sentence:
+''Only the lightest sphere shall break the seal.''
+    ]
+  }]
+  (link-repeat: "Inspect the balls")[{
+    (replace: ?info)[
+      You gather the seven spheres. \
+      They are crafted from a cool, smooth, dark stone, perhaps obsidian or polished basalt. \
+      Each one fits comfortably in your palm. \
+      Despite your keenest observation, they are utterly indistinguishable – no blemishes, no variations in weight you can discern by hand, no unique markings. \
+      One of them, however, holds the key.
+    ]
+  }]
+  (link-repeat: "Inspect the scale")[{
+    (replace: ?info)[
+      Resting on a dusty, ornate pedestal is an ancient balance scale. \
+      Its arms are crafted from a dark, pitted metal, possibly bronze, and the pans are shallow stone dishes. \
+      The whole contraption looks incredibly fragile, as if a strong breath might disturb its delicate equilibrium. \
+      Faint, almost eroded runes are carved around its base, and a more prominent inscription beneath the fulcrum reads:
+''Thrice may the truth be weighed, ere the spirits claim their due.''
+    ]
+  }]
+  (link-reveal: "Use the scale")[{
+    (if: $scaleUses > 3)[
+     (set: $scaleUses to 0)
+      (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
+  ''Crushed by falling debris, you have met your end in the temple's depths.'']
+      (replace: ?actions)[[[Restart->Room]]]
+    ]
+    }(else:)[{
+        (set: $left to (a:))
+        (set: $right to (a:))}
+        Select balls for the left pan (choose by number): {
+        (for: each _b, ...$balls)[
+          (link-repeat: (string: _b))[
+            (set: $left to it + (a:_b))
+            (replace: ?leftSel)[Left: (print: $left)]
+          ] 
+        ]}
+        |leftSel>[Left: (print: $left)]
+        
+        Select balls for the right pan (choose by number): {
+        (for: each _b, ...$balls)[
+          (link-repeat: (string: _b))[
+            (set: $right to it + (a:_b))
+            (replace: ?rightSel)[Right: (print: $right)]
+          ] 
+        ]}
+        |rightSel>[Right: (print: $right)]
+        
+        (link-repeat: "Weigh")[{
+          (set: $scaleUses to $scaleUses + 1)
+          (if: $scaleUses > 3)[
+          <!-- Death action -->
+            (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
+  ''Crushed by falling debris, you have met your end in the temple's depths.'']
+            (replace: ?actions)[[[Restart->Room]]]
+          ]
+         } (else:)[{
+            (set: $leftWeight to (folded: _n making _sum via _sum + 2, 0, ...$left))
+            (set:$rightWeight to (folded:_n making _sum via _sum + 2, 0, ...$right))
+            (if: ($correctBall is in $left))[ (set: $leftWeight to $leftWeight - 1) ]
+            (if: ($correctBall is in $right))[ (set: $rightWeight to $rightWeight - 1) ]
+            (replace:?leftSel)[](replace:?rightSel)[](set:$left to (a:))(set:$right to (a:))
+            (if: $leftWeight < $rightWeight)[
+              (replace: ?info)[The left pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (else-if: $leftWeight > $rightWeight)[
+              (replace: ?info)[The right pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (else:)[
+              (replace: ?info)[The pans remain perfectly balanced. The lighter sphere is not among those weighed, or you have an equal number of normal spheres on both sides. You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (if: $scaleUses is 3)[
+                  (append: ?info)[The scale groans ominously. It feels like it won't survive another use.]
+            ]
+          }]]]]
+          
+  [|insert)[(link:"Attempt to open the door with a sphere")[
+  Which sphere will you try in the door's mechanism? (Though there's no visible keyhole, perhaps one will react to the inscription.)
+  {
+  (for: each _b, ...$balls)[
+    (link:(string: _b))[(hide:?insert)
+     (if:_b is $correctBall)[
+     (replace:?info)[As you press Sphere (print: _b) against the stone tablet on the door, the carved words glow with a faint, ethereal light. With a deep rumble, the heavy door grinds open, revealing a passage beyond.[[Go on|Next Room]]]
+     ](else:)[<!--Die here-->(replace:?info)[You died]]
+     ]
+     ]
+  }]]
+]
+]
 
 
 :: START {"position":"975,475","size":"100,100"}
@@ -266,9 +584,45 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 (set: $Class to "")
 (set:$Token to false)
 (set:$spells to (ds:))
+(set:$items to (ds:))
+
+<!-- items -->
+(set:$item_tide_stone to "tide stone")
+(set:$item_sacred_ward to "sacred_ward")
+
+<!-- spells -->
+(set:$spell_dispel to "dispel")
+
 
 Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 [[Start Game|ACTOneStart]]
+
+
+:: ScanAntechamber {"position":"575,3925","size":"100,100"}
+You take a moment to survey the antechamber more thoroughly.
+*   The **skull pillars** are unnervingly detailed, each skull facing slightly differently, as if watching. There's no obvious mechanism on them.
+*   The **upper walkway** is supported by heavy stone arches. You see a few unlit braziers up there. There doesn't appear to be an easy way up from here.
+*   The **waterfall** to your left flows into a small, dark pool before disappearing into a crack in the floor. The water looks clear but uninviting.
+*   The **stone walls** are mostly solid, hewn brickwork mixed with natural rock. No obvious secret doors catch your eye at first glance.
+
+
+The green smoke remains the most prominent feature, clearly guarding the way to the idol.
+
+[[Focus again on the smoke|BeforeIdolRoom]]
+
+
+
+:: SearchForCushion {"position":"600,2950","size":"100,100"}
+You scan the area at the tunnel's edge, desperately hoping for something – anything – that could soften your landing. Perhaps some old sacking, a pile of debris, or even a conveniently placed pile of moss.
+
+
+Alas, the temple's builders, or perhaps time itself, have left this passage starkly bare. The floor is cold, hard stone, littered with nothing more than fine dust and a few loose pebbles that would offer no comfort whatsoever. The walls are equally unyielding. There's nothing here to aid your descent.
+
+
+The ten-foot drop remains as daunting as before.
+
+[[Attempt to climb down carefully anyway|ClimbDown]]
+[[Risk a direct jump|JumpDown]]
 
 
 :: StrDream {"position":"1275,750","size":"100,100"}
@@ -318,6 +672,21 @@ You can still remember the sheer joy when the knight at the scene accepted your 
 Each round was difficult and exhausting, but with the body forged by working on the farm and the agility given from roaming the mountains you successfully advanced all the way to the finals. You can admit that some luck was definitely involved, as some of your greatest foes tiredd eachother out before reaching you, but that was just part of the contest. While winning wasn't needed to be accepted into the academy, first place secured you a scholarship that helped you afford the 5 year training.
 
 The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
+
+
+:: StudyIllusion {"position":"675,3175","size":"100,100"}
+You spend some time carefully observing the wall, looking for any seams, unusual markings, or pressure plates. You trace the edges where the illusory rock meets the real tunnel walls. While the illusion is expertly crafted, you notice that the subtle hum seems to emanate more strongly from a particular point near the center.
+
+(link-reveal:"Study Carefully")[
+
+Your study doesn't reveal a physical way through, but it reinforces your conviction that this is magical. Perhaps a direct magical counter is needed, or a specific trigger you haven't found.
+
+[[Reconsider your approach|LowerTunnelExplore]]
+]
+
+
+
+
 
 
 :: Temple entrance {"position":"1000,2350","size":"100,100"}
@@ -374,8 +743,42 @@ It seems like you had the right feeling. What you find are trip ropes. Luckily, 
 [[This time you cannot hear anything suspicious from the other side, which is why you take the risk and enter the room|Tip room]]
 
 
-:: after illusion wall {"position":"500,3225","size":"100,100"}
-[[puzzle int]]
+:: UseDispelItem {"position":"500,3400","size":"100,100"}
+You take out your Tide Stone. As you direct it towards the suspicious wall, it begins to glow faintly and seems to connect with the wall.
+
+The shimmering surface of the wall ripples violently under the item's influence. With a soft sigh, like air escaping a pricked bladder, the illusion dissolves. Where solid rock seemed to be, an open archway leading into further darkness now stands.
+(set: $illusionWallDispelled to true)
+
+
+[[Step through the revealed archway|after illusion wall]]
+
+
+:: UseWardOnSmoke {"position":"750,3975","size":"100,100"}
+You draw forth your Sacred Ward. As you present it towards the billowing emerald barrier, (Describe the item's activation: e.g., "the Ward begins to hum, emitting a soft, golden light," or "ancient symbols on the Ward flare with power").
+
+
+The golden light meets the green smoke. There's a sound like rushing wind, and the acrid smell intensifies for a moment before rapidly dissipating. The emerald miasma churns violently, then, as if an unseen hand has drawn curtains aside, it parts down the middle, creating a clear, stable corridor through the archway. The way to the Idol is open! The residual energy from the Ward fades, but the path remains.
+(set: $greenSmokeDispelled to true)
+
+[[Proceed into the Idol's sanctum|Idol room]]
+
+
+
+:: after illusion wall {"position":"325,3575","size":"100,100"}
+The air beyond the former illusion is stale, heavy with the scent of long-undisturbed dust and a faint, almost metallic tang that prickles at the back of your throat. The passage itself seems subtly different here; the stonework is smoother, more deliberate, than the rough-hewn tunnels before. It continues onward, but your attention is caught by a //slight, ethereal shimmer// that seems to cling to the air a short distance ahead, like heat haze on a cold day, though there's no warmth here. It distorts the view of the passage beyond it, making the far end waver and ripple.
+
+
+A low, almost sub-audible hum seems to emanate from that direction, a vibration you feel more in your bones than hear with your ears.
+
+(link-reveal:"Follow the shimmer and the faint hum")[
+    Drawn by the subtle distortion and the strange resonance, you proceed cautiously. The shimmer intensifies as you approach, coalescing around what appears to be the end of this particular corridor. The air grows perceptibly colder.
+    
+    
+    The corridor then opens abruptly, not into another narrow passage, but into a grand, if somewhat foreboding, antechamber. The change in atmosphere is immediate and striking. The air here is significantly cooler, thick with the intermingled scents of damp, ancient stone, the lingering ghost of burnt incense, and that same sharp, acrid tang you noticed earlier, now much stronger. It bites at your nostrils, hinting at potent energies or strange substances.
+    
+    
+    [[Step fully into the antechamber and take in the view|BeforeIdolRoom]]
+]
 
 
 :: agi enemy room {"position":"1400,2725","size":"100,100"}
@@ -406,41 +809,13 @@ The snoring gets even louder as you wander through a steadily darker getting cor
 [[You enter the room and cannot believe your eyes.|agi enemy room]]
 
 
-:: front illusion wall {"position":"500,3100","size":"100,100"}
-[[after illusion wall]]
-
-
-:: info path 2 {"position":"700,2725","size":"100,100"}
-After going along the path for a quick while, you arrive in front of a locked door.
-
-(link:"Look around")[(show:?detect_scale)]
-|detect_scale)[In front of the locked door, you notice an old ruggedy scale and next to it 7 stone balls.
-(link:"Inspect the room")[(show:?main)]]
-|inspect_door)[You look at the door and theres a indentation similarily the size of one of the stone balls.
-There's also text on the door]
-|main)[{
-[(hide:?inspect_door)(hide:?inspect_scale)(hide:?detect_scale)]
-
-}(link:"Look at the scale")[(show:?inspect_scale)]]
-(link:"Inspect the door")[(show:?inspect_door)]
-
-|cont_2)[''You:'' But how can we then even detect them, when they are lifelike?
-(link:"Continue")[(show:?cont_3)]]
-|cont_3)[''Prof. Orlen Voss:'' Ahh good question, $Name, first of all they produce a slight shimmer, and if you're still unsure you can try dispelling it. If it's an illusionary wall, it will turn invisible for a few seconds.
-(link:"Continue")[(show:?cont_4)]]
-
-
-[[Go along path|int path drop down]]
-[[Return to the shimmering wall|int path 1]]
-
-
 :: int path 1 {"position":"700,2600","size":"100,100"}
 You notice the slight shimmer of the wall, and remember your professors often talked about illusioniary wall.
 <img src="https://daniel-pfeffer.github.io/images/brown-brick-wall-surface-texture.jpg" height="256px" width="256px">
 {
 	(if:$spells is 0)[(set:$spells to (ds:))]
-	(event: when $spells contains "dispell")[(show:?before_dispell)]
-	(if:$spells does not contain "dispell")[
+	(event: when $spells contains $spell_dispel)[(show:?before_dispell)]
+	(if:$spells does not contain $spell_dispel)[
     	(link:"Try to remember the details")[(show:?cont_1)]
     ]
 }
@@ -471,9 +846,9 @@ You notice the slight shimmer of the wall, and remember your professors often ta
 |before_dispell)[As you remember how to detect and dispel an illusionary wall, all you have to do now, is to well dispell it.
 (link:"//Dispell//")[(show:?after_dispell)]]
 |after_dispell)[{
-(set:$spells to it + (ds:"dispell"))
+(set:$spells to it + (ds:$spell_dispel))
 }The moment you cast //Dispell//, the wall infront of you becomes see-through and you see a path that seems to turn right after a few meters.
-[[Go along this path->info path 2]]]
+[[Go along this path->int path 2]]]
 [[Go back to the middle of the room|Entry hall]]
 
 
@@ -483,21 +858,178 @@ You notice a slight shimmer on this wall.
 (if:$INT is 2)[You remember how your teachers talked about magical doors, and that they often would shimmer quite similarily to this. But you cannot remember how exactly to dispell the magic.]
 
 There doesn't seem to be anything else interesting here.
-<!-- Brute force to skip illusion wall? -->
-(link:"Run against the wall")[]
+
 [[Go back to the middle of the room|Entry hall]]
 
 
+:: int path 2 {"position":"700,2725","size":"100,100"}
+(set: $scaleUses to it + 0)
+(set: $left to (a:))
+(set: $right to (a:))
+(set: $balls to (a: 1,2,3,4,5,6,7))
+(set:$correctBall to 5)
+After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
+The air is heavy with the scent of dust and something vaguely metallic. \
+A single, heavy door blocks your path. \
+Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale sits upon a stone pedestal.
+
+<!-- TODO: die here -->
+
+|info)[]
+
+|actions>[
+  (link-repeat: "Inspect the door")[(show:?insert){
+    (replace: ?info)[
+      The heavy oaken door, bound with tarnished iron, looms before you. \
+      It's cold to the touch and stubbornly resists any attempt to push it open. \
+      There's no visible keyhole or handle. \
+      Upon closer inspection, you spot a small, weathered stone tablet set into the wood, bearing a single, deeply carved sentence:
+''Only the lightest sphere shall break the seal.''
+    ]
+  }]
+  (link-repeat: "Inspect the balls")[{
+    (replace: ?info)[
+      You gather the seven spheres. \
+      They are crafted from a cool, smooth, dark stone, perhaps obsidian or polished basalt. \
+      Each one fits comfortably in your palm. \
+      Despite your keenest observation, they are utterly indistinguishable – no blemishes, no variations in weight you can discern by hand, no unique markings. \
+      One of them, however, holds the key.
+    ]
+  }]
+  (link-repeat: "Inspect the scale")[{
+    (replace: ?info)[
+      Resting on a dusty, ornate pedestal is an ancient balance scale. \
+      Its arms are crafted from a dark, pitted metal, possibly bronze, and the pans are shallow stone dishes. \
+      The whole contraption looks incredibly fragile, as if a strong breath might disturb its delicate equilibrium. \
+      Faint, almost eroded runes are carved around its base, and a more prominent inscription beneath the fulcrum reads:
+''Thrice may the truth be weighed, ere the spirits claim their due.''
+    ]
+  }]
+  (link-reveal: "Use the scale")[{
+    (if: $scaleUses > 3)[
+     (set: $scaleUses to 0)
+      (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
+  ''Crushed by falling debris, you have met your end in the temple's depths.'']
+      (replace: ?actions)[[[Restart->Room]]]
+    ]
+    }(else:)[{
+        (set: $left to (a:))
+        (set: $right to (a:))}
+        Select balls for the left pan (choose by number): {
+        (for: each _b, ...$balls)[
+          (link-repeat: (string: _b))[
+            (set: $left to it + (a:_b))
+            (replace: ?leftSel)[Left: (print: $left)]
+          ] 
+        ]}
+        |leftSel>[Left: (print: $left)]
+        
+        Select balls for the right pan (choose by number): {
+        (for: each _b, ...$balls)[
+          (link-repeat: (string: _b))[
+            (set: $right to it + (a:_b))
+            (replace: ?rightSel)[Right: (print: $right)]
+          ] 
+        ]}
+        |rightSel>[Right: (print: $right)]
+        
+        (link-repeat: "Weigh")[{
+          (set: $scaleUses to $scaleUses + 1)
+          (if: $scaleUses > 3)[
+          <!-- Death action -->
+            (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
+  ''Crushed by falling debris, you have met your end in the temple's depths.'']
+            (replace: ?actions)[[[Restart->Room]]]
+          ]
+         } (else:)[{
+            (set: $leftWeight to (folded: _n making _sum via _sum + 2, 0, ...$left))
+            (set:$rightWeight to (folded:_n making _sum via _sum + 2, 0, ...$right))
+            (if: ($correctBall is in $left))[ (set: $leftWeight to $leftWeight - 1) ]
+            (if: ($correctBall is in $right))[ (set: $rightWeight to $rightWeight - 1) ]
+            (replace:?leftSel)[](replace:?rightSel)[](set:$left to (a:))(set:$right to (a:))
+            (if: $leftWeight < $rightWeight)[
+              (replace: ?info)[The left pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (else-if: $leftWeight > $rightWeight)[
+              (replace: ?info)[The right pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (else:)[
+              (replace: ?info)[The pans remain perfectly balanced. The lighter sphere is not among those weighed, or you have an equal number of normal spheres on both sides. You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (if: $scaleUses is 3)[
+                  (append: ?info)[The scale groans ominously. It feels like it won't survive another use.]
+            ]
+          }]]]]
+          
+  [|insert)[(link:"Attempt to open the door with a sphere")[
+  Which sphere will you try in the door's mechanism? (Though there's no visible keyhole, perhaps one will react to the inscription.)
+  {
+  (for: each _b, ...$balls)[
+    (link:(string: _b))[(hide:?insert)
+     (if:_b is $correctBall)[
+     (replace:?info)[As you press Sphere (print: _b) against the stone tablet on the door, the carved words glow with a faint, ethereal light. With a deep rumble, the heavy door grinds open, revealing a passage beyond.[[Go on|int path drop down]]]
+     ](else:)[<!--Die here-->(replace:?info)[You died]]
+     ]
+     ]
+  }]]
+]
+]
+
+
 :: int path drop down {"position":"700,2850","size":"100,100"}
-[[Go along|shared path from int path]]
+The opening before you narrows into a tunnel, its walls roughly hewn from the living rock of the temple's foundations. The air within is noticeably cooler, carrying the faint, metallic scent of damp earth and ancient stone. Your torchlight (or whatever light source you possess) casts dancing, elongated shadows that make the passage seem to writhe and stretch endlessly into the oppressive darkness ahead.
+
+(link-reveal: "Press onward into the gloom.")[
+
+    You proceed cautiously, your senses heightened. Each footstep echoes unnervingly in the confined space, a stark sound that mingles with the persistent //plink... plink... plink// of unseen water dripping from the ceiling somewhere further in. The tunnel floor begins a gentle, almost imperceptible downward slope, and you realize you've been heading steadily deeper into the earth for some time. The silence, aside from your own sounds and the dripping, is profound.
+   
+    (link-reveal: "Continue deeper into the tunnel.")[
+    
+        After what feels like an eternity of walking through the monotonous dark, a subtle change reaches you. A faint current of air, a little fresher and carrying a hint of distant emptiness, brushes against your face. The oppressive blackness ahead seems to thin slightly, as if a new, perhaps larger, space might be near. The dripping sound is closer now.
+        
+        (link-reveal: "Approach the tunnel's apparent end.")[
+        
+            You finally reach what seems to be the tunnel's termination. It ends abruptly at a precipice – a sheer drop. Peering over the edge, your light illuminates the rough-cut floor of another passage directly below. You estimate the drop to be around three meters.
+            
+            The lower tunnel clearly continues onward from where it meets the ground, stretching away into more impenetrable darkness, inviting and ominous in equal measure. There are no readily apparent handholds on the smooth-looking drop, nor any gentle slopes leading down. It's a straight, somewhat daunting, descent.
+            
+            (link-reveal: "Consider your options.")[
+            
+                The stone below looks unforgiving. Landing awkwardly from that height could be painful, or worse. You'll need to decide how to proceed.
+                
+                [[Attempt to climb down carefully|ClimbDown]]
+                [[Look for items to cushion the fall|SearchForCushion]]
+                [[Risk it by jumping down|JumpDown]]
+            ]
+        ]
+    ]
+]
 
 
-:: puzzle int {"position":"500,3350","size":"100,100"}
-[[Puzzle for door]]
+:: shared path from int path {"position":"500,3100","size":"100,100"}
+(if: $startup is true or $majorInjury is 0)[(set: $majorInjury to "none")]
+(if: $startup is true or $minorInjury is 0)[(set: $minorInjury to "none")]
+
+(set:$fromAbove to 0)
+(if:(history: where its name contains "JumpDown")'s length is 1)(set:$fromAbove to 1)
+(if:(history: where its name contains "ClimbDown")'s length is 1)(set:$fromAbove to 1)
+
+You find yourself standing on the dusty floor of the lower tunnel. The air here is colder still, heavy with an ancient stillness. Light from your source barely penetrates the oppressive darkness that stretches ahead, and also back towards the (if:$fromAbove is 1)[base of the drop](else:)[pathway] you just navigated.
 
 
-:: shared path from int path {"position":"700,2975","size":"100,100"}
-[[front illusion wall]]
+(if: $majorInjury is not "none")[
+    A wave of intense pain washes over you from your $majorInjury. Each breath is an effort, and the thought of moving sends shivers of dread down your spine. This will severely hamper your progress.
+]
+(else-if: $minorInjury is not "none")[
+    You wince. Your $minorInjury makes itself known with a dull ache or a sharp sting, a constant reminder of your recent ordeal. It's manageable, but annoying.
+]
+(else-if:$fromAbove is 1)[
+    You take a moment to compose yourself, relatively unscathed from the descent.
+]
+
+The new passage beckons.
+
+[[Proceed forward into the darkness|LowerTunnelExplore]]
 
 
 :: shared path int trap {"position":"300,2600","size":"100,100"}
@@ -507,7 +1039,7 @@ There doesn't seem to be anything else interesting here.
 
 
 :: shared path path {"position":"350,2900","size":"100,100"}
-[[in front of illusion|front illusion wall]]
+[[shared path from int path]]
 
 
 :: shared path trap {"position":"300,2750","size":"100,100"}
