@@ -170,7 +170,7 @@ Torches flicker in sconces on the lower brick walls and on the upper gallery, ca
 (link: "Return to the previous passage")[(go-to: (history:)'s last)]
 
 
-:: CastDispel {"position":"275,3225","size":"100,100"}
+:: CastDispel {"position":"300,3250","size":"100,100"}
 You focus your will, uttering the arcane syllables of the Dispel Illusion spell. As the final word leaves your lips, a ripple of energy emanates from your hands towards the wall.
 
 
@@ -200,6 +200,21 @@ You take a deep breath and scrutinize the rock face of the drop. It's mostly smo
 ]
 
 
+:: DieAtWall {"position":"250,3450","size":"100,100"}
+The silence of this forgotten chamber became your tomb.
+The first day, hope flickered, a stubborn ember against the encroaching dark. You called out, your voice echoing unanswered in the oppressive stone.
+The second, thirst began its cruel siege, your throat a parched desert, your lips cracking like ancient parchment. Hunger gnawed with relentless teeth.
+By the third, your limbs were leaden, your thoughts a swirling fog. Were those footsteps? Or just the desperate imaginings of a fading mind?
+The fourth day was a blur of aching emptiness and a chilling cold that had little to do with the temple stones. Each sunrise, or what you imagined to be a sunrise in the unyielding black, brought the same hollow realization:
+
+**No one came...**
+
+And so, after five gruesome days, with your body a withered husk and your spirit extinguished by the crushing weight of isolation and neglect, you perished here.
+
+A final, ironic thought might have flickered in the last spark of your consciousness: "Why didn't you simply return?"
+Ah, yes. The all-powerful, omnipresent (and, it would seem, occasionally forgetful or perhaps just plain lazy) Developer, in their infinite wisdom, hadn't quite accounted for this particular dead end, or hadn't bothered to code a 'way back' from utter desolation. So, you had to suffer. A truly tragic oversight. [[Or was it?|Entry hall after death]]
+
+
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
 As you come to your senses you start moving around to  (link-reveal:"wake your body as well:")[
 Intelligence:  $INT
@@ -226,6 +241,7 @@ Some kind of combat mechanic, probably just description though
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
 Strength bhuild: see cracked wall, puzzle room enrtrance{
+<!--Create backup of important vars to reset after dying-->
 
 
 }<!--STR paths-->
@@ -237,7 +253,7 @@ Strength bhuild: see cracked wall, puzzle room enrtrance{
 
 
 }<!-- General paths -->
-[[Check the upper left path|shared path int trap]]
+[[Check the northern left path|shared path int trap]]
 (if:$items does not contain $item_tide_stone)[[[Check to see the passage with big eye motifs|PassageBeforeTideStone]]]
 [[You feel an ocean breeze from this room|Pond room]]
 [[You hear grumbling snores from another corridor|agi path]]
@@ -245,6 +261,26 @@ Strength bhuild: see cracked wall, puzzle room enrtrance{
 
 :: Entry hall after death {"position":"925,2825","size":"100,100"}
 {
+(set: $INT to $B_INT )
+(set: $STR to $B_STR )
+(set: $AGI to $B_AGI )
+(set: $Name to $B_Name)
+(set: $Class to $B_Class)
+(set: $spells to $B_spells)
+(set: $items to $B_items)
+(set: $Gold to $B_Gold)
+(set:$northernTrapAwareness to 0)
+(set:$northernTrapAvoidSuccess to 0)
+(set:$northernTrap_disarmed to 0)
+(set:$minorInjury to 0)
+(set:$majorInjury to 0)
+(set:$illusionWallDispelled to 0)
+(set:$pillar1Symbol to 0)
+(set:$pillar2Symbol to 0)
+(set:$pillar3Symbol to 0)
+(set:$tideStoneRetrieved to 0)
+(set:$foundActivationLever to 0)
+
 <!--Short notice of player death and informing him, he is in the Entry hall again-->
 }You wake up very exhausted, just as if you had a very bad nightmare. Looking around you find yourself in the Entry Hall of the dungeon. Wondering why you took a nap right here, [[you continue your journey|Entry hall]].
 
@@ -489,11 +525,11 @@ Sidequest for familiar
 [[Temple entrance]]
 
 
-:: LowerTunnelExplore {"position":"450,3250","size":"100,100"}
+:: LowerTunnelExplore {"position":"475,3275","size":"100,100"}
 {
 (if: $startup is true or $illusionWallDispelled is 0)[(set: $illusionWallDispelled to false)]
-(if: $startup is true or $items is 0)[(set: $items to (a:))]
-(if: $startup is true or $spells is 0)[(set: $spells to (a:$spell_dispel))]
+(if: $startup is true or $items is 0)[(set: $items to (ds:))]
+(if: $startup is true or $spells is 0)[(set: $spells to (ds:))]
 
 }You venture deeper into the lower tunnel. The air grows colder, and the silence is broken only by the crunch of your footsteps on the gritty floor. After a short walk, the passage appears to end in a solid wall of rock. It looks like a dead end.
 
@@ -510,6 +546,7 @@ However, something feels... off. A faint shimmer, almost imperceptible, dances a
         [[Try to push through it|PushIllusion]]
         (if: $spells contains $spell_dispel)[[[Cast 'Dispel Illusion'|CastDispel]]]
         (if: $items contains $item_tide_stone)[[[Use 'Tide Stone'|UseDispelItem]]]
+        (if:$spells does not contain $spell_dispell and $items does not contain $item_tide_stone)[[[Pray that someone finds you here|DieAtWall]]]
         [[Study the wall for weaknesses or triggers|StudyIllusion]]
     ]
 ](else:)[
@@ -534,6 +571,123 @@ You can see a sturdy man sitting on the comfortable looking chair at the other s
 With your goodbyes said you turn to leave and head towards the [[temple|Lost in Jungle]]. After leaving the office you remember that you could also visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]
 (if:$Token is true)[
 With your goodbyes said you turn to leave and heaad towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]]. You could also perhaps visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]]
+
+
+:: NorthernPathAttemptTrapAvoidance {"position":"0,2800","size":"100,100"}
+You meticulously pick your way across the narrowed passage, testing each footfall, trying to avoid any loose stones or direct pressure on the areas around the holes. It requires concentration and a steady hand.
+(set: $northernTrapAwareness to "high")
+(set: $northernTrapAvoidSuccess to (random: 1, 2))
+[[Onwards|NorthernPathTrapResolution]]
+
+
+
+:: NorthernPathCautiousPassageNoExamine {"position":"300,3025","size":"100,100"}
+Trusting your footing, you proceed through the narrowed section, mindful of the uneven ground but not stopping for a detailed inspection of the suspicious holes.
+(set: _northernTrap_awareness to "low")
+[[Onwards|NorthernPathTrapResolution]]
+
+
+:: NorthernPathQuickPassage {"position":"175,3000","size":"100,100"}
+Figuring speed might be an advantage, or simply wishing to get past the suspicious area quickly, you take a steadying breath and move swiftly through the narrowed passage.
+(set: $northernTrapAwareness to "none")
+[[Onwards|NorthernPathTrapResolution]]
+
+
+:: NorthernPathSearchForDisarm {"position":"125,2850","size":"100,100"}
+You carefully scan the walls and floor near the trapped section, looking for any hidden levers, pressure plates that might be decoys, or cut wires.
+{(set: $northernTrapAwareness to "high")
+(set: _northernTrap_disarmFound to (random: 1, 3))
+}(if: _northernTrap_disarmFound is 1)[
+    Tucked behind a loose block of stone near the floor, you find a small, corroded metal plate. Pressing it causes a faint //clink// from beneath the floor. It seems you've deactivated something.
+    (set: $northernTrap_disarmed to true)
+    
+    
+    [[Proceed with confidence|NothernPathPastTrapArea]]
+](else:)[
+    Despite your search, no obvious disarming mechanism presents itself. The trap remains a silent threat.
+    
+    
+    [[Attempt to carefully step over/around the treacherous section|NorthernPathAttemptTrapAvoidance]]
+    [[Decide to quickly move through the area|NorthernPathQuickPassage]]
+]
+
+
+:: NorthernPathTrapResolution {"position":"100,3150","size":"100,100"}
+(if: $northernTrap_disarmed is true)[
+    You pass through the narrowed section without incident. Whatever danger lurked here has been neutralized or was never active.
+    (link: "Continue onward")[(go-to: "NorthernPath_PastTrapArea")]
+](else:)[{
+    (set: _triggerTrap to false)
+    (if: $northernTrapAwareness is "none" or $northernTrapAwareness is "low")[
+        (if: (random:1, 2) is 1)(set: _triggerTrap to true)
+    ] (else-if: $northernTrapAwareness is "high" and $northernTrapAvoidSuccess is 2)[
+        (set: _triggerTrap to true)
+    ]
+
+}    (if: _triggerTrap is true)[
+        As your foot lands on a deceptively loose flagstone, it tilts, and you hear a sharp [[//CLICK!//|NorthernPathTrapTypeFallingDebris]] from beneath.
+    ](else:)[
+        You make it through the treacherous section. You hear a faint scraping sound as you pass the last of the holes, as if a mechanism reset, but nothing springs upon you.
+        
+        [[Continue onwards, relieved|NothernPathPastTrapArea]]
+    ]
+]
+
+
+:: NorthernPathTrapTypeFallingDebris {"position":"150,3300","size":"100,100"}
+{(set: $minorInjury to "none")
+}Suddenly, a section of the low ceiling directly above the narrowed passage groans ominously! With a crack, heavy stones and debris begin to rain down!
+
+(set: _dodgeSuccess to (random: 1, 2))
+(if: _dodgeSuccess is 1)[
+    You react instinctively, throwing yourself forward or to the side. Most of the debris crashes down where you were moments before. However, a glancing blow from a fist-sized rock catches your shoulder, sending a shock of pain through you.
+    (set: $minorInjury to "bruised shoulder from falling debris")
+    
+    Dusting yourself off, you assess the damage – painful, but not incapacitating.
+    
+    
+    [[Press on, wincing|NothernPathPastTrapArea]]
+](else:)[
+    You don't react quickly enough! Several heavy stones strike you, one catching you a nasty blow on the head, another slamming into your back. You're knocked to your knees, stars exploding in your vision.
+    (set: $majorInjury to "concussion and severe bruising from debris")
+    
+    The world spins. Getting up is a monumental effort.
+    
+    
+    [[Struggle to your feet and continue|NothernPathPastTrapArea]]
+]
+
+
+:: NotherPathCorridorWithTrap {"position":"125,2675","size":"100,100"}
+The corridor continues its descent, twisting slightly. After a short walk, the floor becomes treacherous – uneven, slick with patches of damp moss, and littered with loose stones. Ahead, the passage narrows for a stretch, and you spot a series of small, dark holes dotting the floor across this chokepoint, almost hidden by shadows and debris.
+
+
+(link-reveal: "Examine the floor and holes more closely")[
+    You cautiously approach the narrowed section, peering at the floor. The holes are undeniably man-made, arranged in a deliberate pattern. The ground around them looks slightly disturbed, as if concealing a mechanism. This definitely has the hallmarks of a trap.
+    
+    
+    [[Attempt to carefully step over/around the treacherous section|NorthernPathAttemptTrapAvoidance]]
+    [[Search the immediate vicinity for a way to disable the trap|NorthernPathSearchForDisarm]]
+    [[Decide to quickly move through the area, hoping to avoid triggering anything|NorthernPathQuickPassage]]
+]
+
+[[Continue onward without specific examination, treading carefully|NorthernPathCautiousPassageNoExamine]]
+
+
+:: NothernPathPastTrapArea {"position":"50,3475","size":"100,100"}
+{
+(if: $startup is true or $majorInjury is 0)[(set: $majorInjury to "none")]
+(if: $startup is true or $minorInjury is 0)[(set: $minorInjury to "none")]
+
+}Having navigated the trapped corridor (perhaps not unscathed), the Northern passage continues its descent. The air grows noticeably colder, and that faint, unnatural hum you might have detected on the Southern path becomes more pronounced here, seeming to vibrate through the very stone.
+
+(if: $majorInjury is not "none")[
+    Your $majorInjury makes every step an agonizing effort. The cold air seems to bite deeper into your wounds.
+] (else-if: $minorInjury is not "none")[
+    The dull ache of your $minorInjury is a constant companion, a reminder of the temple's dangers.
+]
+
+[[Venture into the dark|LowerTunnelExplore]]
 
 
 :: PassageBeforeTideStone {"position":"1300,2350","size":"100,100"}
@@ -700,7 +854,16 @@ Your study doesn't reveal a physical way through, but it reinforces your convict
 
 
 :: Temple entrance {"position":"1000,2350","size":"100,100"}
-Describe temple, describe carving and statues, feeling around the entrance. Edward returns if he was with us
+{
+(set: $B_INT to $INT )
+(set: $B_STR to $STR )
+(set: $B_AGI to $AGI )
+(set: $B_Name to $Name)
+(set: $B_Class to $Class)
+(set: $B_spells to $spells)
+(set: $B_items to $items)
+(set: $B_Gold to $Gold)
+}Describe temple, describe carving and statues, feeling around the entrance. Edward returns if he was with us
 
 [[Enter the Temple|Entry hall]]
 
@@ -1133,16 +1296,18 @@ The new passage beckons.
 
 
 :: shared path int trap {"position":"300,2600","size":"100,100"}
-[[Go along the path|shared path trap]]
+You choose the Northern passage. The tunnel immediately begins a noticeable descent, the stonework more rugged and seemingly older than other sections of the temple. The air is cool and carries a strong earthy scent, mingled with the faint, metallic tang of unseen mineral deposits. The only sound is the echo of your own footsteps and the distant, rhythmic drip of water.
 
-[[Go back|Entry hall]]
+
+[[Proceed deeper into the Northern tunnel|NotherPathCorridorWithTrap]]
+
 
 
 :: shared path path {"position":"350,2900","size":"100,100"}
 [[shared path from int path]]
 
 
-:: shared path trap {"position":"300,2750","size":"100,100"}
+:: shared path trap {"position":"325,2750","size":"100,100"}
 [[After trap go along path|shared path path]]
 
 
