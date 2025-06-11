@@ -110,28 +110,22 @@ Some kind of combat mechanic, probably just description though
 
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
-Strength bhuild: see cracked wall, puzzle room enrtrance
+As you look around the room the first thing that you notice a [[small well|small well]] right at the center. Looking left you can see a [[small path|shared path int trap]] leading to a corner before turning right and continuing on(if:$Class is "Mage")[, as well as a [[shimmering wall ||int path 1 opt]]pulsing with magic. It seems to be a projected illusion over a hidden entrance, something to look into definitely].
+
+Straight ahead you can see a worn down wall with a multitude of cracks crisscrossing all over it. (if:$Class is "Knight" )[ With your training you could perhap [[shatter it|Enemy Corridor]]. You might find something interesting behind it]
+
+As you continue checking the room you feel a small breeze coming from the right side, and you seem to smell the ocean slightly. It might be another entrance, but could be worth [[exploring|Pond room]].
+
+In the upper right conner ahead you can see a small winding path that looks difficult to traverse(if:$Classs is "Rogue")[, though your training should make it possible to [[continue that way|agi path]]]. The final exit from the room leads straight into a [[small room with puzzle motifs|Puzzle room 1]], 
 
 
-<!--STR paths-->
-(if:$STR is  4)[[Try to punch the cracked wal|Enemy Corridor]]
-
-<!--Int paths-->
-(if:$INT >= 3)[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1]]
-(if:$INT < 3)[[The wall to the left of the room shimmers slightly. Inspect it closer|int path 1 opt]]
-
-
-<!-- General paths -->
-[[Check the upper left path|shared path int trap]]
-[[Check to see small room with PUZZLE motifs|Puzzle room 1]]
-[[You feel an ocean breeze from this room|Pond room]]
-[[You hear grumbling snores from another corridor|agi path]]
 
 
 :: Entry hall after death {"position":"1200,2400","size":"100,100"}
 {
 <!--Short notice of player death and informing him, he is in the Entry hall again-->
 }You wake up very exhausted, just as if you had a very bad nightmare. Looking around you find yourself in the Entry Hall of the dungeon. Wondering why you took a nap right here, [[you continue your journey|Entry hall]].
+(set:$Insanity to it + 1)
 
 
 :: Idol room {"position":"900,3400","size":"100,100"}
@@ -280,8 +274,14 @@ check if pit is notced and try to jump it
 [[Try to jump over the pit|Puzzle for door]]
 
 
-:: Pond room {"position":"875,2600","size":"100,100"}
+:: Pond room {"position":"850,2675","size":"100,100"}
+As you head along the corridor the smell of the sea grows stronger. When you enter the room you realize it is a small alcove connecting to the ocean outside. (if:$Class is "Mage")[There should be some magic involved as you are quite far from the coast currrently, and also seem to be below the sea level as far as you can tell.]
 
+Examining the room you find it bereft of manmade structures, other than a small canal carved into the ground leading back the way you came. (if:$well is false)[Finding where it connects to the pond you raise an eyebrow in surprise.
+
+There looks to be a small mechanical dam, currently closed, that connects the small pond to the canal. What is surprising is you can see what seems to be recent human activity around the controls. The dirt and plants covering the lever are brushed aside and damaged. Once you finish with your adventure you will need to inform the mayor to look for the one responsible.
+
+Seeing as there is nothing else in the room you could try to [[open the dam|opened dam transition]], or just return to the [[main hall|Entry hall]] ](else:)[Seeing the water backed up all the way to the pond you see nothing else to do, so you [[return to where you came from|Entry hall]].]
 
 
 :: Puzzle for door {"position":"1000,3100","size":"100,100"}
@@ -290,7 +290,7 @@ Need to figure óut an entire puzzle for this, might take entire sidequest branc
 [[You hear a slight fizzle and see the door open ahead|Idol room]]
 
 
-:: Puzzle room 1 {"position":"1000,2600","size":"100,100"}
+:: Puzzle room 1 {"position":"1000,2625","size":"100,100"}
 
 
 
@@ -354,6 +354,7 @@ The chirping of seagulls startles you from the recollections, hinting that you s
 Describe temple, describe carving and statues, feeling around the entrance. Edward returns if he was with us
 
 [[Enter the Temple|Entry hall]]
+(set: $well to false)
 
 
 :: Tip room {"position":"1400,3100","size":"100,100"}
@@ -495,6 +496,11 @@ There doesn't seem to be anything else interesting here.
 [[Go along|shared path from int path]]
 
 
+:: opened dam transition {"position":"850,2925","size":"100,100"}
+As you look around the lever you can't find anything else, so you decide to just pull it. Water starts rushing down the canal as the mechanism opens up the blockage. You rush after the flow to see [[where it is headed|small well]].
+(set:$well to true)
+
+
 :: puzzle int {"position":"500,3350","size":"100,100"}
 [[Puzzle for door]]
 
@@ -515,6 +521,27 @@ There doesn't seem to be anything else interesting here.
 
 :: shared path trap {"position":"300,2750","size":"100,100"}
 [[After trap go along path|shared path path]]
+
+
+:: small well {"position":"925,2800","size":"100,100"}
+(if:$well is false)[
+Deciding to examine the well up close you can see a channel engraved into the floor,  leading into a small hole in the side of the well. Looking over the top you can see small kneeling motifs engraved all over it. They seem to be praying around a small lake with multiple people in it.(if:$Class is "Mage")[The small people seem to be slaves drawing water from the pond in small pails. It looks to be a ritual of some kind, though the details escape you.]
+
+The well is dark, but as you drop a pebble into it you can hear a ping of it hitting the bottom soon after. Looking around you cant see water anywhere, so either the channels dried out, or something blocked them. You would need to [[look around|Entry hall]] to see if you could find the blockage in that case.
+
+(if:(history: where its name contains "IntDream")'s length >= 1)[You also have the option of [[using magic to fill it|well death]], though looking at the ritual markings it might better to look for the intended source first.]]
+(if:$well is true)[
+Rushing back and foillowing the flow of water you can see it start entering the well. Getting closer you can hear the gurgling of wwater as it falls into the previously empty hole. Once it is filled suddenly sspoariks start appearing all around the rim. You take a few steps back, but nothing seems to be happening.
+
+The sparks fade after a while, and the rooms becomes quiet once again. After another examination you see that the engravings changed, with the lakes being replaced by what looks like the idol that has been appearing in everyone's nightmares. You finally take a step back and seeintg as nothing else is changing, and continue with your [[exploration|Entry hall]]
+]
+
+
+
+:: well death {"position":"975,2925","size":"100,100"}
+You decide to try and fill the well with a water condensation spell, seeing as there are no other people that could help in a ritual. As the water enters tha well red sparks start appearing all over the engraving, with the lakes starting to glow an ominous crimson.
+
+You could still [[stop|Entry hall]] and return to look around some more, though the well is almost full. Might as well just (link-reveal:"finish the job now.")[As the sparks increase in intensity you find yourself unable to stop the spell. Your magical reserves start dropping drastically, and you start losing you consciousness amid intense pain. (click-goto:?page,"Entry hall after death")]
 
 
 :: StoryStylesheet [stylesheet]
