@@ -81,6 +81,10 @@ As you come closer to the center you can see a small alley that seems to be a sh
 You are already nearing the large stone fortress like building in town, which would probably be the main holout poin incase the budding town was ever besieged. You can either take the [[alley|Alley fight]], or keep to the [[main road.|Town Hall]]
 
 
+:: Death by pit {"position":"1150,2775","size":"100,100"}
+As you blindly head forward, suddenly you find empty space under your foot. You are unable to blance yourself in time, and plummet to the hidden depths. Near instantly you can feel multiple jagged protrusions stabbing through you. Quickly losing consciousness, you blame yourself for not being more careful.(click-goto:?page,"Entry hall after death")
+
+
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
 As you come to your senses you start moving around to  (link-reveal:"wake your body as well:")[
 Intelligence:  $INT
@@ -103,10 +107,31 @@ testing new branch
 
 
 :: Enemy Corridor {"position":"1125,2600","size":"100,100"}
-Some kind of combat mechanic, probably just description though
+Deciding to take the easy way, you take a running start towards the cracked wall. As you near it you brace for impact, and us your shoulders to smash straight through. 
 
-[[Head forward|Pit]]
-[[Return to main chamber|Entry hall]]
+The wall crumbles and you can hear a high pitched shriek right away. While waiting for the dust to settle you remain vigilant, (if:$sword is true)[ready your brand new sword,] and look around.
+
+You find yourself in a narrow corridor that looks to lead up to a T intersection farther up ahead. Seeing as you whatever enemy you might have had is probably injured, you can either decide to head on ahead to [[get more distance|Death by pit]], or wait for the dust to clear up and (link-reveal:"chance an encounter with whatever you can hear digging through the rubble.")[(if:$sword is false)[
+Deciding to stay and fight, you ready your fist as a small green creature becomes visible through the setting dust. Now seeing that it is a simple goblin, and even looks very injured you rush towards it before it can come to it's senses. A quick hit to the skull and you can hear your armoured fists smashing through bone. The creature soundlessly crumples to the ground.
+
+There is nothing else around so you look ahead, and start sweating as you thank whatever god may be listening that you didn't choose to rush forward. You slowlyexamine the massive pit that has appeared at the end of the tunnel, and see that it is at least 3 meters deep, with sharp dagger-like stones at the bottom.
+
+See as this is the only way, you head back, and get ready for a running jump. With plenty of room to accelerate you manage to easily clear the pit, and find yourself on another corridor.
+
+To the right it just continues straight, whil on the left you can see a small indent, producing a blue glow. Realizing it to be magic you feel the need to [[explore|Puzzle for door]]  that way
+
+](else:)[
+Deciding to stay and fight, you steaedy your grip on your sword as a small green creature becomes visible through the setting dust. Now seeing that it is a simple goblin, and even looks very injured you rush towards it before it can come to it's senses. A quick swing through the nek and it's head falls to the ground, the creature soundlessly crumpling.
+
+There is nothing else around so you look ahead, and start sweating as you thank whatever god may be listening that you didn't choose to rush forward. You slowlyexamine the massive pit that has appeared at the end of the tunnel, and see that it is at least 3 meters deep, with sharp dagger-like stones at the bottom.
+
+See as this is the only way, you head back, and get ready for a running jump. With plenty of room to accelerate you manage to easily clear the pit, and find yourself on another corridor.
+
+To the right it just continues straight, whil on the left you can see a small indent, producing a blue glow. Realizing it to be magic you feel the need to [[explore|Puzzle for door]]  that way
+]]
+
+
+
 
 
 :: Entry hall {"position":"1000,2475","size":"100,100"}
@@ -266,12 +291,6 @@ You can see a sturdy man sitting on the comfortable looking chair at the other s
 With your goodbyes said you turn to leave and head towards the [[temple|Lost in Jungle]]. After leaving the office you remember that you could also visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]
 (if:$Token is true)[
 With your goodbyes said you turn to leave and heaad towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]]. You could also perhaps visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]]
-
-
-:: Pit {"position":"1125,2725","size":"100,100"}
-check if pit is notced and try to jump it
-
-[[Try to jump over the pit|Puzzle for door]]
 
 
 :: Pond room {"position":"850,2675","size":"100,100"}
