@@ -434,6 +434,122 @@ You spent the following days studying up on everything related to magic in the l
 The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
 
 
+:: IntPathScalePuzzle {"position":"700,2725","size":"100,100"}
+{
+(set: $scaleUses to it + 0)
+(set: $left to (a:))
+(set: $right to (a:))
+(set: $balls to (a: 1,2,3,4,5,6,7))
+(set:$correctBall to (random:1,7))
+}
+<img src="https://daniel-pfeffer.github.io/images/dungeon_puzzle-int.jpg"  class="story-image">After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
+The air is heavy with the scent of dust and something vaguely metallic. \
+A single, heavy door blocks your path. \
+Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale sits upon a stone pedestal.
+
+<!-- TODO: die here -->
+
+|info)[]
+
+|actions>[
+  (link-repeat: "Inspect the door")[(show:?insert){
+    (replace: ?info)[
+      The heavy oaken door, bound with tarnished iron, looms before you. \
+      It's cold to the touch and stubbornly resists any attempt to push it open. \
+      There's no visible keyhole or handle. \
+      Upon closer inspection, you spot a small, weathered stone tablet set into the wood, bearing a single, deeply carved sentence:
+''Only the lightest sphere shall break the seal.''
+    ]
+  }]
+  (link-repeat: "Inspect the balls")[{
+    (replace: ?info)[
+      You gather the seven spheres. \
+      They are crafted from a cool, smooth, dark stone, perhaps obsidian or polished basalt. \
+      Each one fits comfortably in your palm. \
+      Despite your keenest observation, they are utterly indistinguishable – no blemishes, no variations in weight you can discern by hand, no unique markings. \
+      One of them, however, holds the key.
+    ]
+  }]
+  (link-repeat: "Inspect the scale")[{
+    (replace: ?info)[
+      Resting on a dusty, ornate pedestal is an ancient balance scale. \
+      Its arms are crafted from a dark, pitted metal, possibly bronze, and the pans are shallow stone dishes. \
+      The whole contraption looks incredibly fragile, as if a strong breath might disturb its delicate equilibrium. \
+      Faint, almost eroded runes are carved around its base, and a more prominent inscription beneath the fulcrum reads:
+''Thrice may the truth be weighed, ere the spirits claim their due.''
+    ]
+  }]
+  (link-reveal: "Use the scale")[{
+    (if: $scaleUses > 3)[
+     (set: $scaleUses to 0)
+      (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
+  ''Crushed by falling debris, you have met your end in the temple's depths.'']
+      (replace: ?actions)[[[Restart->Entry hall after death]]]
+    ]
+    }(else:)[{
+        (set: $left to (a:))
+        (set: $right to (a:))}
+        Select balls for the left pan (choose by number): {
+        (for: each _b, ...$balls)[
+          (link-repeat: (string: _b))[
+            (set: $left to it + (a:_b))
+            (replace: ?leftSel)[Left: (print: $left)]
+          ]
+        ]}
+        |leftSel>[Left: (print: $left)]
+
+        Select balls for the right pan (choose by number): {
+        (for: each _b, ...$balls)[
+          (link-repeat: (string: _b))[
+            (set: $right to it + (a:_b))
+            (replace: ?rightSel)[Right: (print: $right)]
+          ]
+        ]}
+        |rightSel>[Right: (print: $right)]
+
+        (link-repeat: "Weigh")[{
+          (set: $scaleUses to $scaleUses + 1)
+          (if: $scaleUses > 3)[
+          <!-- Death action -->
+            (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
+  ''Crushed by falling debris, you have met your end in the temple's depths.'']
+            (replace: ?actions)[[[Restart->Entry hall after death]]]
+          ]
+         } (else:)[{
+            (set: $leftWeight to (folded: _n making _sum via _sum + 2, 0, ...$left))
+            (set:$rightWeight to (folded:_n making _sum via _sum + 2, 0, ...$right))
+            (if: ($correctBall is in $left))[ (set: $leftWeight to $leftWeight - 1) ]
+            (if: ($correctBall is in $right))[ (set: $rightWeight to $rightWeight - 1) ]
+            (replace:?leftSel)[](replace:?rightSel)[](set:$left to (a:))(set:$right to (a:))
+            (if: $leftWeight < $rightWeight)[
+              (replace: ?info)[The left pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (else-if: $leftWeight > $rightWeight)[
+              (replace: ?info)[The right pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (else:)[
+              (replace: ?info)[The pans remain perfectly balanced. The lighter sphere is not among those weighed, or you have an equal number of normal spheres on both sides. You have used the scale (print: $scaleUses) out of 3 times.]
+            ]
+            (if: $scaleUses is 3)[
+                  (append: ?info)[The scale groans ominously. It feels like it won't survive another use.]
+            ]
+          }]]]]
+
+  [|insert)[(link:"Attempt to open the door with a sphere")[
+  Which sphere will you try in the door's mechanism? (Though there's no visible keyhole, perhaps one will react to the inscription.)
+  {
+  (for: each _b, ...$balls)[
+    (link:(string: _b))[(hide:?insert)
+     (if:_b is $correctBall)[
+     (replace:?info)[As you press Sphere (print: _b) against the stone tablet on the door, the carved words glow with a faint, ethereal light. With a deep rumble, the heavy door grinds open, revealing a passage beyond.[[Go on|int path drop down]]]
+     ](else:)[<!--Die here-->(replace:?info)[You died]]
+     ]
+     ]
+  }]]
+]
+]
+
+
 :: IntroEdward {"position":"1000,1425","size":"100,100"}
 (if:(history: where its name contains "StrDreamStr")'s length is 0)[Guessing that it would be best to introduce yourself to the local enforcement, as might yield some clues about what is going on, you head towards the knight. He seems to perk up as you get near, showing that even as tired as he looks, he is still very aware of his surrounding. 
 (link-reveal:"'Greetings Ser! I have just arrived and am looking for the way to the Mayor's office. Could you please point me that way?'")[
@@ -530,7 +646,7 @@ There's a brief, heart-stopping moment of freefall.
     [[Grin and bear it, moving into the lower tunnel|shared path from int path]]
 ](else:)[
     You manage to tuck your body somewhat as you land, rolling with the impact. It’s still a jarring collision, knocking the wind from your lungs and sending a shockwave up your spine. You lie there for a moment, gasping, but a quick check reveals no broken bones – just a collection of new bruises and a racing heart.
-    (set: $minorInjury to "bruised and winded")
+    (set: $minorInjury to "bruised ankle")
 
     [[Stagger to your feet and enter the lower tunnel|shared path from int path]]
 ]
@@ -1117,7 +1233,7 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 |after_dispell)[{
 (set:$spells to it + (ds:$spell_dispel))
 }The moment you cast //Dispell//, the wall infront of you becomes see-through and you see a path that seems to turn right after a few meters.
-[[Go along this path->int path 2]]]
+[[Go along this path->IntPathScalePuzzle]]]
 [[Go back to the middle of the room|Entry hall]]
 
 
@@ -1129,122 +1245,6 @@ You notice a slight shimmer on this wall.
 There doesn't seem to be anything else interesting here.
 
 [[Go back to the middle of the room|Entry hall]]
-
-
-:: int path 2 {"position":"700,2725","size":"100,100"}
-{
-(set: $scaleUses to it + 0)
-(set: $left to (a:))
-(set: $right to (a:))
-(set: $balls to (a: 1,2,3,4,5,6,7))
-(set:$correctBall to 5)
-}
-<img src="https://daniel-pfeffer.github.io/images/dungeon_puzzle-int.jpg"  class="story-image">After going along the path for a quick while, you arrive in a dimly lit chamber within the temple. \
-The air is heavy with the scent of dust and something vaguely metallic. \
-A single, heavy door blocks your path. \
-Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale sits upon a stone pedestal.
-
-<!-- TODO: die here -->
-
-|info)[]
-
-|actions>[
-  (link-repeat: "Inspect the door")[(show:?insert){
-    (replace: ?info)[
-      The heavy oaken door, bound with tarnished iron, looms before you. \
-      It's cold to the touch and stubbornly resists any attempt to push it open. \
-      There's no visible keyhole or handle. \
-      Upon closer inspection, you spot a small, weathered stone tablet set into the wood, bearing a single, deeply carved sentence:
-''Only the lightest sphere shall break the seal.''
-    ]
-  }]
-  (link-repeat: "Inspect the balls")[{
-    (replace: ?info)[
-      You gather the seven spheres. \
-      They are crafted from a cool, smooth, dark stone, perhaps obsidian or polished basalt. \
-      Each one fits comfortably in your palm. \
-      Despite your keenest observation, they are utterly indistinguishable – no blemishes, no variations in weight you can discern by hand, no unique markings. \
-      One of them, however, holds the key.
-    ]
-  }]
-  (link-repeat: "Inspect the scale")[{
-    (replace: ?info)[
-      Resting on a dusty, ornate pedestal is an ancient balance scale. \
-      Its arms are crafted from a dark, pitted metal, possibly bronze, and the pans are shallow stone dishes. \
-      The whole contraption looks incredibly fragile, as if a strong breath might disturb its delicate equilibrium. \
-      Faint, almost eroded runes are carved around its base, and a more prominent inscription beneath the fulcrum reads:
-''Thrice may the truth be weighed, ere the spirits claim their due.''
-    ]
-  }]
-  (link-reveal: "Use the scale")[{
-    (if: $scaleUses > 3)[
-     (set: $scaleUses to 0)
-      (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
-  ''Crushed by falling debris, you have met your end in the temple's depths.'']
-      (replace: ?actions)[[[Restart->Entry hall after death]]]
-    ]
-    }(else:)[{
-        (set: $left to (a:))
-        (set: $right to (a:))}
-        Select balls for the left pan (choose by number): {
-        (for: each _b, ...$balls)[
-          (link-repeat: (string: _b))[
-            (set: $left to it + (a:_b))
-            (replace: ?leftSel)[Left: (print: $left)]
-          ]
-        ]}
-        |leftSel>[Left: (print: $left)]
-
-        Select balls for the right pan (choose by number): {
-        (for: each _b, ...$balls)[
-          (link-repeat: (string: _b))[
-            (set: $right to it + (a:_b))
-            (replace: ?rightSel)[Right: (print: $right)]
-          ]
-        ]}
-        |rightSel>[Right: (print: $right)]
-
-        (link-repeat: "Weigh")[{
-          (set: $scaleUses to $scaleUses + 1)
-          (if: $scaleUses > 3)[
-          <!-- Death action -->
-            (replace: ?info)[As you place the balls for a fourth time, a faint crack echoes from the scale's mechanism. With a groan of tortured metal and stone, the ancient device shatters, its pieces clattering to the floor. The pedestal crumbles, and the resulting tremor causes a section of the ceiling above you to collapse!
-  ''Crushed by falling debris, you have met your end in the temple's depths.'']
-            (replace: ?actions)[[[Restart->Entry hall after death]]]
-          ]
-         } (else:)[{
-            (set: $leftWeight to (folded: _n making _sum via _sum + 2, 0, ...$left))
-            (set:$rightWeight to (folded:_n making _sum via _sum + 2, 0, ...$right))
-            (if: ($correctBall is in $left))[ (set: $leftWeight to $leftWeight - 1) ]
-            (if: ($correctBall is in $right))[ (set: $rightWeight to $rightWeight - 1) ]
-            (replace:?leftSel)[](replace:?rightSel)[](set:$left to (a:))(set:$right to (a:))
-            (if: $leftWeight < $rightWeight)[
-              (replace: ?info)[The left pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
-            ]
-            (else-if: $leftWeight > $rightWeight)[
-              (replace: ?info)[The right pan dips lower, indicating it holds the lighter sphere(s). You have used the scale (print: $scaleUses) out of 3 times.]
-            ]
-            (else:)[
-              (replace: ?info)[The pans remain perfectly balanced. The lighter sphere is not among those weighed, or you have an equal number of normal spheres on both sides. You have used the scale (print: $scaleUses) out of 3 times.]
-            ]
-            (if: $scaleUses is 3)[
-                  (append: ?info)[The scale groans ominously. It feels like it won't survive another use.]
-            ]
-          }]]]]
-
-  [|insert)[(link:"Attempt to open the door with a sphere")[
-  Which sphere will you try in the door's mechanism? (Though there's no visible keyhole, perhaps one will react to the inscription.)
-  {
-  (for: each _b, ...$balls)[
-    (link:(string: _b))[(hide:?insert)
-     (if:_b is $correctBall)[
-     (replace:?info)[As you press Sphere (print: _b) against the stone tablet on the door, the carved words glow with a faint, ethereal light. With a deep rumble, the heavy door grinds open, revealing a passage beyond.[[Go on|int path drop down]]]
-     ](else:)[<!--Die here-->(replace:?info)[You died]]
-     ]
-     ]
-  }]]
-]
-]
 
 
 :: int path drop down {"position":"725,2850","size":"100,100"}
@@ -1387,4 +1387,9 @@ tw-link:hover {
   margin: 1em auto;
   border-radius: 8px; /* optional rounded corners /
   box-shadow: 0 0 10px rgba(0,0,0,0.3); / optional styling */
+}
+
+tw-sidebar
+{
+	display: none;
 }
