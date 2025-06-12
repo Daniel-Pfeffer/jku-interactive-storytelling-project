@@ -13,7 +13,7 @@ The Whispering Idol
 
 
 :: ACTOneStart {"position":"975,625","size":"100,100"}
-Waking with a start, you quickly take in your surroundings, looking around the dimly lit cabin. Feeling your wet bedding, you can sense beads of sweat rolling down your forehead, as you try to remember what exactly you were dreaming about. The only thing you remember is the picturesque view of academy city, but you aren't sure what you were doing. 
+<img src="https://www.cruisingworld.com/uploads/2021/09/Original-layout.jpg"  class="story-image">Waking with a start, you quickly take in your surroundings, looking around the dimly lit cabin. Feeling your wet bedding, you can sense beads of sweat rolling down your forehead, as you try to remember what exactly you were dreaming about. The only thing you remember is the picturesque view of academy city, but you aren't sure what you were doing. 
 
 As you dig deeper in your memories you remember arriving at the central square on your way to the academy. To your right there were the spiraling towers of the [[Imperial Academy of Magic|IntDream]]. To your left you can see the towering walls surrounding the [[Knight Academy|StrDream]]. You can still hear the clashing of swords from within the massive barricade. Finally straight ahead was the somewhat hidden entrance to the [[Rogue's Abode|AgiDream]]. While obvious to the trained eye, it was positioned so that the everyday peasant won't even look twice.
 
@@ -50,7 +50,8 @@ As you dig deeper in your memories you remember arriving at the central square o
 {(set: $INT to it + 0)(set: $STR to it + 1)(set: $AGI to it + 2)
 }You can still remember the offputting stink around the entrance that helped dissuade anyone from sticking around if they were not there for a purpose. After entering you were met with a dim hall, with all smell disappearing after crossing the door. Your experience points to [[magic|AgiDreamInt]], though you were never formally taught any, every little thief needs to recognize a mage.
 
-You were quite shocked to meet [[Wraith|AgiDreamAgi]], who recruited you into this whole mess. He was somewhat of a mentor figure, helping you when you first got started looking for some way to feed yourself back in the village. He introduced himself after finding you beaten up in your first large [[fight|AgiDreamStr]]. You remember not getting caught was part of the profession after that.
+
+<img src="https://as1.ftcdn.net/jpg/04/40/75/46/1000_F_440754602_Loyopn8Xe6jD6y2KT9GYUQ9ZXtd3AfUQ.jpg" class="story-image">You were quite shocked to meet [[Wraith|AgiDreamAgi]], who recruited you into this whole mess. He was somewhat of a mentor figure, helping you when you first got started looking for some way to feed yourself back in the village. He introduced himself after finding you beaten up in your first large [[fight|AgiDreamStr]]. You remember not getting caught was part of the profession after that.
 
 
 :: AgiDreamAgi {"position":"750,875","size":"100,100"}
@@ -100,7 +101,7 @@ Finally at the entrance to what looks to be the main street you see a [[well dre
 
 :: Back alley event {"position":"1150,1575","size":"100,100"}
 {(set: $Intro to false)
-}As you head on ahead by yourself you look around the town. The dock area seems to be mostly finished, with a main road leading towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alone until larger industry is present to leave room for them to expand around the port.
+}<img src="https://static.wikia.nocookie.net/thiefgame/images/4/42/AuldaleBackAlley.jpg/revision/latest?cb=20140331195205" class="story-image">As you head on ahead by yourself you look around the town. The dock area seems to be mostly finished, with a main road leading towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alone until larger industry is present to leave room for them to expand around the port.
 
 The closer you get to what you can only assume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to large quarries or traderoutes. 
 As you come closer to the center you can see a small alley that seems to be a shortcut.
@@ -170,7 +171,7 @@ Torches flicker in sconces on the lower brick walls and on the upper gallery, ca
 (link: "Return to the previous passage")[(go-to: (history:)'s last)]
 
 
-:: CastDispel {"position":"300,3250","size":"100,100"}
+:: CastDispel {"position":"300,3200","size":"100,100"}
 You focus your will, uttering the arcane syllables of the Dispel Illusion spell. As the final word leaves your lips, a ripple of energy emanates from your hands towards the wall.
 
 
@@ -181,7 +182,7 @@ The shimmering intensifies for a moment, then, like mist dissolving in the sun, 
 [["Step through the revealed archway|after illusion wall]]
 
 
-:: ClimbDown {"position":"475,2875","size":"100,100"}
+:: ClimbDown {"position":"425,2875","size":"100,100"}
 You take a deep breath and scrutinize the rock face of the drop. It's mostly smooth, worn by time or water, offering precious few purchase points. Still, you decide to try. Bracing yourself against one wall, you begin to lower yourself, feet searching blindly for any crack, any protruding nub of stone. Your fingers strain, gripping tiny ledges.
 
 (set: _climbSuccess to (random: 1, 3))
@@ -401,8 +402,11 @@ The idol is within reach. The chamber is silent, save for the flickering of the 
 
 
 :: IntDream {"position":"975,750","size":"100,100"}
-{(set: $INT to it + 2)(set: $STR to it + 0)(set: $AGI to it + 1)
-}You can still remember your joy when you finally set foot in the massive magical tower to register for your first semester. Since you were a small child you have always been fascinated by [[magic|IntDreamInt]].
+{
+(set: $INT to it + 2)
+(set: $STR to it + 0)
+(set: $AGI to it + 1)
+}<img src="https://i.pinimg.com/736x/f1/01/83/f10183afaefb9738574fd4ee7763bc29.jpg" class="story-image">You can still remember your joy when you finally set foot in the massive magical tower to register for your first semester. Since you were a small child you have always been fascinated by [[magic|IntDreamInt]].
 
 Your first encounter with it was when you were still a small child, though you still remember it as clear as day. Your town was besieged by monsters, and everyone was fighting to make sure they couldn't get over the wall while waiting for reinforcements from the nearby settlements. You can still remember Lord Thorley come flying in and [[wrecking havoc|IntDreamStr]] among the beasts with a flaming magical blade. Even from your [[hiding spot|IntDreamAgi]] you could see the fierce flames incinerating anything coming close to them.
 
@@ -630,7 +634,7 @@ You decide it is about time to introduce yourself before tempers flair even more
 (link-reveal:"'Do you have any proof of what you say? We can't just let anyone through with that excuse.'")[
 You think it over. Though you have your official ID that won't really solve the issue here. Instead you dig around in your bag and hand over your (link-reveal:"'Guild assignment sheet.'")[
 (link-reveal:"'Ah, yes this should do fine, go on ahead, the mayor is already waiting for you.'")[
-You thank them for their time, and [[head on inside|Mayor Meeting]]]]]]
+You thank them for their time, and [[head on inside|Mayor Meeting]]]]]]]
 
 
 :: JumpDown {"position":"750,3000","size":"100,100"}
@@ -652,13 +656,17 @@ There's a brief, heart-stopping moment of freefall.
 ]
 
 
-:: Lost in Jungle {"position":"1150,2225","size":"100,100"}
-Sidequest for familiar
+:: Lost in Jungle {"position":"1200,2225","size":"100,100"}
+<img src="https://i.pinimg.com/736x/de/91/eb/de91eb8625f1216cb83c5d215d2725ea.jpg" class="story-image">As you set off alone, you can't help but wonder if it would have been safer to find a local guide, however it is hard to trust your back to anyome you don't know.
 
-[[Temple entrance]]
+As you get deeper in the local forest the vegetation becomes thicker, and the sounds of human civilization disappear. you start noticing small bird nests among the leaves, and even a large python just hanging off the branches.
+
+The feeling of the forest also slowly changes, beoming more ominous as you head deeper. The flora transitioning from an everday forest to a more jungle like feel. you can feel that something is starting to guide you ever deeper.
+
+As you fight your way through the last trees you can feel that you are nearly [[there|Temple entrance]].
 
 
-:: LowerTunnelExplore {"position":"475,3275","size":"100,100"}
+:: LowerTunnelExplore {"position":"450,3250","size":"100,100"}
 {
 (if: $startup is true or $illusionWallDispelled is 0)[(set: $illusionWallDispelled to false)]
 (if: $startup is true or $items is 0)[(set: $items to (ds:))]
@@ -707,26 +715,26 @@ With your goodbyes said you turn to leave and head towards the [[temple|Lost in 
 With your goodbyes said you turn to leave and head towards the entrance. Since Edward offered to help, you will need to meet up with him before heading to the [[temple|Temple entrance]]. You could also perhaps visit the [[merchant|IntroGuss]] you saw at port, he might have something that could help.]]
 
 
-:: NorthernPathAttemptTrapAvoidance {"position":"0,2800","size":"100,100"}
+:: NorthernPathAttemptTrapAvoidance {"position":"125,2825","size":"100,100"}
 You meticulously pick your way across the narrowed passage, testing each footfall, trying to avoid any loose stones or direct pressure on the areas around the holes. It requires concentration and a steady hand.
 (set: $northernTrapAwareness to "high")
 (set: $northernTrapAvoidSuccess to (random: 1, 2))
 [[Onwards|NorthernPathTrapResolution]]
 
 
-:: NorthernPathCautiousPassageNoExamine {"position":"300,3025","size":"100,100"}
+:: NorthernPathCautiousPassageNoExamine {"position":"350,3050","size":"100,100"}
 Trusting your footing, you proceed through the narrowed section, mindful of the uneven ground but not stopping for a detailed inspection of the suspicious holes.
 (set: _northernTrap_awareness to "low")
 [[Onwards|NorthernPathTrapResolution]]
 
 
-:: NorthernPathQuickPassage {"position":"175,3000","size":"100,100"}
+:: NorthernPathQuickPassage {"position":"250,2975","size":"100,100"}
 Figuring speed might be an advantage, or simply wishing to get past the suspicious area quickly, you take a steadying breath and move swiftly through the narrowed passage.
 (set: $northernTrapAwareness to "none")
 [[Onwards|NorthernPathTrapResolution]]
 
 
-:: NorthernPathSearchForDisarm {"position":"125,2850","size":"100,100"}
+:: NorthernPathSearchForDisarm {"position":"0,2850","size":"100,100"}
 You carefully scan the walls and floor near the trapped section, looking for any hidden levers, pressure plates that might be decoys, or cut wires.
 {(set: $northernTrapAwareness to "high")
 (set: _northernTrap_disarmFound to (random: 1, 3))
@@ -853,8 +861,9 @@ You brace yourself and push against the shimmering wall. Your hands meet solid, 
 
 
 :: Rebirth awakening {"position":"625,1175","size":"100,100"}
-{(set: $Insanity to it + 1)
-}You shudder as you suddenly awaken, an ominous feeling comes over you. You are gasping for air as you can feel an overwhelming wrongness that you can't describe. Trying to figure out what is happening, you can suddenly hear the chirping of seagulls, and a familiar rocking of the boat. just as you start gathering yourself you hear a loud knock on the door.
+{
+(set: $Insanity to it + 1)
+}<img src="https://www.cruisingworld.com/uploads/2021/09/Original-layout.jpg"  class="story-image">You shudder as you suddenly awaken, an ominous feeling comes over you. You are gasping for air as you can feel an overwhelming wrongness that you can't describe. Trying to figure out what is happening, you can suddenly hear the chirping of seagulls, and a familiar rocking of the boat. just as you start gathering yourself you hear a loud knock on the door.
  (link-reveal:'"Oy! You up yet?"')[
 
 "Arr, we be making landfall in a few minutes. Now haul yer scurvy hide off me ship!”, grumbles the captain you’ve hired to bring you to the island, Lord Thorley hired you to investigate.
@@ -865,7 +874,7 @@ A few minutes later you hear the ship docking with sailors working around the de
 ]
 
 
-:: RetriveTideStone {"position":"1850,2525","size":"100,100"}
+:: RetriveTideStone {"position":"1850,2500","size":"100,100"}
 You step onto the now-dry basin floor and approach the raised plinth. The Tide Stone pulses with a gentle, cool blue light. As your fingers close around it, you feel a faint thrumming, like the distant rhythm of the ocean's heart. It's surprisingly heavy, cool to the touch, and seems to absorb the ambient light.
 (set: $tideStoneRetrieved to true)
 (set: $items to it + (ds:$item_tide_stone))
@@ -1190,7 +1199,7 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 }The snoring gets even louder as you wander through a steadily darker getting corridor. You reach a small door made of half-rotten wood. On one hand, you think about your [[possibility to just go back to the main hall|Entry hall]], as the grumbling noises from behind the door seem very scary. But then you retake faith into your skills, and [[reach for the rusty handle|agi enemy room]], of which you are quite surprised it still functions properly.
 
 
-:: front illusion wall {"position":"500,3100","size":"100,100"}
+:: front illusion wall {"position":"850,3425","size":"100,100"}
 [[after illusion wall]]
 
 
@@ -1283,7 +1292,7 @@ As you look around the lever you can't find anything else, so you decide to just
 (set:$items to it + (ds:$item_sacred_ward))
 
 
-:: shared path from int path {"position":"500,3100","size":"100,100"}
+:: shared path from int path {"position":"525,3100","size":"100,100"}
 {
 (if: $startup is true or $majorInjury is 0)[(set: $majorInjury to "none")]
 (if: $startup is true or $minorInjury is 0)[(set: $minorInjury to "none")]
@@ -1315,14 +1324,6 @@ You choose the Northern passage. The tunnel immediately begins a noticeable desc
 
 
 [[Proceed deeper into the Northern tunnel|NotherPathCorridorWithTrap]]
-
-
-:: shared path path {"position":"350,2900","size":"100,100"}
-[[shared path from int path]]
-
-
-:: shared path trap {"position":"325,2750","size":"100,100"}
-[[After trap go along path|shared path path]]
 
 
 :: small well {"position":"975,2750","size":"100,100"}
