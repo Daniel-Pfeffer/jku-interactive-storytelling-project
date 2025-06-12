@@ -13,9 +13,11 @@ The Whispering Idol
 
 
 :: ACTOneStart {"position":"975,625","size":"100,100"}
+<img src="https://www.cruisingworld.com/uploads/2021/09/Original-layout.jpg"  class="story-image">
 Waking with a start, you quickly take in your surroundings, looking around the dimly lit cabin. Feeling your wet bedding, you can sense beads of sweat rolling down your forehead, as you try to remember what exactly you were dreaming about. The only thing you remember is the picturesque view of academy city, but you aren't sure what you were doing. 
 
 As you dig deeper in your memories you remember arriving at the central square on your way to the academy. To your right there were the spiraling towers of the [[Imperial Academy of Magic|IntDream]]. To your left you can see the towering walls surrounding the [[Knight Academy|StrDream]]. You can still hear the clashing of swords from within the massive barricade. Finally straight ahead was the somewhat hidden entrance to the [[Rogue's Abode|AgiDream]]. While obvious to the trained eye, it was positioned so that the everyday peasant won't even look twice.
+
 
 
 :: ActivateTidePuzzle {"position":"1700,2525","size":"100,100"}
@@ -48,7 +50,9 @@ As you dig deeper in your memories you remember arriving at the central square o
 
 :: AgiDream {"position":"675,750","size":"100,100"}
 {(set: $INT to it + 0)(set: $STR to it + 1)(set: $AGI to it + 2)
-}You can still remember the offputting stink around the entrance that helped dissuade anyone from sticking around if they were not there for a purpose. After entering you were met with a dim hall, with all smell disappearing after crossing the door. Your experience points to [[magic|AgiDreamInt]], though you were never formally taught any, every little thief needs to recognize a mage.
+}
+<img src="https://as1.ftcdn.net/jpg/04/40/75/46/1000_F_440754602_Loyopn8Xe6jD6y2KT9GYUQ9ZXtd3AfUQ.jpg" class="story-image">
+You can still remember the offputting stink around the entrance that helped dissuade anyone from sticking around if they were not there for a purpose. After entering you were met with a dim hall, with all smell disappearing after crossing the door. Your experience points to [[magic|AgiDreamInt]], though you were never formally taught any, every little thief needs to recognize a mage.
 
 You were quite shocked to meet [[Wraith|AgiDreamAgi]], who recruited you into this whole mess. He was somewhat of a mentor figure, helping you when you first got started looking for some way to feed yourself back in the village. He introduced himself after finding you beaten up in your first large [[fight|AgiDreamStr]]. You remember not getting caught was part of the profession after that.
 
@@ -80,7 +84,7 @@ They appreciated you trying to get away even less, rewarding you with quite a fe
 The chirping of seagulls startles you from the recollections, hinting that you shall soon be making [[landfall|DreamEnd]] on the island.
 
 
-:: Alley fight {"position":"1175,1725","size":"100,100"}
+:: Alley fight {"position":"1100,1850","size":"100,100"}
 Deciding to brave the alley to save a few minutes, you start heading towards the crates blocking your sight and deeper into the alley.
 
 (if:(history: where its name contains "AgiDream")'s length >= 1)[(if:$items contains $item_dagger)[You clutch your recently bought dagger as you pass the crates, and to no one's surprise a shadow suddenly leaps at you. Just before it can reach you, you swing your dagger in a small arc and feel it cutting something. You can hear a gurgling sound as the shadows flies past you and falls to the ground. You can see a haggard figure clutching at his throat as crimson blood flows in between his fingers. As he collapses, you quickly search him to see if there are any clues, but you can only find (link-reveal:"10 gold")[(set: $Gold to it + 10)] on him. After quickly collecting it you [[head on your way|Town Hall]]].
@@ -98,9 +102,11 @@ In the marketplace you can see a large construction happening, and a small [[dwa
 Finally at the entrance to what looks to be the main street you see a [[well dressed elf|IntroSelene]] looking around and taling notes. She's probably related to the local government, as their kind hardly visit docks out of interest. Most elves are usually found deep in the northern forest, or in the different magical organizations around the empire. While some do explore the frontier settlements you have never heard of any that would take joy in fishing.
 
 
-:: Back alley event {"position":"1150,1575","size":"100,100"}
+:: Back alley event {"position":"1150,1600","size":"100,100"}
 {(set: $Intro to false)
-}As you head on ahead by yourself you look around the town. The dock area seems to be mostly finished, with a main road leading towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alone until larger industry is present to leave room for them to expand around the port.
+}
+<img src="https://static.wikia.nocookie.net/thiefgame/images/4/42/AuldaleBackAlley.jpg/revision/latest?cb=20140331195205" class="story-image">
+As you head on ahead by yourself you look around the town. The dock area seems to be mostly finished, with a main road leading towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alone until larger industry is present to leave room for them to expand around the port.
 
 The closer you get to what you can only assume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to large quarries or traderoutes. 
 As you come closer to the center you can see a small alley that seems to be a shortcut.
@@ -220,6 +226,7 @@ Ah, yes. The all-powerful, omnipresent (and, it would seem, occasionally forgetf
 
 
 :: DreamEnd {"position":"1000,1175","size":"100,100"}
+<img src="https://www.cruisingworld.com/uploads/2021/09/Original-layout.jpg"  class="story-image">
 As you come to your senses you start moving around to  (link-reveal:"wake your body as well:")[
 Intelligence:  $INT
 Strength: $STR
@@ -402,7 +409,9 @@ The idol is within reach. The chamber is silent, save for the flickering of the 
 
 :: IntDream {"position":"975,750","size":"100,100"}
 {(set: $INT to it + 2)(set: $STR to it + 0)(set: $AGI to it + 1)
-}You can still remember your joy when you finally set foot in the massive magical tower to register for your first semester. Since you were a small child you have always been fascinated by [[magic|IntDreamInt]].
+}
+<img src="https://i.pinimg.com/736x/f1/01/83/f10183afaefb9738574fd4ee7763bc29.jpg" class="story-image">
+You can still remember your joy when you finally set foot in the massive magical tower to register for your first semester. Since you were a small child you have always been fascinated by [[magic|IntDreamInt]].
 
 Your first encounter with it was when you were still a small child, though you still remember it as clear as day. Your town was besieged by monsters, and everyone was fighting to make sure they couldn't get over the wall while waiting for reinforcements from the nearby settlements. You can still remember Lord Thorley come flying in and [[wrecking havoc|IntDreamStr]] among the beasts with a flaming magical blade. Even from your [[hiding spot|IntDreamAgi]] you could see the fierce flames incinerating anything coming close to them.
 
@@ -537,9 +546,15 @@ There's a brief, heart-stopping moment of freefall.
 
 
 :: Lost in Jungle {"position":"1150,2225","size":"100,100"}
-Sidequest for familiar
+<img src="https://i.pinimg.com/736x/de/91/eb/de91eb8625f1216cb83c5d215d2725ea.jpg" class="story-image">
+As you set off alone, you can't help but wonder if it would have been safer to find a local guide, however it is hard to trust your back to anyome you don't know.
 
-[[Temple entrance]]
+As you get deeper in the local forest the vegetation becomes thicker, and the sounds of human civilization disappear. you start noticing small bird nests among the leaves, and even a large python just hanging off the branches.
+
+The feeling of the forest also slowly changes, beoming more ominous as you head deeper. The flora transitioning from an everday forest to a more jungle like feel. you can feel that something is starting to guide you ever deeper.
+
+As you fight your way through the last trees you can feel that you are nearly [[there|Temple entrance]].
+
 
 
 :: LowerTunnelExplore {"position":"475,3275","size":"100,100"}
@@ -738,7 +753,9 @@ You brace yourself and push against the shimmering wall. Your hands meet solid, 
 
 :: Rebirth awakening {"position":"625,1175","size":"100,100"}
 {(set: $Insanity to it + 1)
-}You shudder as you suddenly awaken, an ominous feeling comes over you. You are gasping for air as you can feel an overwhelming wrongness that you can't describe. Trying to figure out what is happening, you can suddenly hear the chirping of seagulls, and a familiar rocking of the boat. just as you start gathering yourself you hear a loud knock on the door.
+}
+<img src="https://www.cruisingworld.com/uploads/2021/09/Original-layout.jpg"  class="story-image">
+You shudder as you suddenly awaken, an ominous feeling comes over you. You are gasping for air as you can feel an overwhelming wrongness that you can't describe. Trying to figure out what is happening, you can suddenly hear the chirping of seagulls, and a familiar rocking of the boat. just as you start gathering yourself you hear a loud knock on the door.
  (link-reveal:'"Oy! You up yet?"')[
 
 "Arr, we be making landfall in a few minutes. Now haul yer scurvy hide off me ship!”, grumbles the captain you’ve hired to bring you to the island, Lord Thorley hired you to investigate.
@@ -818,9 +835,17 @@ The ten-foot drop remains as daunting as before.
 [[Risk a direct jump|JumpDown]]
 
 
+:: StoryInterface {"position":"1225,600","size":"100,100"}
+|musicplayer>[
+	<audio id="bgm" src="https://file.garden/aEp_jzgB2QeyUQeS/game-bgm.mp3" autoplay  loop hidden></audio>
+]
+
+
 :: StrDream {"position":"1275,750","size":"100,100"}
 {(set: $INT to it + 0)(set: $STR to it + 2)(set: $AGI to it + 1)
-}Ah, you finally remember, this was your first day reporting to the academy to further your education as a knight. You can still recall the stern face of your instructor Edward, a decorated knight who decided to pass on what he learned to the younger generation before starting his next adventure. He was always your favorite, strict but caring as he guided the battalion of idiots he was tasked with training. 
+}
+<img src="https://i.pinimg.com/736x/14/94/b5/1494b5d4ded04641fdaf938600348975.jpg" class="story-image">
+Ah, you finally remember, this was your first day reporting to the academy to further your education as a knight. You can still recall the stern face of your instructor Edward, a decorated knight who decided to pass on what he learned to the younger generation before starting his next adventure. He was always your favorite, strict but caring as he guided the battalion of idiots he was tasked with training. 
 
 Reminiscing about the past, you remember as you left home. Your parents were so proud of you after you won the [[sparing contest|StrDreamStr]] at the nearby town, though you decided not to tell them how you got the qualification to even participate. Finding a reputable [[forger|StrDreamAgi]] was a difficult task, as you were from a small family in the countryside and did not have any connections in town. It took quite the effort to [[research|StrDreamInt]] what papers you would even need for the contest, as it was not really advertised outside of town.
 
@@ -976,6 +1001,7 @@ Another rattling laughter. "There are very few things I do not know about these 
 
 
 :: TownCenter {"position":"925,1650","size":"100,100"}
+<img src="https://i.pinimg.com/736x/17/33/1e/17331ef8772ee503f8e6ccd82673c879.jpg" class="story-image">
 As you follow Selene, you look around the town. The dock area seems to be mostly finished, with a main road leading towards the center of town. On the sides there are mostly half finished construction sites and mostly empty fields, probably left alone until larger industry is present to leave room for them to expand around the port.
 
 The closer you get to what you can only assume is the town center the more buildings there are that look entirely finished and occupied. The buildings seem to be a mixture of rocks and wood, something common for new frontier settlements that have no access to large quarries or traderoutes. 
