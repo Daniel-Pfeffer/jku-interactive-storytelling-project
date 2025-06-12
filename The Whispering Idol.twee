@@ -370,7 +370,7 @@ Retracing your steps through the labyrinthine temple feels different now. The sh
 The air outside, though still tinged with the island's unique atmosphere, feels cleaner, lighter. You find a secluded, moonlit cliff overlooking the ocean – a place that feels pure and untainted.
 
 
-    (link-reveal: "Await the dawn/Observe the island")[
+    (link-reveal: "Observe the island")[
 
         Over the next few days, a subtle but undeniable change comes over the island. The haunted, weary look begins to fade from the eyes of the inhabitants. Children's laughter, once a rarity, is heard more often. People speak of sleeping soundly for the first time in memory, their dreams no longer plagued by shadowy terrors.
 
@@ -796,7 +796,7 @@ Please choose a name to start your story: (input: bind $Name , "Calder Faust")
 :: ScanAntechamber {"position":"800,3725","size":"100,100"}
 You take a moment to survey the antechamber more thoroughly.
 *   The **skull pillars** are unnervingly detailed, each skull facing slightly differently, as if watching. There's no obvious mechanism on them.
-*   The statues of soldiers long forgotten, stand ominously over you.
+*   The **statues of soldiers** and **gods** long forgotten, stand ominously before you.
 *   The **stone walls** are mostly solid, hewn brickwork mixed with natural rock.
 
 
@@ -1017,7 +1017,8 @@ The shimmering surface of the wall ripples violently under the item's influence.
 
 
 :: UseWardOnSmoke {"position":"975,3775","size":"100,100"}
-You draw forth your Sacred Ward. As you present it towards the billowing emerald barrier, (Describe the item's activation: e.g., "the Ward begins to hum, emitting a soft, golden light," or "ancient symbols on the Ward flare with power").
+You draw forth your Sacred Ward. As you present it towards the billowing emerald barrier, 
+The Ward in you hands begins to hum slowly and emit a soft, golden light.
 
 
 The golden light meets the green smoke. There's a sound like rushing wind, and the acrid smell intensifies for a moment before rapidly dissipating. The emerald miasma churns violently, then, as if an unseen hand has drawn curtains aside, it parts down the middle, creating a clear, stable corridor through the archway. The way to the Idol is open! The residual energy from the Ward fades, but the path remains.
@@ -1075,12 +1076,6 @@ A low, almost sub-audible hum seems to emanate from that direction, a vibration 
 
 :: front illusion wall {"position":"500,3100","size":"100,100"}
 [[after illusion wall]]
-
-
-:: info path 2 {"position":"700,2725","size":"100,100"}
-Puzzle room here, some INT check
-
-[[Go along path|int path drop down]]
 
 
 :: int path 1 {"position":"700,2600","size":"100,100"}
@@ -1252,8 +1247,8 @@ Seven identical stone spheres rest in a shallow alcove, and an old, ornate scale
 ]
 
 
-:: int path drop down {"position":"700,2850","size":"100,100"}
-The opening before you narrows into a tunnel, its walls roughly hewn from the living rock of the temple's foundations. The air within is noticeably cooler, carrying the faint, metallic scent of damp earth and ancient stone. Your torchlight (or whatever light source you possess) casts dancing, elongated shadows that make the passage seem to writhe and stretch endlessly into the oppressive darkness ahead.
+:: int path drop down {"position":"725,2850","size":"100,100"}
+The opening before you narrows into a tunnel, its walls roughly hewn from the living rock of the temple's foundations. The air within is noticeably cooler, carrying the faint, metallic scent of damp earth and ancient stone. Your torchlight casts dancing, elongated shadows that make the passage seem to writhe and stretch endlessly into the oppressive darkness ahead.
 
 (link-reveal: "Press onward into the gloom.")[
 
@@ -1282,7 +1277,7 @@ The opening before you narrows into a tunnel, its walls roughly hewn from the li
 ]
 
 
-:: opened dam transition {"position":"850,2750","size":"100,100"}
+:: opened dam transition {"position":"850,2725","size":"100,100"}
 As you look around the lever you can't find anything else, so you decide to just pull it. Water starts rushing down the canal as the mechanism opens up the blockage. You rush after the flow to see [[where it is headed|small well]].
 (set:$well to true)
 (set:$items to it + (ds:$item_sacred_ward))
