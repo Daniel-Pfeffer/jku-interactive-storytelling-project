@@ -169,6 +169,7 @@ Torches flicker in sconces on the lower brick walls and on the upper gallery, ca
 ]
 
 (link: "Return to the previous passage")[(go-to: (history:)'s last)]
+[[Return to the main Chamber to look for more clues.|Entry hall]]
 
 
 :: CastDispel {"position":"300,3200","size":"100,100"}
@@ -396,9 +397,12 @@ Directly ahead, upon a tiered //stone dais//, stands a grand, ornate //altar//. 
 
 The idol is within reach. The chamber is silent, save for the flickering of the flames.
 
-[[Take the idol and destroy it|GoodEnding]]
-[[Take the idol and toss it away|BadEnding]]
-[[Take the idol and keep it|EvilEnding]]
+Standing at the end of your adventure you need to decide how to solve the town's crisis. Though powerful, the idol seems to be rather fragile. (if:$Class is "Knight")[A powerful hit](if:$Class is "Mage")[A simple arcane bolt](if:$Class is "Rogue")[A thrown dagger] could probably (if: $Insanity<=1)[[[shatter|GoodEnding]]](else:)[shatter] it ending the threat once and for all, but might also prove dangerous to you if it has any last defences you can't see. 
+
+Looking at it more closely it seems to be connected to the altar under it, and probably the entire temple through it. It might be better to just remove it from the platform, and [[hide it|BadEnding]] somewhere nearby. The effects should stop, but if someone manages to find it future generations could be in deep trouble.
+
+(if:($Insanity >1)or ($money<0))[Just before you can decide, you hear a small whisper from the back of your mind. There in the most hidden recesses of your thoughts is a darker desire to [[take it|EvilEnding]]. Just looking at the chaos it has caused makes it clear it is a powerful artifact, and many would pay good money for it.(if:$Classs is "Mage")[ Perhaps you could try researching it yourself, and claim it's power to further your own.]]
+
 
 
 :: IntDream {"position":"975,750","size":"100,100"}
